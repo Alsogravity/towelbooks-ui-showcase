@@ -60,7 +60,19 @@ try {
         headers['content-security-policy']?.includes("frame-ancestors 'none'"),
       );
       assert.equal(headers['x-content-type-options'], 'nosniff');
-      await page.getByRole('heading').first().waitFor();
+      await page
+        .getByRole('heading')
+        .first()
+        .waitFor()
+        .catch(async (error) => {
+          await page.screenshot({
+            path: `test-results/live-failure-${name}.png`,
+            fullPage: true,
+          });
+          throw new Error(`Live route failed to render: ${route}`, {
+            cause: error,
+          });
+        });
       await page
         .getByText(/Loading\.\.\.|Carregando\.\.\./, { exact: true })
         .waitFor({ state: 'hidden' });

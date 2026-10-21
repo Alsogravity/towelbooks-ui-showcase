@@ -131,6 +131,11 @@ for (const variant of variants) {
     await expect(page).toHaveURL(new RegExp(`${variant.route}$`));
     await page.locator(variant.identifier).fill('visitor@example.invalid');
     await page.locator(variant.password).fill('visitor-demo-password');
+    if (variant.route === '/login') {
+      await expect(
+        page.getByRole('link', { name: 'Forgot password?', exact: true }),
+      ).toHaveAttribute('href', '/forgot-password');
+    }
     const before = await browserStorage(page);
     const cookies = await context.cookies();
     await page

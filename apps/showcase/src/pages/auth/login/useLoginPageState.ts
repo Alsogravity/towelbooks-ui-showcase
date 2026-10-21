@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, useWatch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { demoLoginDefaults, enterDemo } from '../../../demo/auth';
 import {
@@ -15,15 +15,11 @@ export function useLoginPageState() {
     defaultValues: demoLoginDefaults,
     resolver: zodResolver(createLoginSchema(t)),
   });
-  const identifierValue = useWatch({
-    control: form.control,
-    name: 'identifier',
-  });
   const unavailableAction = async () => {};
 
   return {
     deleteAfterLabel: null,
-    forgotPasswordEmail: identifierValue.includes('@') ? identifierValue : null,
+    forgotPasswordEmail: null,
     form,
     handleLoginSubmit: form.handleSubmit(enterDemo),
     isReactivating: false,
