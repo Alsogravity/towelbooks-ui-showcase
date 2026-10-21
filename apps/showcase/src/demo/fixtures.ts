@@ -13,16 +13,16 @@ export const date = '2026-10-20T12:00:00.000Z';
 export const uuid = (value: number) =>
   `00000000-0000-4000-8000-${String(value).padStart(12, '0')}`;
 export const avatar = buildAvatar({
-  displayName: 'Marina Costa',
-  username: 'marina_demo',
+  displayName: 'Peter Parker',
+  username: 'peter_parker',
   avatarBackground: '#581810',
   avatarImageUrl: null,
 });
 export const demoUser = meResponseSchema.parse({
   id: uuid(1),
-  email: 'marina@example.invalid',
-  displayName: 'Marina Costa',
-  username: 'marina_demo',
+  email: 'peter.parker@example.invalid',
+  displayName: 'Peter Parker',
+  username: 'peter_parker',
   bio: 'Leituras lentas, margens anotadas e conversas depois do último capítulo.',
   locale: null,
   localeMode: 'auto',

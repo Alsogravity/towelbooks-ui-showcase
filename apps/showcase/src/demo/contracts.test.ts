@@ -9,10 +9,10 @@ const client = createTowelBooksClient({
 describe('original frontend demo transport', () => {
   it('serves original SDK read contracts used by the preserved screens', async () => {
     const network = vi.spyOn(globalThis, 'fetch');
-    expect((await client.users.me.get()).username).toBe('marina_demo');
+    expect((await client.users.me.get()).username).toBe('peter_parker');
     expect((await client.collections.list()).items).toHaveLength(3);
     expect((await client.collections.get(uuid(500))).owner.username).toBe(
-      'marina_demo',
+      'peter_parker',
     );
     expect(
       (await client.collections.listPublicItems(uuid(500))).items,
@@ -44,7 +44,7 @@ describe('original frontend demo transport', () => {
       uuid(700),
     );
     expect(
-      (await client.users.listProfileBooksRead('marina_demo')).items,
+      (await client.users.listProfileBooksRead('peter_parker')).items,
     ).toHaveLength(1);
     expect((await client.rooms.discover()).items).toHaveLength(3);
     expect((await client.rooms.getOverview(uuid(600))).viewer.role).toBe(
@@ -62,7 +62,7 @@ describe('original frontend demo transport', () => {
     expect((await client.polls.listPolls(uuid(600))).items).toEqual([]);
     expect((await client.users.me.getHome()).forYou).toHaveLength(3);
     expect((await client.activityEvents.listForViewer()).items).toEqual([]);
-    expect((await client.users.getProfile('marina_demo')).viewer?.isSelf).toBe(
+    expect((await client.users.getProfile('peter_parker')).viewer?.isSelf).toBe(
       true,
     );
     expect((await client.notifications.list()).items).toEqual([]);
@@ -159,7 +159,7 @@ describe('original frontend demo transport', () => {
     await expect(
       client.users.me.delete({ password: 'fictional-demo-value' }),
     ).rejects.toBeInstanceOf(ApiRequestError);
-    expect((await client.users.me.get()).username).toBe('marina_demo');
+    expect((await client.users.me.get()).username).toBe('peter_parker');
     await expect(
       demoFetch('https://example.invalid/upload', { method: 'PUT' }),
     ).rejects.toThrow('External requests');

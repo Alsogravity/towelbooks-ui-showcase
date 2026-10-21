@@ -32,7 +32,7 @@ test('original pages render with no service traffic or startup errors', async ({
     '/demo/rooms',
     `/demo/rooms/${uid(600)}`,
     `/demo/rooms/${uid(600)}/readings/${uid(700)}`,
-    '/demo/marina_demo',
+    '/demo/peter_parker',
   ];
   for (const route of routes) {
     await page.goto(route);

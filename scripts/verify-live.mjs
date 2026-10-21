@@ -15,7 +15,7 @@ const routes = [
   '/demo/rooms',
   `/demo/rooms/${uid(600)}`,
   `/demo/rooms/${uid(600)}/readings/${uid(700)}`,
-  '/demo/marina_demo',
+  '/demo/peter_parker',
 ];
 const browser = await chromium.launch();
 const summary = [];
