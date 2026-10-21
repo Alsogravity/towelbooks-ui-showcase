@@ -1,19 +1,100 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#f4ecd8"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#111111"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://towelbooks-ui-showcase.pages.dev/" />
+
+    <title>TowelBooks — reading rooms and book clubs</title>
     <meta
       name="description"
-      content="TowelBooks — an interactive reading product UI portfolio with fictional demo data."
+      content="TowelBooks is a calm home for reading rooms and book clubs: build your shelves, invite friends or join the community, and talk through every chapter together."
     />
-    <meta property="og:title" content="TowelBooks UI Showcase" />
+    <meta name="application-name" content="TowelBooks" />
+    <meta name="author" content="TowelBooks" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TowelBooks" />
+    <meta
+      property="og:title"
+      content="TowelBooks: read together, chapter by chapter"
+    />
     <meta
       property="og:description"
-      content="Explore a reading-first product design. All demo data is fictional."
+      content="TowelBooks is a calm home for reading rooms and book clubs: build your shelves, invite friends or join the community, and talk through every chapter together."
     />
-    <link rel="icon" type="image/svg+xml" href="/assets/brand/mark.svg" />
-    <title>TowelBooks UI Showcase</title>
+    <meta
+      property="og:url"
+      content="https://towelbooks-ui-showcase.pages.dev/"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta
+      property="og:image"
+      content="https://towelbooks-ui-showcase.pages.dev/assets/brand/og-image-en.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="TowelBooks: the reading life, together"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="TowelBooks: read together, chapter by chapter"
+    />
+    <meta
+      name="twitter:description"
+      content="TowelBooks is a calm home for reading rooms and book clubs: build your shelves, invite friends or join the community, and talk through every chapter together."
+    />
+    <meta
+      name="twitter:image"
+      content="https://towelbooks-ui-showcase.pages.dev/assets/brand/og-image-en.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="TowelBooks: the reading life, together"
+    />
+
+    <!-- Icons & install manifest -->
+    <link rel="icon" href="/assets/brand/mark.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Performance: warm the above-the-fold UI font (hero + body copy) -->
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script src="/bootstrap/preferences.js"></script>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- towelbooks-analytics-config -->
   </head>
   <body>
     <div id="app"></div>

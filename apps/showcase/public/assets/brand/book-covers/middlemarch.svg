@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="240" height="320">
+  
+  <rect width="240" height="320" fill="#8B2E1F"></rect>
+  <rect x="16" y="16" width="208" height="288" fill="none" stroke="#F4ECD8" stroke-width="1"></rect>
+  <rect x="20" y="20" width="200" height="40" fill="#F4ECD8"></rect>
+  <text x="120" y="46" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" font-style="italic" fill="#8B2E1F">towelbooks classics</text>
+  <text x="120" y="160" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="34" font-weight="500" fill="#F4ECD8" font-style="italic">Middlemarch</text>
+  <text x="120" y="200" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" fill="#F4ECD8" letter-spacing="0.08em">GEORGE ELIOT</text>
+  <text x="120" y="290" text-anchor="middle" font-family="serif" font-size="20" fill="#F4ECD8">❦</text>
+</svg>

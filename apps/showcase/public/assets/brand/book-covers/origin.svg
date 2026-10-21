@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="240" height="320">
+  <rect width="240" height="320" fill="#EADFC4"></rect>
+  <rect x="16" y="16" width="208" height="288" fill="none" stroke="#1A1714" stroke-width="1"></rect>
+  <text x="120" y="60" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" font-style="italic" fill="#1A1714">towelbooks papers</text>
+  <line x1="60" y1="76" x2="180" y2="76" stroke="#1A1714" stroke-width="0.5"></line>
+  <text x="120" y="150" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" font-weight="500" fill="#1A1714">On the Origin</text>
+  <text x="120" y="178" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" font-weight="500" font-style="italic" fill="#1A1714">of Species</text>
+  <text x="120" y="220" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="#1A1714" letter-spacing="0.08em">CHARLES DARWIN</text>
+  <text x="120" y="290" text-anchor="middle" font-family="serif" font-size="20" fill="#8B2E1F">❦</text>
+</svg>

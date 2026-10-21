@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">East Asian reading room SVG illustration</title>
+  <desc id="desc">Colorful SVG line-art with jade, gold, and coral stacked books, flowing reading lines, glowing red paper lanterns, sakura blossoms, soft blue cloud motifs, a vermillion torii-inspired gate, and a pagoda roof detail.</desc>
+  <defs>
+    <linearGradient id="lanternGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe39a"/>
+      <stop offset=".45" stop-color="#ff9d4d"/>
+      <stop offset="1" stop-color="#f2643a"/>
+    </linearGradient>
+    <radialGradient id="petalGlow" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#ffd9e2"/>
+      <stop offset="1" stop-color="#ff9eb8"/>
+    </radialGradient>
+    <style>
+      /* structural strokes (default warm coral) */
+      .line{stroke:#ff6b4a;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+      .thin{stroke:#ff6b4a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+      .soft{stroke:#ff8b72;stroke-width:3.8;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.9;}
+      .dot{fill:#ff6b4a;}
+
+      /* color overrides (declared after structural rules so they win) */
+      .s-jade{stroke:#15827a;}
+      .s-gold{stroke:#c98412;}
+      .s-coral{stroke:#df4f2c;}
+      .s-red{stroke:#d62828;}
+      .s-pink{stroke:#e0628a;}
+      .s-blue{stroke:#3f8fbf;}
+      .s-indigo{stroke:#3d405b;}
+
+      /* fills */
+      .f-jade-1{fill:#74cbc1;}
+      .f-jade-2{fill:#4eb6ab;}
+      .f-jade-3{fill:#2c9489;}
+      .f-gold-1{fill:#f9d784;}
+      .f-gold-2{fill:#f4c451;}
+      .f-gold-3{fill:#e3a72f;}
+      .f-coral-1{fill:#ffb8a6;}
+      .f-coral-2{fill:#ff957c;}
+      .f-coral-3{fill:#ef6f51;}
+      .f-glow{fill:url(#lanternGlow);}
+      .f-petal{fill:url(#petalGlow);}
+      .f-cloud{fill:#bfe3f2;opacity:.7;}
+      .f-red{fill:#d62828;}
+      .d-gold{fill:#e3a72f;}
+      .d-pink{fill:#e0628a;}
+      .d-jade{fill:#2c9489;}
+    </style>
+  </defs>
+
+  <!-- sparse decorative field -->
+  <g opacity="0.95">
+    <circle class="d-gold" cx="286" cy="650" r="4"/>
+    <circle class="d-pink" cx="565" cy="116" r="3.8"/>
+    <circle class="d-gold" cx="702" cy="642" r="4"/>
+    <circle class="d-jade" cx="615" cy="468" r="3.4"/>
+    <circle class="d-pink" cx="530" cy="742" r="3.2"/>
+    <path class="thin s-gold" d="M242 600 L242 625 M229 612 H255"/>
+    <path class="thin s-pink" d="M746 129 L746 156 M733 142 H759"/>
+    <path class="thin s-jade" d="M250 250 L250 280 M235 265 H265"/>
+    <path class="thin s-gold" d="M690 592 L690 616 M678 604 H702"/>
+  </g>
+
+  <!-- refined book stack with clearer isometric book construction -->
+  <g>
+    <!-- bottom book (jade) -->
+    <path class="f-jade-1" d="M226 744 C250 738 574 738 606 744 L666 781 C638 790 308 791 270 783 Z"/>
+    <path class="f-jade-2" d="M270 783 H666 V817 C635 827 308 828 270 817 Z"/>
+    <path class="f-jade-3" d="M226 744 L270 783 V817 L224 778 Z"/>
+    <path class="line s-jade" d="M226 744 C250 738 574 738 606 744 L666 781 C638 790 308 791 270 783 Z"/>
+    <path class="line s-jade" d="M270 783 H666 V817 C635 827 308 828 270 817 Z"/>
+    <path class="line s-jade" d="M226 744 L270 783 V817 L224 778 Z"/>
+    <path class="thin s-jade" d="M303 798 H637 M315 813 H610"/>
+    <path class="thin s-jade" d="M246 764 C258 773 266 778 277 783"/>
+    <path class="thin s-jade" d="M320 749 H585"/>
+
+    <!-- middle book (gold) -->
+    <path class="f-gold-1" d="M266 684 C291 678 600 678 631 684 L690 719 C659 730 345 731 310 721 Z"/>
+    <path class="f-gold-2" d="M310 721 H690 V754 C658 764 343 765 310 754 Z"/>
+    <path class="f-gold-3" d="M266 684 L310 721 V754 L264 715 Z"/>
+    <path class="line s-gold" d="M266 684 C291 678 600 678 631 684 L690 719 C659 730 345 731 310 721 Z"/>
+    <path class="line s-gold" d="M310 721 H690 V754 C658 764 343 765 310 754 Z"/>
+    <path class="line s-gold" d="M266 684 L310 721 V754 L264 715 Z"/>
+    <path class="thin s-gold" d="M342 737 H658 M352 751 H628"/>
+    <path class="thin s-gold" d="M286 702 C297 710 305 716 316 721"/>
+    <path class="thin s-gold" d="M356 688 H607"/>
+
+    <!-- top book (coral) -->
+    <path class="f-coral-1" d="M314 626 C338 620 604 620 632 626 L687 658 C659 668 390 669 356 660 Z"/>
+    <path class="f-coral-2" d="M356 660 H687 V693 C657 703 390 704 356 693 Z"/>
+    <path class="f-coral-3" d="M314 626 L356 660 V693 L312 655 Z"/>
+    <path class="line s-coral" d="M314 626 C338 620 604 620 632 626 L687 658 C659 668 390 669 356 660 Z"/>
+    <path class="line s-coral" d="M356 660 H687 V693 C657 703 390 704 356 693 Z"/>
+    <path class="line s-coral" d="M314 626 L356 660 V693 L312 655 Z"/>
+    <path class="thin s-coral" d="M386 676 H654 M395 690 H624"/>
+    <path class="thin s-coral" d="M335 642 C345 650 352 655 363 660"/>
+    <path class="thin s-coral" d="M405 630 H610"/>
+
+    <!-- subtle cover details -->
+    <path class="thin s-coral" d="M462 636 C485 644 520 644 543 636"/>
+    <path class="thin s-gold" d="M433 694 C452 701 481 701 501 694"/>
+    <path class="thin s-jade" d="M488 755 C510 763 541 763 563 755"/>
+
+    <!-- clean bookmark tucked into the front edge -->
+    <path class="f-red" d="M585 754 V836 L611 807 L636 836 V754 Z"/>
+    <path class="line s-red" d="M585 754 V836 L611 807 L636 836 V754"/>
+    <path class="thin s-red" d="M585 754 H636"/>
+  </g>
+
+  <!-- flowing reading lines rising from the top book -->
+  <g>
+    <path class="soft s-coral" d="M502 633 C478 562 540 523 511 459 C477 384 526 317 600 249"/>
+    <path class="line s-jade" d="M528 632 C586 562 591 491 557 430 C518 361 551 275 620 214"/>
+    <path class="thin s-gold" d="M474 633 C443 566 452 510 493 459 C542 398 439 349 457 283 C462 263 475 246 489 231"/>
+    <path class="thin s-pink" d="M556 624 C608 582 642 529 626 478 C612 433 616 401 654 367"/>
+  </g>
+
+  <!-- lanterns -->
+  <g>
+    <!-- large paper lantern -->
+    <path class="thin s-indigo" d="M624 118 V193"/>
+    <path class="f-red" d="M577 193 H671 V214 H577Z"/>
+    <path class="f-glow" d="M594 214 C541 247 541 328 594 361 H654 C707 328 707 247 654 214 Z"/>
+    <path class="line s-red" d="M577 193 H671 V214 H577Z"/>
+    <path class="line s-red" d="M594 214 C541 247 541 328 594 361"/>
+    <path class="line s-red" d="M654 214 C707 247 707 328 654 361"/>
+    <path class="line s-gold" d="M624 214 C600 249 600 326 624 361"/>
+    <path class="line s-gold" d="M624 214 C648 249 648 326 624 361"/>
+    <path class="f-red" d="M594 361 H654 V381 H594Z"/>
+    <path class="line s-red" d="M594 361 H654 V381 H594Z"/>
+    <path class="line s-red" d="M624 381 V400"/>
+    <path class="thin s-red" d="M610 400 C614 410 634 410 638 400"/>
+    <path class="line s-red" d="M624 410 V456"/>
+    <path class="thin s-red" d="M610 424 V457 M638 424 V457"/>
+    <path class="thin s-indigo" d="M678 208 C688 219 689 234 680 246"/>
+  </g>
+
+  <g>
+    <!-- small vertical lantern -->
+    <path class="thin s-indigo" d="M395 220 V278"/>
+    <path class="f-red" d="M373 278 H417 V298 H373Z"/>
+    <path class="f-glow" d="M382 298 C354 322 357 376 386 399 H404 C433 376 436 322 408 298 Z"/>
+    <path class="line s-red" d="M373 278 H417 V298 H373Z"/>
+    <path class="line s-red" d="M382 298 C354 322 357 376 386 399"/>
+    <path class="line s-red" d="M408 298 C436 322 433 376 404 399"/>
+    <path class="thin s-gold" d="M395 298 V399"/>
+    <path class="thin s-gold" d="M368 337 H422 M371 363 H419"/>
+    <path class="f-red" d="M384 399 H406 V417 H384Z"/>
+    <path class="line s-red" d="M384 399 H406 V417 H384Z"/>
+    <path class="line s-red" d="M395 417 V436"/>
+    <path class="thin s-red" d="M384 443 C388 450 402 450 406 443"/>
+    <path class="line s-red" d="M395 451 V491"/>
+    <path class="thin s-red" d="M384 461 V491 M406 461 V491"/>
+  </g>
+
+  <!-- East Asian cultural motifs, kept light and not overlapping the books -->
+  <g>
+    <!-- pagoda roof mark -->
+    <path class="line s-red" d="M666 366 C693 373 724 373 751 366"/>
+    <path class="line s-red" d="M650 386 H770"/>
+    <path class="line s-red" d="M675 365 C694 348 711 329 724 309"/>
+    <path class="line s-red" d="M724 309 C737 330 754 349 772 365"/>
+    <path class="thin s-gold" d="M704 330 H744"/>
+    <path class="thin s-red" d="M724 282 V326"/>
+    <path class="thin s-gold" d="M711 309 H737 M724 300 V289 M713 317 H735"/>
+    <path class="thin s-red" d="M660 399 C692 411 731 411 763 399"/>
+
+    <!-- torii-inspired gate above the books -->
+    <path class="line s-red" d="M366 608 V553 M452 608 V553"/>
+    <path class="line s-red" d="M345 548 C380 557 438 557 473 548"/>
+    <path class="line s-red" d="M360 568 H458"/>
+    <path class="thin s-gold" d="M388 568 V604 M430 568 V604"/>
+  </g>
+
+  <!-- clouds and wind marks -->
+  <g>
+    <path class="thin s-blue" d="M652 459 H722 C744 459 743 482 721 482 H690"/>
+    <path class="thin s-blue" d="M691 494 H750 C771 494 771 516 749 516 H710"/>
+    <path class="thin s-blue" d="M289 452 H352 C371 452 371 474 353 474 H323"/>
+    <path class="f-cloud" d="M327 491 C347 475 372 478 385 499 C402 498 414 509 414 524 C414 539 397 545 379 539 C366 555 339 555 327 539 C304 544 286 534 286 517 C286 498 306 488 327 491Z"/>
+    <path class="thin s-blue" d="M327 491 C347 475 372 478 385 499 C402 498 414 509 414 524 C414 539 397 545 379 539 C366 555 339 555 327 539 C304 544 286 534 286 517 C286 498 306 488 327 491Z"/>
+    <path class="thin s-blue" d="M649 598 H716 C739 598 739 619 718 619 H692"/>
+  </g>
+
+  <!-- sakura, petals, and small sparkles -->
+  <g>
+    <path class="f-petal" d="M371 122 C363 108 372 95 386 104 C390 86 407 85 412 103 C430 95 442 110 427 123 C444 136 434 155 414 148 C410 167 390 167 387 148 C369 156 355 140 371 122Z"/>
+    <path class="line s-pink" d="M371 122 C363 108 372 95 386 104 C390 86 407 85 412 103 C430 95 442 110 427 123 C444 136 434 155 414 148 C410 167 390 167 387 148 C369 156 355 140 371 122Z"/>
+    <circle class="d-gold" cx="392" cy="126" r="2.5"/>
+    <path class="f-petal" d="M534 410 C526 396 537 385 548 396 C561 387 574 400 563 414 C574 428 556 438 545 425 C531 436 520 422 534 410Z"/>
+    <path class="thin s-pink" d="M534 410 C526 396 537 385 548 396 C561 387 574 400 563 414 C574 428 556 438 545 425 C531 436 520 422 534 410Z"/>
+    <path class="f-petal" d="M358 624 C352 612 361 604 371 612 C382 604 393 616 384 627 C393 638 379 648 369 637 C357 646 346 635 358 624Z"/>
+    <path class="thin s-pink" d="M358 624 C352 612 361 604 371 612 C382 604 393 616 384 627 C393 638 379 648 369 637 C357 646 346 635 358 624Z"/>
+    <path class="thin s-pink" d="M641 540 C650 527 667 533 668 549 C655 556 644 553 641 540Z"/>
+    <path class="thin s-pink" d="M688 710 C697 696 715 702 716 719 C702 727 691 723 688 710Z"/>
+    <path class="thin s-pink" d="M714 204 C726 192 742 201 741 218 C727 226 716 221 714 204Z"/>
+    <path class="thin s-pink" d="M309 393 C322 381 338 392 335 409 C321 417 310 410 309 393Z"/>
+    <path class="thin s-pink" d="M410 748 C421 735 439 742 439 760 C424 769 413 765 410 748Z"/>
+    <path class="thin s-pink" d="M557 297 C565 285 581 291 582 306 C570 314 559 310 557 297Z"/>
+    <path class="thin s-pink" d="M732 516 C740 504 756 510 757 526 C744 533 734 529 732 516Z"/>
+    <path class="thin s-gold" d="M549 113 C553 106 562 106 566 113 C562 121 553 121 549 113Z"/>
+  </g>
+</svg>

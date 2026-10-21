@@ -1,0 +1,8 @@
+[
+  "apps/showcase/src/app/providers.tsx",
+  "apps/showcase/src/app/router.tsx",
+  "apps/showcase/src/features/auth/AuthContext.tsx",
+  "apps/showcase/src/app/guest-auth-routes.tsx",
+  "apps/showcase/src/lib/sdk.ts",
+  "apps/showcase/src/lib/documentMetadata.ts"
+]

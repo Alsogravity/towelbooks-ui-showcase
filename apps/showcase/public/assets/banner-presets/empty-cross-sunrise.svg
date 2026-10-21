@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100" fill="none">
+  <defs>
+    <!-- Heavenly Sunrise Sky Gradient -->
+    <linearGradient id="sunriseSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B133A" />   <!-- Deep Indigo -->
+      <stop offset="40%" stop-color="#4E2368" />  <!-- Heavenly Purple -->
+      <stop offset="75%" stop-color="#CA4F30" />  <!-- Sunrise Coral-Red -->
+      <stop offset="100%" stop-color="#E8963E" /> <!-- Golden Horizon -->
+    </linearGradient>
+
+    <!-- Sun Radial Glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="35%" stop-color="#FFE07D" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#FFE07D" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="400" height="100" fill="url(#sunriseSky)" />
+
+  <!-- Glowing Morning Sun -->
+  <circle cx="200" cy="85" r="40" fill="url(#sunGlow)" />
+  <circle cx="200" cy="85" r="16" fill="#FFFFFF" />
+
+  <!-- Majestic Heavenly Sun Rays -->
+  <polygon points="200,85 110,0 145,0" fill="#FFF27D" fill-opacity="0.12" />
+  <polygon points="200,85 175,0 225,0" fill="#FFF27D" fill-opacity="0.12" />
+  <polygon points="200,85 255,0 290,0" fill="#FFF27D" fill-opacity="0.12" />
+  <polygon points="200,85 30,20 30,35" fill="#FFF27D" fill-opacity="0.08" />
+  <polygon points="200,85 370,20 370,35" fill="#FFF27D" fill-opacity="0.08" />
+
+
+  <!-- ==================== MOUNTAINS & HILLS ==================== -->
+  <!-- 1. Deep purple back mountains (silhouette in morning light) -->
+  <path d="M 0 100 L 0 76 C 60 68, 120 84, 180 72 C 240 60, 280 80, 330 68 C 370 59, 385 67, 400 64 L 400 100 Z" fill="#3D1D5A" fill-opacity="0.45" />
+
+  <!-- 2. Olive silhouette mid hills -->
+  <path d="M 0 100 L 0 85 C 80 75, 150 92, 220 81 C 290 70, 330 90, 400 78 L 400 100 Z" fill="#4D5C2C" fill-opacity="0.5" />
+
+  <!-- 3. Rich green-gold foreground hill (on the left where the Cross stands) -->
+  <path d="M 0 100 Q 110 78, 230 87 T 400 100 Z" fill="#2E4F23" />
+  <!-- Grassy highlights -->
+  <path d="M 0 97 Q 110 77, 230 86 T 400 97" stroke="#3D6830" stroke-width="1.2" stroke-opacity="0.4" />
+  <path d="M 0 100 Q 110 82, 230 90 T 400 100" stroke="#1D3814" stroke-width="1" stroke-opacity="0.5" />
+
+
+  <!-- ==================== THE EMPTY CROSS & SHROUD ==================== -->
+  <!-- Vertical Beam -->
+  <rect x="107" y="32" width="6" height="56" fill="#4E3524" rx="0.5" />
+  <!-- Wood grain highlights -->
+  <line x1="108.5" y1="32" x2="108.5" y2="87" stroke="#6F4E37" stroke-width="0.8" stroke-opacity="0.8" />
+  <line x1="111.5" y1="32" x2="111.5" y2="87" stroke="#352216" stroke-width="0.8" stroke-opacity="0.8" />
+
+  <!-- Horizontal Beam -->
+  <rect x="92" y="47" width="36" height="6" fill="#4E3524" rx="0.5" />
+  <line x1="92" y1="48.5" x2="128" y2="48.5" stroke="#6F4E37" stroke-width="0.8" stroke-opacity="0.8" />
+
+  <!-- Resurrection Linen Shroud (Draped over the cross) -->
+  <!-- Back drape segment -->
+  <path d="M 103 45 C 103 39, 117 39, 117 45 L 117 62 C 117 67, 103 67, 103 62 Z" fill="#F8F9FA" fill-opacity="0.85" />
+  <!-- Left hanging cloth segment -->
+  <path d="M 98 48 C 98 48, 101 45, 104 46 L 102 75 C 99 75, 97 71, 97 68 Z" fill="#E9ECEF" fill-opacity="0.95" />
+  <!-- Right hanging cloth segment (longer and waving) -->
+  <path d="M 116 48 C 116 48, 119 45, 122 46 L 126 81 C 122 83, 117 81, 117 76 Z" fill="#E9ECEF" fill-opacity="0.95" />
+  <!-- Front loops drape -->
+  <path d="M 102 48 C 102 65, 118 65, 118 48 C 118 48, 114 55, 110 55 C 106 55, 102 48, 102 48 Z" fill="#FFFFFF" stroke="#DEE2E6" stroke-width="0.4" />
+
+
+  <!-- ==================== LUSH EASTER LILIES (At the base of the cross) ==================== -->
+  <!-- Lily 1 (Left side) -->
+  <path d="M 99 88 Q 97 83, 98 79" stroke="#1D3814" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M 98 85 Q 94 85, 96 83" fill="#2E4F23" />
+  <path d="M 98 81 C 95 79, 92 79, 90 76 C 93 77, 97 79, 98 81" fill="#FFFFFF" stroke="#ECEFF1" stroke-width="0.4" />
+  <line x1="98" y1="81" x2="93" y2="77" stroke="#FBBF24" stroke-width="0.8" />
+
+  <!-- Lily 2 (Right side) -->
+  <path d="M 121 88 Q 123 83, 122 79" stroke="#1D3814" stroke-width="1.2" stroke-linecap="round" />
+  <path d="M 122 85 Q 126 85, 124 83" fill="#2E4F23" />
+  <path d="M 122 81 C 125 79, 128 79, 130 76 C 127 77, 123 79, 122 81" fill="#FFFFFF" stroke="#ECEFF1" stroke-width="0.4" />
+  <line x1="122" y1="81" x2="127" y2="77" stroke="#FBBF24" stroke-width="0.8" />
+
+
+  <!-- ==================== WHITE DOVE (Peace and Holy Spirit) ==================== -->
+  <path d="M 45 22 C 48 20, 53 15, 54 11 C 55 15, 54 20, 57 22 C 61 22, 66 18, 70 15 C 67 20, 62 23, 60 26 C 59 30, 61 35, 59 38 C 56 34, 55 29, 52 27 C 48 27, 43 25, 39 23 L 45 22 Z" fill="#FFFFFF" fill-opacity="0.9" />
+  <!-- Soft glow around dove -->
+  <path d="M 45 22 C 48 20, 53 15, 54 11 C 55 15, 54 20, 57 22 C 61 22, 66 18, 70 15 C 67 20, 62 23, 60 26 C 59 30, 61 35, 59 38 C 56 34, 55 29, 52 27 C 48 27, 43 25, 39 23 L 45 22 Z" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+</svg>

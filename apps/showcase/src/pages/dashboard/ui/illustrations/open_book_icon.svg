@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Open book hand drawn icon">
+  <defs>
+    <style>
+      .red{fill:none;stroke:#a84636;stroke-width:5.2;stroke-linecap:round;stroke-linejoin:round}
+      .red2{fill:none;stroke:#a84636;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+      .page{fill:#fbf5e8;stroke:#a84636;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#e0a087;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+    </style>
+  </defs>
+
+  <!-- top emphasis marks -->
+  <path class="red" d="M74 39l11 13"/>
+  <path class="red" d="M115 28l2 20"/>
+  <path class="red" d="M161 36l-13 16"/>
+
+  <!-- open pages -->
+  <path class="page" d="M126 76C103 54 65 53 38 71c-4 3-7 8-7 13l4 119c28-14 66-13 91 11z"/>
+  <path class="page" d="M126 76c25-22 63-23 89-5 5 3 8 8 7 14l-4 118c-29-14-68-13-92 11z"/>
+
+  <!-- center fold -->
+  <path class="red2" d="M126 77c-1 32 0 79 0 137"/>
+
+  <!-- lower cover folds, intentionally imperfect -->
+  <path class="red" d="M35 190c30-14 63-12 91 11 28-23 61-25 92-11"/>
+  <path class="red" d="M36 203c29-14 62-11 87 11"/>
+  <path class="red" d="M217 203c-29-14-62-11-88 11"/>
+  <path class="red2" d="M115 211c4 5 18 6 24 0"/>
+
+  <!-- page text marks left -->
+  <path class="line" d="M61 100c13-9 28-8 43 1"/>
+  <path class="line" d="M62 132c17-10 31-8 47 1"/>
+  <path class="line" d="M64 163c16-8 31-8 46 2"/>
+
+  <!-- page text marks right -->
+  <path class="line" d="M149 101c14-9 29-10 45-1"/>
+  <path class="line" d="M148 133c17-10 32-9 48 1"/>
+  <path class="line" d="M148 164c16-8 31-9 47 1"/>
+
+  <!-- tiny irregular page/cover edge accents -->
+  <path class="red2" d="M45 74c18-8 39-11 61-3" opacity=".45"/>
+  <path class="red2" d="M145 71c23-8 45-5 63 4" opacity=".45"/>
+</svg>

@@ -1,0 +1,20 @@
+export const externalLinksMessages = {
+  'externalLinks.summary.open': 'Ver links',
+  'externalLinks.summary.andMore': 'e mais {count}',
+  'externalLinks.sheet.title': 'Links',
+  'externalLinks.editor.title': 'Links',
+  'externalLinks.editor.add': 'Adicionar link',
+  'externalLinks.editor.limit': 'Você pode adicionar até {max} links.',
+  'externalLinks.editor.moveUp': 'Mover para cima',
+  'externalLinks.editor.moveDown': 'Mover para baixo',
+  'externalLinks.edit.title': 'Editar link',
+  'externalLinks.add.title': 'Adicionar link',
+  'externalLinks.edit.urlLabel': 'Link',
+  'externalLinks.edit.titleLabel': 'Título',
+  'externalLinks.edit.titleRequired': 'Título é obrigatório.',
+  'externalLinks.edit.titleTooLong':
+    'O título deve ter no máximo 50 caracteres.',
+  'externalLinks.edit.urlInvalid': 'URL inválida.',
+  'externalLinks.edit.remove': 'Remover link',
+  'externalLinks.saved': 'Links salvos.',
+} as const;

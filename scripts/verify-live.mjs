@@ -1,6 +1,22 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 const base = new URL('https://towelbooks-ui-showcase.pages.dev');
+const uid = (n) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
+const routes = [
+  '/',
+  '/pricing',
+  '/demo',
+  '/demo/collections',
+  `/demo/collections/${uid(500)}`,
+  '/demo/catalog',
+  `/demo/catalog/${uid(100)}`,
+  `/demo/libraries/${uid(2)}`,
+  `/demo/libraries/${uid(2)}/items/${uid(300)}`,
+  '/demo/rooms',
+  `/demo/rooms/${uid(600)}`,
+  `/demo/rooms/${uid(600)}/readings/${uid(700)}`,
+  '/demo/marina_demo',
+];
 const browser = await chromium.launch();
 const summary = [];
 try {
@@ -11,10 +27,11 @@ try {
     const context = await browser.newContext({
       viewport,
       reducedMotion: 'reduce',
+      locale: 'en-US',
     });
     const page = await context.newPage();
-    const errors = [];
-    const unexpected = [];
+    const errors = [],
+      unexpected = [];
     page.on('pageerror', (error) => errors.push(error.message));
     page.on('console', (message) => {
       if (message.type() === 'error') errors.push(message.text());
@@ -28,23 +45,6 @@ try {
       )
         unexpected.push(request.url());
     });
-    const routes = [
-      '/',
-      '/pricing',
-      '/preview/auth',
-      '/demo',
-      '/demo/catalog',
-      '/demo/catalog/atlas',
-      '/demo/library',
-      '/demo/library/atlas',
-      '/demo/collections',
-      '/demo/collections/devagar',
-      '/demo/rooms',
-      '/demo/rooms/margens',
-      '/demo/profile',
-      '/demo/settings',
-      '/demo/states',
-    ];
     for (const route of routes) {
       const response = await page.goto(new URL(route, base).href);
       assert.equal(response.status(), 200, route);
@@ -56,7 +56,10 @@ try {
         headers['content-security-policy']?.includes("frame-ancestors 'none'"),
       );
       assert.equal(headers['x-content-type-options'], 'nosniff');
-      await page.getByRole('heading', { level: 1 }).waitFor();
+      await page.getByRole('heading').first().waitFor();
+      await page
+        .getByText(/Loading\.\.\.|Carregando\.\.\./, { exact: true })
+        .waitFor({ state: 'hidden' });
       await page.evaluate(() => document.fonts.ready);
       assert.ok(
         await page.evaluate(
@@ -64,48 +67,52 @@ try {
         ),
         route + ' overflows',
       );
+      assert.equal(
+        await page
+          .getByText(
+            /Something went wrong|Could not load|We couldn’t load|Unexpected error/i,
+          )
+          .count(),
+        0,
+        route,
+      );
     }
-    await page.goto(new URL('/demo/library/atlas', base).href);
+    await page.goto(new URL('/demo/collections', base).href);
     await page
-      .locator('main')
-      .getByRole('button', { name: 'Registrar leitura', exact: true })
+      .getByRole('button', { name: 'New collection', exact: true })
       .click();
     const dialog = page.getByRole('dialog');
-    await dialog.getByLabel('Página atual').fill('120');
     await dialog
-      .getByLabel('Anotação pessoal')
-      .fill('Fictional live verification note.');
-    await dialog.getByRole('button', { name: 'Salvar', exact: true }).click();
-    await page
-      .locator('main')
-      .getByRole('button', { name: 'Anotações', exact: true })
+      .getByRole('textbox', { name: 'Name', exact: true })
+      .fill('Fictional verification shelf');
+    await dialog
+      .getByRole('button', { name: 'Create collection', exact: true })
       .click();
     await page
-      .getByText('Fictional live verification note.', { exact: true })
+      .getByRole('link', { name: 'Fictional verification shelf', exact: true })
       .waitFor();
-    await page
-      .getByRole('button', { name: 'Reiniciar demo', exact: true })
-      .click();
+    await page.reload();
+    await page.getByRole('link', { name: 'Wishlist', exact: true }).waitFor();
     assert.equal(
       await page
-        .getByText('Fictional live verification note.', { exact: true })
+        .getByRole('link', {
+          name: 'Fictional verification shelf',
+          exact: true,
+        })
         .count(),
       0,
     );
-    await page.goto(new URL('/demo/settings', base).href);
-    await page
-      .locator('main')
-      .getByRole('button', { name: 'Escuro', exact: true })
-      .click();
+    await page.goto(new URL('/demo#settings/preferences', base).href);
+    await page.getByRole('radio', { name: 'Dark', exact: true }).check();
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    await page.getByRole('combobox', { name: 'Language', exact: true }).click();
     await page
-      .locator('main')
-      .getByLabel('Idioma da interface', { exact: true })
-      .selectOption('en-US');
+      .getByRole('option', { name: 'Português (Brasil)', exact: true })
+      .click();
     await page
-      .getByRole('heading', { name: 'Preferences', exact: true })
+      .getByRole('heading', { name: 'Preferências', exact: true })
       .waitFor();
-    assert.equal(await page.locator('html').getAttribute('lang'), 'en-US');
+    assert.equal(await page.locator('html').getAttribute('lang'), 'pt-BR');
     assert.deepEqual(errors, []);
     assert.deepEqual(unexpected, []);
     summary.push({
@@ -113,7 +120,7 @@ try {
       routes: routes.length,
       errors: errors.length,
       serviceRequests: unexpected.length,
-      readingEditReset: true,
+      collectionEditReset: true,
       themeLocale: true,
       headers: true,
     });

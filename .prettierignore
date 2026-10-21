@@ -3,3 +3,6 @@ dist
 node_modules
 test-results
 playwright-report
+
+# Retain this extracted source file byte-for-byte; checked by source:check.
+apps/showcase/src/components/primitives/index.ts

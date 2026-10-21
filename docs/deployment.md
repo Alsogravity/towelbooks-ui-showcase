@@ -8,6 +8,7 @@ GitHub pushes run the showcase CI workflow. They do **not** automatically deploy
 
 ```sh
 pnpm install --frozen-lockfile
+pnpm source:check
 pnpm format:check
 pnpm lint
 pnpm typecheck
@@ -31,7 +32,7 @@ After deploying, run:
 node scripts/verify-live.mjs
 ```
 
-The live check visits 15 routes at desktop and mobile sizes, checks response headers and horizontal overflow after fonts load, and exercises local reading edit/reset, language, and theme selection. It rejects application service requests and unexpected origins. It types fictional verification text into local state only.
+The live check visits the original routes at desktop and mobile sizes, checks response headers and horizontal overflow after fonts load, and exercises the original collection editor, reset on reload, settings, language, and theme selection. It rejects application service requests and unexpected origins. It types fictional verification text into local state only.
 
 For local production verification, run `node scripts/serve.mjs` after a build. That server applies the bundled headers and SPA fallback so browser tests exercise CSP rather than only Vite's development environment. With that preview running, `node scripts/capture-screenshots.mjs` refreshes the portfolio images in `docs/screenshots`.
 

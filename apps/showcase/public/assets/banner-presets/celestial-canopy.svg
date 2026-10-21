@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100" fill="none">
+  <defs>
+    <!-- Deep slate space background gradient -->
+    <linearGradient id="spaceBgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A0F1D" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Glowing nebula radial gradient (left side) -->
+    <radialGradient id="nebulaLeft" cx="30%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#4C1D95" stop-opacity="0.45" />
+      <stop offset="60%" stop-color="#1D1B4B" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#111827" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Glowing nebula radial gradient (right side) -->
+    <radialGradient id="nebulaRight" cx="80%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#065F46" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#111827" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#111827" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Star shine radial glow -->
+    <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="30%" stop-color="#FDE047" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#FDE047" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Space Background -->
+  <rect width="400" height="100" fill="url(#spaceBgGrad)" />
+
+  <!-- Colored Cosmic Nebulas -->
+  <rect width="400" height="100" fill="url(#nebulaLeft)" />
+  <rect width="400" height="100" fill="url(#nebulaRight)" />
+
+  <!-- ==================== CELESTIAL BODIES ==================== -->
+  <!-- Left: Glowing Celestial Crescent Moon -->
+  <!-- Soft Moon Halo/Glow -->
+  <circle cx="55" cy="50" r="26" fill="#FBBF24" fill-opacity="0.08" />
+  <circle cx="55" cy="50" r="16" fill="#FBBF24" fill-opacity="0.15" />
+  
+  <!-- Solid Crescent Moon -->
+  <path d="M 35 30 A 24 24 0 1 0 75 70 A 20 20 0 1 1 35 30" fill="#FBBF24" stroke="#F59E0B" stroke-width="0.8" />
+  
+  <!-- Subtle Moon Craters (low-opacity dark gold) -->
+  <circle cx="48" cy="45" r="2.5" fill="#D97706" fill-opacity="0.25" />
+  <circle cx="45" cy="58" r="1.8" fill="#D97706" fill-opacity="0.25" />
+  <circle cx="58" cy="62" r="2.2" fill="#D97706" fill-opacity="0.25" />
+
+
+  <!-- Right: Beautiful Ringed Planet (Saturn-like) -->
+  <!-- Planet Glow -->
+  <circle cx="330" cy="40" r="18" fill="#FBBF24" fill-opacity="0.05" />
+  
+  <!-- Planet Body -->
+  <circle cx="330" cy="40" r="11" fill="#F59E0B" stroke="#D97706" stroke-width="0.5" />
+  <!-- Planet Shading/Stripe -->
+  <path d="M 320.2 36 A 11 11 0 0 0 339.8 36 Z" fill="#D97706" fill-opacity="0.3" />
+
+  <!-- Back part of the ring (drawn behind planet) -->
+  <!-- (In simple vector illustration we layer the ring with opacity, but drawing a beautiful full ring looks incredible) -->
+  <ellipse cx="330" cy="40" rx="22" ry="5.5" fill="none" stroke="#FBBF24" stroke-width="3" stroke-opacity="0.8" transform="rotate(-15 330 40)" />
+  <ellipse cx="330" cy="40" rx="25" ry="7" fill="none" stroke="#FDE047" stroke-width="1.2" stroke-opacity="0.5" transform="rotate(-15 330 40)" />
+
+
+  <!-- ==================== CONSTELLATIONS & STARS ==================== -->
+  <!-- Constellation Map Lines (thin, semi-transparent purple) -->
+  <polyline points="135,62 165,48 200,52 230,32 265,38 290,60" stroke="#A78BFA" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="2 3" />
+  <polyline points="200,52 215,75 250,72 265,38" stroke="#A78BFA" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="2 3" />
+
+  <!-- Constellation Star Nodes -->
+  <circle cx="135" cy="62" r="1.5" fill="#FFF" />
+  <circle cx="165" cy="48" r="2" fill="#FDE047" />
+  <circle cx="200" cy="52" r="2.2" fill="#FFF" />
+  <circle cx="215" cy="75" r="1.5" fill="#FFF" />
+  <circle cx="250" cy="72" r="2" fill="#FDE047" />
+  <circle cx="290" cy="60" r="1.5" fill="#FFF" />
+
+  <!-- Central Magnificent 8-Point Guiding Star -->
+  <!-- Star glow background -->
+  <circle cx="230" cy="32" r="8" fill="url(#starGlow)" />
+  <!-- Main 8-point shape -->
+  <path d="M 230 20 L 232.5 29.5 L 242 32 L 232.5 34.5 L 230 44 L 227.5 34.5 L 218 32 L 227.5 29.5 Z" fill="#FFFFFF" />
+  <path d="M 224.7 26.7 L 230 32 L 235.3 26.7 M 224.7 37.3 L 230 32 L 235.3 37.3" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.8" />
+
+
+  <!-- ==================== SCATTERED COSMIC DUST & SPARKLES ==================== -->
+  <!-- Pure Gold Sparkles -->
+  <!-- Sparkle 1 (Far Left) -->
+  <path d="M 95 24 L 96.5 28.5 L 101 30 L 96.5 31.5 L 95 36 L 93.5 31.5 L 89 30 L 93.5 28.5 Z" fill="#FBBF24" fill-opacity="0.75" />
+  <!-- Sparkle 2 (Far Right) -->
+  <path d="M 370 65 L 371 69 L 375 70 L 371 71 L 370 75 L 369 71 L 365 70 L 369 69 Z" fill="#FDE047" fill-opacity="0.7" />
+
+  <!-- Distant Background Stars -->
+  <circle cx="110" cy="72" r="1" fill="#FFF" fill-opacity="0.8" />
+  <circle cx="125" cy="18" r="0.8" fill="#FFF" fill-opacity="0.5" />
+  <circle cx="150" cy="30" r="1.2" fill="#FDE047" fill-opacity="0.6" />
+  <circle cx="185" cy="80" r="1" fill="#FFF" fill-opacity="0.5" />
+  <circle cx="272" cy="16" r="1.5" fill="#FFF" fill-opacity="0.7" />
+  <circle cx="305" cy="28" r="1" fill="#FFF" fill-opacity="0.4" />
+  <circle cx="312" cy="78" r="1.2" fill="#FBBF24" fill-opacity="0.6" />
+  <circle cx="355" cy="84" r="0.8" fill="#FFF" fill-opacity="0.5" />
+  <circle cx="360" cy="18" r="1" fill="#FFF" fill-opacity="0.7" />
+  <circle cx="25" cy="78" r="1.2" fill="#FFF" fill-opacity="0.4" />
+</svg>

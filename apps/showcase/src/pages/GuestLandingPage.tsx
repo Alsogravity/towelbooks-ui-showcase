@@ -1,4 +1,10 @@
-import { Fragment, useEffect, useState, type ComponentType } from 'react';
+import {
+  Fragment,
+  useEffect,
+  useRef,
+  useState,
+  type ComponentType,
+} from 'react';
 import { BuildLibraryGlyph } from '../components/illustrations/BuildLibraryGlyph';
 import { FeatureIllustration } from '../components/illustrations/FeatureIllustration';
 import { GatherRoomGlyph } from '../components/illustrations/GatherRoomGlyph';
@@ -6,8 +12,11 @@ import { ReadDiscussGlyph } from '../components/illustrations/ReadDiscussGlyph';
 import { ButtonLink, type IconName } from '../components/primitives';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { useI18n } from '../i18n';
+import { GUEST_LOGIN_PATH } from '../lib/origins';
+import { trackPageView } from '../features/analytics/domain';
 import { GuestSiteFooter } from './landing/GuestSiteFooter';
 import { HeroTextPortal } from './landing/HeroTextPortal';
+import { LandingHeader } from './landing/LandingHeader';
 import { LandingPillSection } from './landing/LandingPillSection';
 import { ReadingDoodles } from './landing/ReadingDoodles';
 import { SocialReadingVisual } from './landing/SocialReadingVisual';
@@ -24,8 +33,7 @@ import {
   SketchUnderline,
 } from './landing/sketchMarks';
 
-const REGISTER_PATH = '/preview/auth';
-const GUEST_LOGIN_PATH = '/preview/auth';
+const REGISTER_PATH = '/register';
 
 type PromiseIcon = ComponentType<{
   className?: string;
@@ -220,6 +228,30 @@ function PersonaPills() {
 
 export function GuestLandingPage() {
   const { t } = useI18n();
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const loginButtonRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show header when login button is out of view (intersection ratio 0 means fully out)
+        setHeaderVisible(entry.intersectionRatio === 0);
+      },
+      { threshold: [0] },
+    );
+
+    if (loginButtonRef.current) {
+      observer.observe(loginButtonRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    trackPageView(window.location.pathname, document.referrer);
+  }, []);
+
   usePageTitle({ key: 'landing.meta.title' });
 
   const title = t('landing.hero.title');
@@ -262,10 +294,13 @@ export function GuestLandingPage() {
       data-theme="dark"
       className="relative flex min-h-screen flex-col overflow-x-hidden bg-paper"
     >
+      <LandingHeader visible={headerVisible} />
+
       {/* Hero — locked to the light theme (a nested data-theme="light" subtree
           reverts the inherited dark tokens; see design-tokens global.css) so the
           opening section reads as a bright reading room above the dark page. */}
       <section
+        ref={heroRef}
         data-theme="light"
         className="relative flex h-svh flex-col items-center justify-center overflow-hidden bg-paper px-6 pb-16 pt-28 sm:px-12 sm:pb-20 sm:pt-32 lg:px-24"
       >
@@ -321,6 +356,7 @@ export function GuestLandingPage() {
           </p>
           <div className="mt-7 flex w-full flex-col items-stretch justify-center gap-4 sm:w-auto sm:flex-row sm:items-center">
             <ButtonLink
+              ref={loginButtonRef}
               to={GUEST_LOGIN_PATH}
               variant="secondary"
               size="lg"

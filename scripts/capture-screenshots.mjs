@@ -10,33 +10,42 @@ try {
     const context = await browser.newContext({
       viewport,
       reducedMotion: 'reduce',
+      locale: 'en-US',
+      colorScheme: 'light',
     });
     const page = await context.newPage();
     for (const [label, route] of Object.entries({
       dashboard: '/demo',
+      collections: '/demo/collections',
       landing: '/',
       pricing: '/pricing',
     })) {
       await page.goto('http://127.0.0.1:3056' + route);
-      await page.getByRole('heading', { level: 1 }).waitFor();
+      await page.getByRole('heading').first().waitFor();
+      await page
+        .getByText(/Loading\.\.\./, { exact: true })
+        .waitFor({ state: 'hidden' });
       await page.evaluate(() => document.fonts.ready);
-      await page.getByRole('button', { name: 'Fechar', exact: true }).click();
+      await page
+        .getByRole('button', { name: 'Dismiss notice', exact: true })
+        .click();
       await page.screenshot({
         path: `docs/screenshots/${label}-${name}.png`,
         fullPage: name === 'desktop' && label === 'dashboard',
       });
     }
-    await page.goto('http://127.0.0.1:3056/demo/settings');
+    await page.goto('http://127.0.0.1:3056/demo#settings/preferences');
+    await page.getByRole('radio', { name: 'Dark', exact: true }).check();
+    await page.keyboard.press('Escape');
+    await page.goto('http://127.0.0.1:3056/demo');
+    await page.getByRole('heading').first().waitFor();
     await page
-      .locator('main')
-      .getByRole('button', { name: 'Escuro', exact: true })
-      .click();
-    await page
-      .getByRole('link', { name: 'Início', exact: true })
-      .filter({ visible: true })
-      .click();
+      .getByText(/Loading\.\.\./, { exact: true })
+      .waitFor({ state: 'hidden' });
     await page.evaluate(() => document.fonts.ready);
-    await page.getByRole('button', { name: 'Fechar', exact: true }).click();
+    await page
+      .getByRole('button', { name: 'Dismiss notice', exact: true })
+      .click();
     await page.screenshot({
       path: `docs/screenshots/dashboard-dark-${name}.png`,
       fullPage: name === 'desktop',

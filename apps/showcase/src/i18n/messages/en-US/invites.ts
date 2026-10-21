@@ -1,0 +1,195 @@
+export const invitesMessages = {
+  'page.invites.accept.title': 'Accept invite',
+  'page.invites.emailRefusal.title': 'Room invite email preference',
+  'invites.new.title': 'Create invite',
+  'invites.form.accessTitle': 'Access type',
+  'invites.form.access.open': 'By link',
+  'invites.form.access.restricted': 'By email',
+  'invites.form.access.infoAriaLabel': 'Learn about access types',
+  'invites.form.access.dialog.title': 'Invite access types',
+  'invites.form.access.dialog.link.title': 'By link',
+  'invites.form.access.dialog.link.body':
+    'Anyone with the link can accept the invite until it expires or reaches its use limit. TowelBooks generates the link for you to share.',
+  'invites.form.access.dialog.email.title': 'By email',
+  'invites.form.access.dialog.email.body':
+    'Only allowed email addresses can accept, once per address. You can optionally send a transactional invite email to each address.',
+  'invites.form.allowedEmailsLabel': 'Allowed emails',
+  'invites.form.allowedEmailsHint':
+    'Paste up to 25 email addresses, one per line or separated by commas.',
+  'invites.form.allowedEmailsPlaceholder':
+    'reader@example.com\nsecond@example.com',
+  'invites.form.allowedEmailsCount': '{count} / {max}',
+  'invites.form.sendEmailInvitesLabel': 'Send invite emails to these addresses',
+  'invites.form.maxUsesLabel': 'Max uses',
+  'invites.form.expiresLabel': 'Expires in',
+  'invites.form.expiresPresets.day': '24 hours',
+  'invites.form.expiresPresets.threeDays': '3 days',
+  'invites.form.expiresPresets.week': '1 week',
+  'invites.form.expiresPresets.month': '30 days',
+  'invites.form.error.create': 'Unable to create invite right now.',
+  'invites.form.submitting': 'Creating...',
+  'invites.form.submit': 'Create invite',
+  'invites.reveal.title': 'Invite created',
+  'invites.reveal.securityNote':
+    'This link is shown once. Copy it before closing.',
+  'invites.reveal.openNote':
+    'Anyone with this link can accept it until it expires or reaches its use limit.',
+  'invites.reveal.restrictedNote':
+    'Only users signed in with one of the allowed verified email addresses can accept this link.',
+  'invites.reveal.manualShareNote':
+    'TowelBooks did not send this link. Share it manually.',
+  'invites.reveal.emailQueued':
+    'Invite created. Emails queued for {queued} of {requested} addresses.',
+  'invites.reveal.emailDeliveryLabel': 'Email delivery',
+  'invites.reveal.emailDeliveryValue': '{queued} / {requested} queued',
+  'invites.reveal.emailSomeNotSent':
+    'Some emails were not sent because of delivery limits or recipient preferences.',
+  'invites.reveal.urlLabel': 'Invite link',
+  'invites.reveal.copy': 'Copy',
+  'invites.reveal.manualCopy': 'Select the link and copy it manually.',
+  'invites.reveal.copied': 'Invite link copied.',
+  'invites.reveal.copyFailed':
+    'Unable to copy automatically. Select the link and copy it manually.',
+  'invites.reveal.dismiss': 'Done copying',
+  'invites.list.activeTitle': 'Active links',
+  'invites.list.previousTitle': 'Previous links',
+  'invites.list.total': '{count} total',
+  'invites.list.loading': 'Loading invites...',
+  'invites.list.loadMore': 'Load more',
+  'invites.list.error.title': 'Unable to load invites',
+  'invites.list.error.body': 'Unable to load invites right now.',
+  'invites.list.empty.title': 'No invites created yet',
+  'invites.list.empty.body':
+    'Generate the first invite when the next reader is ready to join.',
+  'invites.list.activeEmpty': 'No active links right now.',
+  'invites.list.previousEmpty': 'No previous links yet.',
+  'invites.status.active': 'Pending',
+  'invites.status.expired': 'Expired',
+  'invites.status.revoked': 'Revoked',
+  'invites.status.used': 'Used',
+  'invites.tag.emailRestricted': 'Email restricted',
+  'invites.target.restricted':
+    'Email invite · {allowed} allowed · {accepted} accepted',
+  'invites.target.open': 'Link invite',
+  'invites.uses': '{used} / {max} uses',
+  'invites.expires': 'Expires {date}',
+  'invites.expired': 'Expired {date}',
+  'invites.created': 'Created {date}',
+  'invites.action.details': 'Details',
+  'invites.action.create': 'Create invite',
+  'invites.action.copyLink': 'Copy link',
+  'invites.action.revoke': 'Revoke',
+  'invites.action.revokeConfirm': 'Confirm revoke',
+  'invites.action.revokeCancel': 'Cancel',
+  'invites.action.revokeMessage': 'This invite stops working immediately.',
+  'invites.action.viewLink': 'View link',
+  'invites.validation.invalidEmail': 'Enter a valid email address.',
+  'invites.validation.invalidEmailList':
+    'Every entry must be a valid email address.',
+  'invites.validation.allowedEmailsRequired':
+    'Add at least one allowed email address.',
+  'invites.validation.allowedEmailsMax':
+    'Use at most {max} unique email addresses.',
+  'invites.validation.maxUsesRequired': 'Enter max uses.',
+  'invites.validation.maxUsesInteger': 'Use a whole number for max uses.',
+  'invites.validation.maxUsesMin': 'Max uses must be at least 1.',
+  'invites.validation.maxUsesMax': 'Max uses must be at most 50.',
+  'invites.validation.expiresRequired': 'Select an expiration time.',
+  'invites.validation.expiresInteger':
+    'Use a whole number for invite expiration.',
+  'invites.validation.expiresMin': 'Expiration must be at least 1 hour.',
+  'invites.validation.expiresMax':
+    'Expiration must be at most 720 hours (30 days).',
+  'invites.details.title': 'Invite details',
+  'invites.details.loading': 'Loading invite details...',
+  'invites.details.link.title': 'Invite link',
+  'invites.details.link.body':
+    'For security, the shareable link is only available at the moment it is generated. To share again, generate a new link. Any previously shared link for this invite will stop working.',
+  'invites.details.link.generate': 'Generate link',
+  'invites.details.link.confirm.title': 'Generate a new link?',
+  'invites.details.link.confirm.body':
+    'A new link replaces the previous one. Anyone who has the old link will no longer be able to use it.',
+  'invites.details.link.confirm.submit': 'Generate link',
+  'invites.details.link.result.title': 'Invite link',
+  'invites.details.link.loading': 'Generating invite link...',
+  'invites.details.link.error.load':
+    'Unable to load the invite link right now.',
+  'invites.details.error.title': 'Unable to load invite details',
+  'invites.details.error.body': 'Try again in a moment.',
+  'invites.details.empty.title': 'Invite details unavailable',
+  'invites.details.empty.body': 'Close this panel and try again.',
+  'invites.details.summary.title': 'Summary',
+  'invites.details.summary.status': 'Status',
+  'invites.details.summary.restriction': 'Restriction',
+  'invites.details.summary.acceptance': 'Acceptance',
+  'invites.details.summary.usage': 'Usage',
+  'invites.details.summary.expiresAt': 'Expires',
+  'invites.details.summary.createdAt': 'Created',
+  'invites.details.restriction.restricted': 'Restricted',
+  'invites.details.restriction.open': 'Open link',
+  'invites.details.acceptedCount': '{accepted} / {total} accepted',
+  'invites.details.accepted.heading': 'Accepted',
+  'invites.details.accepted.empty': 'No recipients have accepted yet.',
+  'invites.details.acceptedAt': 'Accepted {date}',
+  'invites.details.pending.heading': 'Pending',
+  'invites.details.pending.empty': 'No pending recipients.',
+  'invites.details.pending.status': 'Pending',
+  'invites.details.emailDelivery.status': 'Email delivery: {status}',
+  'invites.details.emailDelivery.queued': 'queued',
+  'invites.details.emailDelivery.sent': 'sent',
+  'invites.details.emailDelivery.failed': 'failed',
+  'invites.details.emailDelivery.suppressed': 'suppressed',
+  'invites.details.emailDelivery.rate_limited': 'rate-limited',
+  'invites.details.emailDelivery.not_requested': 'not requested',
+  'invites.details.open.acceptedHeading': 'Accepted users',
+  'invites.details.open.acceptedEmpty': 'No one has accepted this link yet.',
+  'invites.details.open.noPendingTitle': 'No pending recipients',
+  'invites.details.open.noPendingBody':
+    'Open invite links do not have a fixed recipient list.',
+  'invites.details.redeemedAt': 'Accepted {date}',
+  'invites.accept.loadingTitle': 'Joining room...',
+  'invites.accept.joinEyebrow': 'Room invite',
+  'invites.accept.joinTitle': "You've been invited to join a reading room.",
+  'invites.accept.joinBody':
+    'Accept this invite to join the room. The link may expire, be revoked, or reach its use limit.',
+  'invites.accept.detailTitle': 'Private reading room',
+  'invites.accept.detailBody':
+    'A link that grants access to a private reading room.',
+  'invites.accept.tag.private': 'Private',
+  'invites.accept.action.accept': 'Accept invite',
+  'invites.accept.action.decline': 'Decline invite',
+  'invites.accept.successTitle': 'Welcome to the room',
+  'invites.accept.successBody':
+    'Your invite was accepted. Redirecting you to the room page...',
+  'invites.accept.errorTitle': 'Invite error',
+  'invites.accept.error.alreadyMemberHeading': "You're already a member.",
+  'invites.accept.action.room': 'Open room',
+  'invites.accept.action.dashboard': 'Go to library',
+  'invites.accept.error.missingToken': 'Missing invite token in the URL.',
+  'invites.accept.error.fallback':
+    'Unable to accept the invite. It may be expired, fully used, or revoked.',
+  'invites.accept.error.expired':
+    'This invite has expired. Ask the room owner or admin to generate a new link.',
+  'invites.accept.error.invalid':
+    'This invite is invalid, expired, or fully used.',
+  'invites.accept.error.forbidden':
+    'This invite cannot be used by the current account.',
+  'invites.accept.error.emailNotVerified':
+    'Verify your account email before accepting this invite.',
+  'invites.accept.error.roomFull':
+    'This room already has the maximum of 100 members.',
+  'invites.accept.error.alreadyMember':
+    "There's nothing to do here. Open the room from your library to keep reading.",
+  'invites.emailRefusal.loadingHeading': 'Updating invite email preference...',
+  'invites.emailRefusal.loadingBody':
+    'Please wait while we record this preference.',
+  'invites.emailRefusal.successHeading': 'Future room invite emails are off',
+  'invites.emailRefusal.successBody':
+    'We will not send future room invite emails to this address. This does not affect security or account emails.',
+  'invites.emailRefusal.errorHeading': 'Unable to update preference',
+  'invites.emailRefusal.errorMissingToken':
+    'This refusal link is missing its token.',
+  'invites.emailRefusal.errorFallback':
+    'This refusal link is invalid or no longer available.',
+  'invites.emailRefusal.backHome': 'Back to TowelBooks',
+} as const;

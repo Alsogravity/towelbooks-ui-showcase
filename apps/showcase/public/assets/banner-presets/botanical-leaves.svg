@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100" fill="none">
+  <rect width="400" height="100" fill="#F5F0E8" />
+
+  <!-- Left sprig -->
+  <path d="M 30 78 Q 45 62 70 38" stroke="#2D5A27" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.4" />
+  <path d="M 42 68 Q 34 66 39 58 Q 45 61 42 68" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 52 56 Q 44 54 49 46 Q 55 49 52 56" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 48 62 Q 56 60 53 52 Q 45 54 48 62" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 70 38 Q 75 31 73 29 Q 66 31 70 38" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 22 24 Q 27 19 30 22 Q 25 27 22 24" fill="#B99762" fill-opacity="0.35" />
+
+  <!-- Center sprig -->
+  <path d="M 155 82 Q 175 58 210 28" stroke="#2D5A27" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.35" />
+  <path d="M 168 68 Q 160 66 165 58 Q 171 61 168 68" fill="#2D5A27" fill-opacity="0.28" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.35" />
+  <path d="M 185 50 Q 177 48 182 40 Q 188 43 185 50" fill="#2D5A27" fill-opacity="0.28" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.35" />
+  <path d="M 192 42 Q 200 40 197 32 Q 189 34 192 42" fill="#2D5A27" fill-opacity="0.28" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.35" />
+  <path d="M 210 28 Q 215 21 213 19 Q 206 21 210 28" fill="#2D5A27" fill-opacity="0.28" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.35" />
+
+  <!-- Right sprig -->
+  <path d="M 290 75 Q 310 55 355 22" stroke="#2D5A27" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.4" />
+  <path d="M 302 64 Q 294 62 299 54 Q 305 57 302 64" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 318 48 Q 310 46 315 38 Q 321 41 318 48" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 328 38 Q 336 36 333 28 Q 325 30 328 38" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 340 30 Q 348 28 345 20 Q 337 22 340 30" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 355 22 Q 360 15 358 13 Q 351 15 355 22" fill="#2D5A27" fill-opacity="0.3" stroke="#2D5A27" stroke-width="0.8" stroke-opacity="0.4" />
+  <path d="M 372 78 Q 377 73 380 76 Q 375 81 372 78" fill="#B99762" fill-opacity="0.35" />
+</svg>

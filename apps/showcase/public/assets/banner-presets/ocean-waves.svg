@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100" fill="none">
+  <defs>
+    <!-- Sunset sky gradient -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFB380" />
+      <stop offset="100%" stop-color="#FFEBB3" />
+    </linearGradient>
+
+    <!-- Deep sea water gradient -->
+    <linearGradient id="deepWaterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A5F7A" />
+      <stop offset="100%" stop-color="#0F3D4E" />
+    </linearGradient>
+
+    <!-- Mid turquoise water gradient -->
+    <linearGradient id="midWaterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A9D8F" />
+      <stop offset="100%" stop-color="#1D6F65" />
+    </linearGradient>
+
+    <!-- Front cyan/blue water gradient -->
+    <linearGradient id="frontWaterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00B4D8" />
+      <stop offset="100%" stop-color="#0077B6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="400" height="100" fill="url(#skyGrad)" />
+
+  <!-- A warm, gentle coral/orange sun in the sky -->
+  <circle cx="280" cy="38" r="18" fill="#E76F51" fill-opacity="0.8" />
+
+  <!-- ==================== SEA WATER (Layered behind/under sand) ==================== -->
+  <!-- 1. Deep back water (extends all the way across the canvas) -->
+  <path d="M 0 52 C 50 45, 100 60, 150 50 C 200 40, 250 60, 300 52 C 350 44, 380 50, 400 46 L 400 100 L 0 100 Z" fill="url(#deepWaterGrad)" />
+  
+  <!-- 2. Mid turquoise water (extends all the way across) -->
+  <path d="M 0 64 C 60 58, 110 75, 170 64 C 230 53, 270 72, 320 62 C 360 52, 385 62, 400 58 L 400 100 L 0 100 Z" fill="url(#midWaterGrad)" />
+  
+  <!-- 3. Front bright cyan water (extends all the way across) -->
+  <path d="M 0 76 C 70 70, 120 86, 180 75 C 240 64, 280 84, 340 73 C 370 66, 385 74, 400 71 L 400 100 L 0 100 Z" fill="url(#frontWaterGrad)" />
+  
+  <!-- 4. Pure white foam crest highlights -->
+  <path d="M 15 62 C 45 57, 75 68, 105 64" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round" />
+  <path d="M 125 54 C 155 50, 185 60, 215 56" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round" />
+  <path d="M 85 75 C 120 68, 155 80, 190 74" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.7" stroke-linecap="round" />
+  <path d="M 235 68 C 265 62, 295 72, 325 67" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.6" stroke-linecap="round" />
+
+
+  <!-- ==================== SANDY BEACH (Layered on top of sea) ==================== -->
+  <!-- 1. Wet sand edge -->
+  <path d="M 165 100 C 210 72, 265 67, 400 74 L 400 100 Z" fill="#D8A45F" />
+
+  <!-- 2. Golden Dry Sand Island -->
+  <path d="M 180 100 C 220 75, 270 70, 400 77 L 400 100 Z" fill="#E9C46A" />
+
+  <!-- Sand contour line -->
+  <path d="M 245 92 C 275 84, 310 82, 400 84" stroke="#D8A45F" stroke-width="1" stroke-opacity="0.6" />
+
+
+  <!-- ==================== PALM TREE (Layered on top of sand) ==================== -->
+  <!-- Trunk -->
+  <path d="M 352 88 Q 342 55 325 32" stroke="#5C4033" stroke-width="4.5" stroke-linecap="round" />
+  <!-- Trunk rings/texture -->
+  <path d="M 352 88 Q 342 55 325 32" stroke="#8B5A2B" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 5" />
+  
+  <!-- Big, detailed, vibrant green palm fronds (leaves) -->
+  <!-- Frond 1: Curving Left -->
+  <path d="M 325 32 C 300 28, 275 32, 265 48 C 280 44, 305 38, 325 32" fill="#2D5A27" />
+  <!-- Frond 2: Curving Up-Left -->
+  <path d="M 325 32 C 310 12, 290 8, 280 14 C 295 18, 315 22, 325 32" fill="#2D5A27" />
+  <!-- Frond 3: Curving Up-Right -->
+  <path d="M 325 32 C 340 10, 360 12, 370 20 C 355 22, 335 26, 325 32" fill="#2D5A27" />
+  <!-- Frond 4: Curving Right -->
+  <path d="M 325 32 C 355 32, 375 42, 380 58 C 365 48, 345 40, 325 32" fill="#2D5A27" />
+  <!-- Frond 5: Hanging Down -->
+  <path d="M 325 32 C 322 52, 315 65, 305 72 C 315 60, 322 48, 325 32" fill="#2D5A27" />
+
+  <!-- Coconuts -->
+  <circle cx="321" cy="36" r="3.2" fill="#4E3524" />
+  <circle cx="327" cy="37" r="3.2" fill="#4E3524" />
+  <circle cx="324" cy="41" r="2.8" fill="#4E3524" />
+
+
+  <!-- ==================== RED CRABS (Layered on top of sand) ==================== -->
+  <!-- Crab 1 (Left sand area) -->
+  <ellipse cx="255" cy="86" rx="5" ry="3" fill="#E63946" />
+  <!-- Left claw -->
+  <path d="M 251 86 C 248 83, 248 78, 252 78 C 255 78, 253 82, 253 84" fill="#E63946" />
+  <!-- Right claw -->
+  <path d="M 259 86 C 262 83, 262 78, 258 78 C 255 78, 257 82, 257 84" fill="#E63946" />
+  <!-- Legs -->
+  <path d="M 251 88 L 247 91 M 253 89 L 250 93 M 257 89 L 257 93 M 259 88 L 263 91" stroke="#E63946" stroke-width="1.2" stroke-linecap="round" />
+  <!-- Eyes -->
+  <circle cx="253.2" cy="83" r="0.8" fill="#000000" />
+  <circle cx="256.8" cy="83" r="0.8" fill="#000000" />
+
+  <!-- Crab 2 (Far Right beach area) -->
+  <ellipse cx="380" cy="91" rx="4" ry="2.5" fill="#E63946" />
+  <!-- Left claw -->
+  <path d="M 377 91 C 374 88, 374 84, 378 84 C 380 84, 378.5 87, 378.5 89" fill="#E63946" />
+  <!-- Right claw -->
+  <path d="M 383 91 C 386 88, 386 84, 382 84 C 380 84, 381.5 87, 381.5 89" fill="#E63946" />
+  <!-- Legs -->
+  <path d="M 377 92 L 374 94 M 379 93 L 377 96 M 382 93 L 384 96 M 383 92 L 386 94" stroke="#E63946" stroke-width="1" stroke-linecap="round" />
+  <!-- Eyes -->
+  <circle cx="378.5" cy="88" r="0.7" fill="#000000" />
+  <circle cx="381.5" cy="88" r="0.7" fill="#000000" />
+</svg>

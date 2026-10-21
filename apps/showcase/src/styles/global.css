@@ -1,6 +1,4 @@
 @import 'tailwindcss';
-@source "../../../../packages/ui/src";
-@source "../../../../packages/design-tokens/src";
 @import '@towelbooks/design-tokens/global.css';
 @import '@towelbooks/ui/global.css';
 @import './fonts.css';

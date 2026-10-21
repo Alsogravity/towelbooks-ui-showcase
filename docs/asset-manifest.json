@@ -1,8 +1,173 @@
 [
   {
+    "path": "apple-touch-icon.png",
+    "source": "apps/web/public/apple-touch-icon.png",
+    "sha256": "a6555bef354520b1629adadab62126ceb74fa856453bb3f9838aa2330df0bdb9"
+  },
+  {
+    "path": "assets/banner-presets/botanical-leaves.svg",
+    "source": "apps/web/public/assets/banner-presets/botanical-leaves.svg",
+    "sha256": "4f7016b1b6e94502c1106fb194bab66d6080fca052067c2bbbc53d5c2a2cb3c5"
+  },
+  {
+    "path": "assets/banner-presets/celestial-canopy.svg",
+    "source": "apps/web/public/assets/banner-presets/celestial-canopy.svg",
+    "sha256": "d4cbfc463085687675a73000896fb22a0256c3f9f858327d0cb9f42cc908cf13"
+  },
+  {
+    "path": "assets/banner-presets/court-of-stars-and-thorns.webp",
+    "source": "apps/web/public/assets/banner-presets/court-of-stars-and-thorns.webp",
+    "sha256": "f8d5b39559e3ed2818dc30a5daca489f5e073bd0ce968f9653920bf3193ac36f"
+  },
+  {
+    "path": "assets/banner-presets/empty-cross-sunrise.svg",
+    "source": "apps/web/public/assets/banner-presets/empty-cross-sunrise.svg",
+    "sha256": "cc58cfaf1e9eb691ae513fa76a672d485f8fdb3614b8dd66120390c067687b29"
+  },
+  {
+    "path": "assets/banner-presets/journey-through-the-ancient-kingdom.webp",
+    "source": "apps/web/public/assets/banner-presets/journey-through-the-ancient-kingdom.webp",
+    "sha256": "d6b3496f8cdbbff5600e6fd52027859775de1b549e5d3ad220605e8a5b7e71fe"
+  },
+  {
+    "path": "assets/banner-presets/library-arches.svg",
+    "source": "apps/web/public/assets/banner-presets/library-arches.svg",
+    "sha256": "6c06a86a72f8258d6c1ed28f4f8e527ed09d45113cfb81962ec1e5430e5bc740"
+  },
+  {
+    "path": "assets/banner-presets/library-of-lost-worlds.webp",
+    "source": "apps/web/public/assets/banner-presets/library-of-lost-worlds.webp",
+    "sha256": "9e0e85e2e78c5ee03e81ba6312ebfaaf0426597c4124e8c1509951a1a6842b66"
+  },
+  {
+    "path": "assets/banner-presets/messy-magic-school.webp",
+    "source": "apps/web/public/assets/banner-presets/messy-magic-school.webp",
+    "sha256": "ab4e3133f69be755809d3e1642ebe6c086656cbb1e13adafca922fdbd3062226"
+  },
+  {
+    "path": "assets/banner-presets/ocean-waves.svg",
+    "source": "apps/web/public/assets/banner-presets/ocean-waves.svg",
+    "sha256": "a505e99457dfe2389aa2bf7d79dfdf8f1e93de3b8d7f421715651d7496009eac"
+  },
+  {
+    "path": "assets/banner-presets/romance-under-the-moon.webp",
+    "source": "apps/web/public/assets/banner-presets/romance-under-the-moon.webp",
+    "sha256": "bdaf382e219031a236d7033c1404576062985c0d58ba04548550a8a36fe1675c"
+  },
+  {
+    "path": "assets/banner-presets/room-of-unlikely-readers-1.webp",
+    "source": "apps/web/public/assets/banner-presets/room-of-unlikely-readers-1.webp",
+    "sha256": "c306de1cc43025fb86bd0ef25b0b34ec10f74dd6bb6a43e8a75a6a347e580678"
+  },
+  {
+    "path": "assets/banner-presets/room-of-unlikely-readers-2.webp",
+    "source": "apps/web/public/assets/banner-presets/room-of-unlikely-readers-2.webp",
+    "sha256": "4170e19a8cd9fbf657b7116051e0bfbcb4b575a8e799a69148bb5a945a685e41"
+  },
+  {
+    "path": "assets/brand/amazon/available-at-amazon-en-white.png",
+    "source": "apps/web/public/assets/brand/amazon/available-at-amazon-en-white.png",
+    "sha256": "6f9e98270f10c6c5b3d1ceb73bfc277d3188cd367bae09beb959a1d1eac9b73d"
+  },
+  {
+    "path": "assets/brand/amazon/available-at-amazon-en.png",
+    "source": "apps/web/public/assets/brand/amazon/available-at-amazon-en.png",
+    "sha256": "7946af1af3acd8980dcb45b55be3f441ae0c2b50dbdba6c9445309255eb4d7f2"
+  },
+  {
+    "path": "assets/brand/amazon/available-at-amazon-pt-br-white.png",
+    "source": "apps/web/public/assets/brand/amazon/available-at-amazon-pt-br-white.png",
+    "sha256": "bc1bce636f0786afe421b4fa56eae15e739f7563c42cb8d9564fdb1357155279"
+  },
+  {
+    "path": "assets/brand/amazon/available-at-amazon-pt-br.png",
+    "source": "apps/web/public/assets/brand/amazon/available-at-amazon-pt-br.png",
+    "sha256": "17725e694ebfcc7028924641720f74bd12c9c62d77f50ba03c4100b2c8137903"
+  },
+  {
+    "path": "assets/brand/auth-collage.png",
+    "source": "apps/web/public/assets/brand/auth-collage.png",
+    "sha256": "aa69f08029efd2a286a9f765d0d3c5ba0875d0697bd2cbe99073ee054e133ac1"
+  },
+  {
+    "path": "assets/brand/book-covers/east-of-eden.svg",
+    "source": "apps/web/public/assets/brand/book-covers/east-of-eden.svg",
+    "sha256": "fcc904217074411283dc39fb4210a5262b828f26d2fdf23b74b98b7be7e1fd70"
+  },
+  {
+    "path": "assets/brand/book-covers/hitchhikers.svg",
+    "source": "apps/web/public/assets/brand/book-covers/hitchhikers.svg",
+    "sha256": "05232dfd3ba4f59da85c9f7853b7596cba23bd2a37aab895843a46241b2b8826"
+  },
+  {
+    "path": "assets/brand/book-covers/hobbit.svg",
+    "source": "apps/web/public/assets/brand/book-covers/hobbit.svg",
+    "sha256": "8c83dae686a84312fca957d3f8e9de3e735d2ffccd7d6852f66946a7b72f8696"
+  },
+  {
+    "path": "assets/brand/book-covers/middlemarch.svg",
+    "source": "apps/web/public/assets/brand/book-covers/middlemarch.svg",
+    "sha256": "9ea148a5167068a141dd054eb8985fb440d3c928df2e355711fd5328fd20289b"
+  },
+  {
+    "path": "assets/brand/book-covers/origin.svg",
+    "source": "apps/web/public/assets/brand/book-covers/origin.svg",
+    "sha256": "9dc3b9a10f305444c8a313964652302f1ae957f2a8aa1d826d516fc32d67d66b"
+  },
+  {
+    "path": "assets/brand/google-g-logo.svg",
+    "source": "apps/web/public/assets/brand/google-g-logo.svg",
+    "sha256": "01485c12740ba7b0eecb07f74a83d46d9e328d496c8e610640e6a705590ac325"
+  },
+  {
+    "path": "assets/brand/icon-192.png",
+    "source": "apps/web/public/assets/brand/icon-192.png",
+    "sha256": "76b4fd704c6dac94d7078aeb99cd11519152e3e5c8e53430659d2287204743c9"
+  },
+  {
+    "path": "assets/brand/icon-512.png",
+    "source": "apps/web/public/assets/brand/icon-512.png",
+    "sha256": "8c7bdeb16f21d42b26a63b6fed7d263a9d7f99bc5392f7830e4648fed117095c"
+  },
+  {
+    "path": "assets/brand/instagram-glyph-black.svg",
+    "source": "apps/web/public/assets/brand/instagram-glyph-black.svg",
+    "sha256": "a036f8197b3856b02d1e236e08dd1b50a4ed68cb148686beb274eabf29794d51"
+  },
+  {
+    "path": "assets/brand/instagram-glyph-white.svg",
+    "source": "apps/web/public/assets/brand/instagram-glyph-white.svg",
+    "sha256": "3347813e9e8f082cdf48495818bd370ccff94b687efb8aa1c8a7b36cfcfb8291"
+  },
+  {
+    "path": "assets/brand/mark-black.svg",
+    "source": "apps/web/public/assets/brand/mark-black.svg",
+    "sha256": "91e555704e96f5e6df240a5be4c09a2ec55fa05b206e96168ffbd135111fa56d"
+  },
+  {
+    "path": "assets/brand/mark-white.svg",
+    "source": "apps/web/public/assets/brand/mark-white.svg",
+    "sha256": "059cf2e14400d64021174dbd445130238196862b8f366da3da8a381dca5db826"
+  },
+  {
     "path": "assets/brand/mark.svg",
     "source": "apps/web/public/assets/brand/mark.svg",
     "sha256": "1ae0a6a1b6efb6a2d1f8e8e9af271ce28b504b280f2ea9a82ece8e6737107561"
+  },
+  {
+    "path": "assets/brand/og-image-en.png",
+    "source": "apps/web/public/assets/brand/og-image-en.png",
+    "sha256": "ab91e8a9f7a097b4b85833fbae309094a9298ff45ea4449399bff047aea70162"
+  },
+  {
+    "path": "assets/brand/og-image.png",
+    "source": "apps/web/public/assets/brand/og-image.png",
+    "sha256": "a17c05ab8af887e79f5b23e51c017b477c768300c6cbbea8673d5087ebd70887"
+  },
+  {
+    "path": "assets/brand/wordmark-black.svg",
+    "source": "apps/web/public/assets/brand/wordmark-black.svg",
+    "sha256": "53c9148381edc56308fd221fecc1fcf55dc33c3e0631dad1d2c0fda2ae4461e5"
   },
   {
     "path": "assets/brand/wordmark-white.svg",
@@ -13,6 +178,66 @@
     "path": "assets/brand/wordmark.svg",
     "source": "apps/web/public/assets/brand/wordmark.svg",
     "sha256": "8a8c63b94681490f74460c06f377c34905aee3aa1c6b598a7a1b2cf2b8efe265"
+  },
+  {
+    "path": "assets/email/fleuron.png",
+    "source": "apps/web/public/assets/email/fleuron.png",
+    "sha256": "3ad16d5ae22ce04aa0ff90b6f4cf155bb61c4b27169683b2a044fd881c1444db"
+  },
+  {
+    "path": "assets/email/illustrations/closed-book.png",
+    "source": "apps/web/public/assets/email/illustrations/closed-book.png",
+    "sha256": "4e259b875e4746c9dd02807c37c5085d7d1209c6b2d8e9d38493db0452c79ebd"
+  },
+  {
+    "path": "assets/email/illustrations/digest-stack.png",
+    "source": "apps/web/public/assets/email/illustrations/digest-stack.png",
+    "sha256": "0381a48cd72ca15c5411ae79f8e931e6d1849b56fcc1360f630948e8b0606e78"
+  },
+  {
+    "path": "assets/email/illustrations/envelope.png",
+    "source": "apps/web/public/assets/email/illustrations/envelope.png",
+    "sha256": "65241863c1384aed06642a8d32bf64f2eac82837864668cf07b19d82b71023a1"
+  },
+  {
+    "path": "assets/email/illustrations/hearth-scene.png",
+    "source": "apps/web/public/assets/email/illustrations/hearth-scene.png",
+    "sha256": "596685d4b1926c7f5a2dadfe9ef295841f9303b7d6bb9357cb3c960487ac1394"
+  },
+  {
+    "path": "assets/email/illustrations/invite-envelope.png",
+    "source": "apps/web/public/assets/email/illustrations/invite-envelope.png",
+    "sha256": "a2856234987a158f16b0f323df7a54369f49b7f7b642bbe6d1e9335a6acbfc6c"
+  },
+  {
+    "path": "assets/email/illustrations/key-sleeve.png",
+    "source": "apps/web/public/assets/email/illustrations/key-sleeve.png",
+    "sha256": "f25cdf0f8f0eaaaefa4a11ec7af905f0c46be13afa01c899353a28766e854c70"
+  },
+  {
+    "path": "assets/email/illustrations/open-book.png",
+    "source": "apps/web/public/assets/email/illustrations/open-book.png",
+    "sha256": "860f146983dfbdea6a5439682c3f43dbd0b4325429533fab7d10eba6c684f3d3"
+  },
+  {
+    "path": "assets/email/illustrations/owl-reader.png",
+    "source": "apps/web/public/assets/email/illustrations/owl-reader.png",
+    "sha256": "126dedda0a67ab1af63b2575ca4eaea88d20b149574d803558ba2242bd8de66a"
+  },
+  {
+    "path": "assets/email/illustrations/padlock.png",
+    "source": "apps/web/public/assets/email/illustrations/padlock.png",
+    "sha256": "2f86a17d5d8dfa81f9a72bda99eb76d040414e88a0d28559ca28d04287ecb558"
+  },
+  {
+    "path": "assets/email/wordmark.png",
+    "source": "apps/web/public/assets/email/wordmark.png",
+    "sha256": "9fbf671bc4b9d5ddcf244fc7b58ce2d568d7e99a7b6c9b9e50d82c7cd538f202"
+  },
+  {
+    "path": "assets/fonts/LICENSES.md",
+    "source": "apps/web/public/assets/fonts/LICENSES.md",
+    "sha256": "097b18c98be7b4bbcf3d9028b027ab835e0394a43be86b91dcc5b27ca7e50c46"
   },
   {
     "path": "assets/fonts/bricolage-grotesque-latin-ext.woff2",
@@ -125,6 +350,11 @@
     "sha256": "de942f3ef4c54ff1bfb9d6ee1bb55d227cb441dfc73d97443c644555b1d57ae1"
   },
   {
+    "path": "assets/landing/oriental-reading-illustration.svg",
+    "source": "apps/web/public/assets/landing/oriental-reading-illustration.svg",
+    "sha256": "650bd268c6092e348e08f6314e251c437d4fc96ce38325601352305b108b7fb2"
+  },
+  {
     "path": "assets/landing/reader-towelbooks-no-bg.png",
     "source": "apps/web/public/assets/landing/reader-towelbooks-no-bg.png",
     "sha256": "3ba4ab533aa320ced7fc81497ea29ab718f0076b0ab7bce8288874d5dd3634c9"
@@ -133,5 +363,15 @@
     "path": "assets/landing/reading-room-hero.png",
     "source": "apps/web/public/assets/landing/reading-room-hero.png",
     "sha256": "f81c3c3262f0e69e0b4fa79dc22798c1c0938d9f8b8f2accbab54fb795bd694e"
+  },
+  {
+    "path": "bootstrap/preferences.js",
+    "source": "apps/web/public/bootstrap/preferences.js",
+    "sha256": "ed817b72fa92a059759d21468c4785e0870e7df143114af6ced7eb53500133c3"
+  },
+  {
+    "path": "site.webmanifest",
+    "source": "apps/web/public/site.webmanifest",
+    "sha256": "3f27a8f5121ef2b5620a6f9b872005c7cc983be63f271995fc9f888d640e9cea"
   }
 ]
