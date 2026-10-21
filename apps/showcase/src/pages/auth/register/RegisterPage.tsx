@@ -5,43 +5,34 @@ import {
   USERNAME_MAX_LENGTH,
 } from '@towelbooks/schemas';
 import { PUBLIC_LEGAL_DOCUMENT_METADATA } from '@towelbooks/schemas/legal-documents';
-import { getApiErrorCode } from '@towelbooks/sdk';
-import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 
 import {
-  Alert,
   Button,
   Checkbox,
   FormField,
   FormFieldError,
   Input,
 } from '../../../components/primitives';
-import { applyApiValidationErrors } from '../../../features/errors';
 import {
   createRegisterSchema,
-  getLocalizedAuthErrorMessage,
   type RegisterForm,
 } from '../../../features/auth/authCopy';
 import { AuthFormPage } from '../../../features/auth/ui/AuthFormPage';
 import { AuthSignInLink } from '../../../features/auth/ui/AuthTextLink';
 import { GoogleOAuthButton } from '../../../features/auth/ui/GoogleOAuthButton';
 import { PasswordInput } from '../../../features/auth/ui/PasswordInput';
-import { VerificationEmailCard } from '../../../features/auth/ui/VerificationEmailCard';
 import { usePageTitle } from '../../../hooks/usePageTitle';
 import { useI18n } from '../../../i18n';
 import { isGoogleOAuthEnabled } from '../../../lib/googleOAuth';
 import { legalDocumentVersionPath } from '../../../lib/origins';
-import { sdk } from '../../../lib/sdk';
-import { trackSignupCompleted } from '../../../features/analytics';
-import { useAuthActionCooldown } from '../useAuthActionCooldown';
 
-type RegistrationSuccessState = {
-  bodyKey: string;
-  canResendVerificationEmail: boolean;
-  email: string;
-};
+import {
+  demoAuthDescription,
+  demoRegisterDefaults,
+  enterDemo,
+} from '../../../demo/auth';
 
 const legalLinkClassName =
   'supporting-copy text-ink-3 underline underline-offset-2 hover:text-ink';
@@ -49,135 +40,23 @@ const legalLinkClassName =
 export function RegisterPage() {
   usePageTitle({ key: 'page.auth.register.title', fallback: 'Create account' });
 
-  const [serverError, setServerError] = useState<string | null>(null);
-  const [registrationSuccess, setRegistrationSuccess] =
-    useState<RegistrationSuccessState | null>(null);
-  const [resendError, setResendError] = useState<string | null>(null);
-  const [resendMessage, setResendMessage] = useState<string | null>(null);
-  const [isResending, setIsResending] = useState(false);
-  const {
-    isCoolingDown: isResendCoolingDown,
-    remainingSeconds: resendCooldownSecondsRemaining,
-    startCooldown: startResendCooldown,
-  } = useAuthActionCooldown();
   const { locale, t } = useI18n();
   const registerSchema = createRegisterSchema(t);
 
   const {
     control,
     register,
-    clearErrors,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<RegisterForm>({
-    defaultValues: {
-      adultConfirmed: false,
-      privacyPolicyAcknowledged: false,
-      termsAccepted: false,
-    },
+    defaultValues: demoRegisterDefaults,
     resolver: zodResolver(registerSchema),
   });
-
-  const onSubmit = async (data: RegisterForm) => {
-    setServerError(null);
-    setResendError(null);
-    setResendMessage(null);
-    clearErrors('handle');
-
-    try {
-      const { handle, ...registration } = data;
-
-      await sdk.auth.register({
-        ...registration,
-        adultConfirmed: true,
-        locale,
-        privacyPolicyAcknowledged: true,
-        privacyPolicyVersion: PUBLIC_LEGAL_DOCUMENT_METADATA.privacy.version,
-        termsAccepted: true,
-        termsVersion: PUBLIC_LEGAL_DOCUMENT_METADATA.terms.version,
-        username: handle,
-      });
-      trackSignupCompleted();
-      setRegistrationSuccess({
-        bodyKey: 'auth.register.pendingBody',
-        canResendVerificationEmail: true,
-        email: data.email,
-      });
-    } catch (error: unknown) {
-      if (
-        applyApiValidationErrors(error, setError, {
-          username: 'handle',
-        }) > 0
-      ) {
-        return;
-      }
-
-      if (getApiErrorCode(error) === 'AUTH_USERNAME_ALREADY_TAKEN') {
-        setError('handle', {
-          message: t('auth.errors.usernameAlreadyTaken'),
-          type: 'server',
-        });
-        return;
-      }
-
-      setServerError(
-        getLocalizedAuthErrorMessage(error, t, 'auth.errors.registerFallback'),
-      );
-    }
-  };
-
-  const onResendVerificationEmail = async () => {
-    if (!registrationSuccess || isResendCoolingDown) {
-      return;
-    }
-
-    setIsResending(true);
-    setResendError(null);
-    setResendMessage(null);
-
-    try {
-      await sdk.auth.resendVerificationEmail({
-        identifier: registrationSuccess.email,
-        locale,
-      });
-      setResendMessage(t('auth.verificationResend.successBody'));
-      startResendCooldown();
-    } catch (error: unknown) {
-      setResendError(
-        getLocalizedAuthErrorMessage(
-          error,
-          t,
-          'auth.errors.resendVerificationFallback',
-        ),
-      );
-    } finally {
-      setIsResending(false);
-    }
-  };
-
-  if (registrationSuccess) {
-    return (
-      <VerificationEmailCard
-        bodyKey={registrationSuccess.bodyKey}
-        canResendVerificationEmail={
-          registrationSuccess.canResendVerificationEmail
-        }
-        footerAction={
-          <AuthSignInLink>{t('auth.register.backToSignIn')}</AuthSignInLink>
-        }
-        isResending={isResending}
-        onResendVerificationEmail={onResendVerificationEmail}
-        resendCooldownSecondsRemaining={resendCooldownSecondsRemaining}
-        resendError={resendError}
-        resendMessage={resendMessage}
-      />
-    );
-  }
 
   return (
     <AuthFormPage
       key="form"
+      description={demoAuthDescription(locale)}
       title={
         <span className="text-app-entity-title font-normal">
           {t('auth.register.heading')}
@@ -196,15 +75,9 @@ export function RegisterPage() {
         </div>
       ) : null}
 
-      {serverError && (
-        <Alert variant="error" className="mb-4">
-          {serverError}
-        </Alert>
-      )}
-
       <form
         autoComplete="on"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(enterDemo)}
         className="space-y-4"
       >
         <FormField

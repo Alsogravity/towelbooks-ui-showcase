@@ -22,6 +22,8 @@ test('original pages render with no service traffic or startup errors', async ({
   const routes = [
     '/',
     '/pricing',
+    '/login',
+    '/register',
     '/demo',
     '/demo/collections',
     `/demo/collections/${uid(500)}`,
@@ -141,14 +143,4 @@ test('original preferences change theme and interface language', async ({
     dialog.getByRole('heading', { name: 'Preferências', exact: true }),
   ).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR');
-});
-test('original sign-in entry opens the demo without credentials', async ({
-  page,
-}) => {
-  await page.goto('/login');
-  await expect(page).toHaveURL(/\/demo$/);
-  await expect(
-    page.getByRole('heading', { name: 'Your reading', exact: true }),
-  ).toBeVisible();
-  await expect(page.locator('input[type="password"]')).toHaveCount(0);
 });

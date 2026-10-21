@@ -6,6 +6,7 @@ import { LoginReactivationPanel } from './LoginReactivationPanel';
 import { LoginVerificationPanel } from './LoginVerificationPanel';
 import { OAuthReactivationSection } from './OAuthReactivationSection';
 import { useLoginPageState } from './useLoginPageState';
+import { demoAuthDescription } from '../../../demo/auth';
 import { AuthFormPage } from '../../../features/auth/ui/AuthFormPage';
 import { usePageTitle } from '../../../hooks/usePageTitle';
 import { useI18n, type LocalizedText } from '../../../i18n';
@@ -48,7 +49,7 @@ export function LoginPage() {
 
   usePageTitle(titleKey);
 
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
   const {
     deleteAfterLabel,
     forgotPasswordEmail,
@@ -93,6 +94,7 @@ export function LoginPage() {
 
   return (
     <AuthFormPage
+      description={demoAuthDescription(locale)}
       title={
         <span className="text-app-entity-title font-normal">
           {t('auth.login.heading')}

@@ -32,8 +32,10 @@ After deploying, run:
 node scripts/verify-live.mjs
 ```
 
-The live check visits the original routes at desktop and mobile sizes, checks response headers and horizontal overflow after fonts load, and exercises the original collection editor, reset on reload, settings, language, and theme selection. It rejects application service requests and unexpected origins. It types fictional verification text into local state only.
+The live check visits the original routes at desktop and mobile sizes, checks response headers and horizontal overflow after fonts load, and exercises prefilled login/sign-up confirmation, absence of credential storage/cookies, the original collection editor, reset on reload, settings, language, and theme selection. It rejects application service requests and unexpected origins. It types fictional verification text into local state only.
 
 For local production verification, run `node scripts/serve.mjs` after a build. That server applies the bundled headers and SPA fallback so browser tests exercise CSP rather than only Vite's development environment. With that preview running, `node scripts/capture-screenshots.mjs` refreshes the portfolio images in `docs/screenshots`.
 
 References: [React on Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/), [SPA serving behavior](https://developers.cloudflare.com/pages/configuration/serving-pages/), [static response headers](https://developers.cloudflare.com/pages/configuration/headers/), [Wrangler Pages commands](https://developers.cloudflare.com/workers/wrangler/commands/pages/).
+
+To refresh only the original auth screenshots, run `node scripts/capture-screenshots.mjs --auth-only` with the production preview running.

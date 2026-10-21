@@ -1,6 +1,8 @@
 import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';
 await mkdir('docs/screenshots', { recursive: true });
+const authOnly = process.argv.includes('--auth-only');
+const routes = { login: '/login', register: '/register' };
 const browser = await chromium.launch();
 try {
   for (const [name, viewport] of Object.entries({
@@ -14,12 +16,17 @@ try {
       colorScheme: 'light',
     });
     const page = await context.newPage();
-    for (const [label, route] of Object.entries({
-      dashboard: '/demo',
-      collections: '/demo/collections',
-      landing: '/',
-      pricing: '/pricing',
-    })) {
+    for (const [label, route] of Object.entries(
+      authOnly
+        ? routes
+        : {
+            dashboard: '/demo',
+            collections: '/demo/collections',
+            landing: '/',
+            pricing: '/pricing',
+            ...routes,
+          },
+    )) {
       await page.goto('http://127.0.0.1:3056' + route);
       await page.getByRole('heading').first().waitFor();
       await page
@@ -31,8 +38,13 @@ try {
         .click();
       await page.screenshot({
         path: `docs/screenshots/${label}-${name}.png`,
-        fullPage: name === 'desktop' && label === 'dashboard',
+        fullPage:
+          label in routes || (name === 'desktop' && label === 'dashboard'),
       });
+    }
+    if (authOnly) {
+      await context.close();
+      continue;
     }
     await page.goto('http://127.0.0.1:3056/demo#settings/preferences');
     await page.getByRole('radio', { name: 'Dark', exact: true }).check();

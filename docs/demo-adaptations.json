@@ -4,5 +4,8 @@
   "apps/showcase/src/features/auth/AuthContext.tsx",
   "apps/showcase/src/app/guest-auth-routes.tsx",
   "apps/showcase/src/lib/sdk.ts",
-  "apps/showcase/src/lib/documentMetadata.ts"
+  "apps/showcase/src/lib/documentMetadata.ts",
+  "apps/showcase/src/pages/auth/login/LoginPage.tsx",
+  "apps/showcase/src/pages/auth/login/useLoginPageState.ts",
+  "apps/showcase/src/pages/auth/register/RegisterPage.tsx"
 ]
