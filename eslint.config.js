@@ -19,8 +19,10 @@ export default [
     },
   },
   {
-    files: ['scripts/capture-screenshots.mjs'],
-    languageOptions: { globals: { document: 'readonly' } },
+    files: ['scripts/capture-screenshots.mjs', 'scripts/verify-live.mjs'],
+    languageOptions: {
+      globals: { document: 'readonly', innerWidth: 'readonly' },
+    },
   },
   {
     files: ['**/*.{ts,tsx}'],

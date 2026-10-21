@@ -4,4 +4,6 @@ dist/
 playwright-report/
 test-results/
 .env*
+.wrangler/
+.dev.vars*
 !.env.example

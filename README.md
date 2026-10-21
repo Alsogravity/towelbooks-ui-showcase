@@ -1,5 +1,7 @@
 # TowelBooks UI Showcase
 
+[**Live demo**](https://towelbooks-ui-showcase.pages.dev) · [**CI**](https://github.com/Alsogravity/towelbooks-ui-showcase/actions/workflows/ci.yml)
+
 An interactive portfolio of a reading-first product interface: book discovery, personal libraries, reading progress, collections, and reading rooms.
 
 **Fictional demo data. No account, backend, or credentials required.** Changes stay in memory and reset on reload. The showcase preserves the TowelBooks paper-and-ink palette, typography, custom illustrations, themes, and responsive navigation.
@@ -71,11 +73,11 @@ pnpm exec playwright install chromium
 pnpm test:browser
 ```
 
-Browser checks cover route refreshes, search/filter recovery, reading edits and reset across pages, room membership and replies, locale/theme selection, keyboard dialog dismissal, horizontal overflow, broken loaded images, console errors, and absence of application service requests. They run at desktop and mobile sizes against production assets with the static CSP applied.
+Browser checks cover route refreshes, search/filter recovery, reading edits and reset across pages, room membership and replies, locale/theme selection, keyboard dialog dismissal, horizontal overflow after font loading, collection cover containment, broken loaded images, console errors, and absence of application service requests. They run at desktop and mobile sizes against production assets with the static CSP applied.
 
 ## Deployment
 
-Static output is `apps/showcase/dist`. A separate Cloudflare Pages project can deploy it without API keys in the application. See [deployment setup and verification](docs/deployment.md). A hosted demo URL will be added after deployment is verified.
+Static output is `apps/showcase/dist`. The live site uses a separate Cloudflare Pages Direct Upload project, with no API keys in the application. GitHub pushes run validation; deployment is a separate manual command. See [deployment and live verification](docs/deployment.md).
 
 ## Rights and attribution
 
