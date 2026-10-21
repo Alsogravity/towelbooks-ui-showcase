@@ -41,6 +41,7 @@ test('all showcase routes load without service requests, console errors, or hori
     const response = await page.goto(route);
     expect(response?.status()).toBe(200);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
     await expect
       .poll(
         () =>
@@ -196,4 +197,26 @@ test('theme, locale, state previews, keyboard dialog dismissal and direct reload
       name: 'Atlas das pequenas distâncias',
     }),
   ).toBeVisible();
+});
+
+test('collection cover groups fit their rows after fonts load', async ({
+  page,
+}) => {
+  await page.goto('/demo/collections');
+  await page.getByRole('heading', { level: 1 }).waitFor();
+  await page.evaluate(() => document.fonts.ready);
+  const covers = page.locator('.collection-covers');
+  await expect(covers).toHaveCount(2);
+  for (const group of await covers.all()) {
+    await expect
+      .poll(() =>
+        group.evaluate((element) => {
+          const bounds = element.getBoundingClientRect();
+          return [...element.children].every(
+            (child) => child.getBoundingClientRect().right <= bounds.right + 1,
+          );
+        }),
+      )
+      .toBe(true);
+  }
 });

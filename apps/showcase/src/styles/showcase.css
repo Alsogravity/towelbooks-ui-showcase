@@ -393,6 +393,15 @@ progress::-moz-progress-bar {
   align-items: center;
   gap: 6px;
   text-decoration: none;
+  width: 100%;
+  min-width: 0;
+  max-width: 260px;
+}
+.collection-covers > .showcase-cover-compact {
+  flex: 0 1 80px;
+  width: 80px;
+  max-width: 80px;
+  min-width: 0;
 }
 .collection-covers > div:nth-child(2) {
   transform: translateY(-8px);

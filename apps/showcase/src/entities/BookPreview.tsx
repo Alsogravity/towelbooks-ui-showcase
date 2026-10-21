@@ -15,7 +15,7 @@ export function BookCover({
       author={book.author}
       theme={book.theme}
       size="fluid"
-      className={compact ? 'w-full max-w-20' : 'w-full'}
+      className={compact ? 'showcase-cover-compact' : 'w-full'}
     />
   );
 }
