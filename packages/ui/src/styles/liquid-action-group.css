@@ -1,0 +1,176 @@
+.vui-liquid-action-group {
+  --vui-liquid-action-bg: var(
+    --vui-capsule-bg,
+    color-mix(in srgb, var(--paper) 92%, var(--paper-2) 8%)
+  );
+  --vui-liquid-action-border: var(
+    --vui-capsule-border,
+    color-mix(in srgb, var(--ink) 15%, transparent)
+  );
+  --vui-liquid-action-fg: var(--vui-capsule-fg, var(--ink));
+  --vui-liquid-action-inverse-bg: var(--vui-capsule-inverse-bg, var(--ink));
+  --vui-liquid-action-inverse-fg: var(--vui-capsule-inverse-fg, var(--paper));
+  --vui-liquid-action-shell-shadow: var(
+    --vui-capsule-shell-shadow,
+    var(--shadow-soft-2)
+  );
+  --vui-liquid-action-morph-ease: var(
+    --vui-capsule-morph-ease,
+    cubic-bezier(0.32, 0.72, 0, 1)
+  );
+  --vui-liquid-action-morph-duration: var(--vui-capsule-morph-duration, 360ms);
+  --vui-liquid-action-compact-width: var(--vui-capsule-compact-width, 5.5rem);
+  align-items: center;
+  background: var(--vui-liquid-action-bg);
+  border: 1px solid var(--vui-liquid-action-border);
+  border-radius: var(--radius-paper-pill);
+  box-shadow: var(--vui-liquid-action-shell-shadow);
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.375rem;
+  inline-size: var(--vui-liquid-action-compact-width);
+  padding: 0.25rem;
+  transition:
+    background-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    border-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    box-shadow var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    gap var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    inline-size var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    padding var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease);
+}
+
+.vui-liquid-action-group[data-state='separated'] {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  gap: 0.5rem;
+  inline-size: 100%;
+  padding: 0;
+}
+
+.vui-liquid-action-group__surface {
+  border-radius: var(--radius-paper-pill);
+  box-sizing: border-box;
+  color: var(--vui-liquid-action-fg);
+}
+
+.vui-liquid-action-group__surface--primary {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  display: inline-flex;
+  flex: 1 1 0;
+  height: 2.5rem;
+  justify-content: flex-start;
+  min-inline-size: 0;
+  overflow: hidden;
+  padding: 0 0 0 0.5625rem;
+  position: relative;
+  transition:
+    background-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    border-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    box-shadow var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    padding var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease);
+}
+
+.vui-liquid-action-group__surface--primary[data-state='separated'] {
+  background: var(--vui-liquid-action-bg);
+  border-color: var(--vui-liquid-action-border);
+  box-shadow: var(--vui-liquid-action-shell-shadow);
+  padding: 0 0.75rem 0 0.625rem;
+}
+
+.vui-liquid-action-group__surface--control {
+  align-items: center;
+  background: color-mix(in srgb, var(--vui-liquid-action-fg) 10%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--vui-liquid-action-fg) 20%, transparent);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 2rem;
+  inline-size: 2rem;
+  justify-content: center;
+  line-height: 1;
+  padding: 0.125rem;
+  position: relative;
+  transition:
+    background-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    border-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    box-shadow var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    height var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    inline-size var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    padding var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    transform var(--motion-transition-interactive),
+    opacity var(--motion-transition-interactive);
+}
+
+.vui-liquid-action-group__surface--control:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.vui-liquid-action-group__surface--control:focus-visible {
+  outline: 2px solid var(--vui-liquid-action-fg);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.vui-liquid-action-group__surface--control:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.vui-liquid-action-group__surface--control[data-state='separated'] {
+  background: var(--vui-liquid-action-bg);
+  border-color: var(--vui-liquid-action-border);
+  box-shadow: var(--vui-liquid-action-shell-shadow);
+  height: 2.5rem;
+  inline-size: 2.5rem;
+  padding: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .vui-liquid-action-group__surface--control:hover:not(:disabled) {
+    background: color-mix(
+      in srgb,
+      var(--vui-liquid-action-fg) 20%,
+      var(--vui-liquid-action-bg)
+    );
+  }
+
+  .vui-liquid-action-group__surface--control[data-state='separated']:hover:not(
+      :disabled
+    ) {
+    background: color-mix(
+      in srgb,
+      var(--vui-liquid-action-bg) 86%,
+      var(--vui-liquid-action-fg) 14%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vui-liquid-action-group,
+  .vui-liquid-action-group__surface--primary,
+  .vui-liquid-action-group__surface--control {
+    transition-delay: 0ms;
+    transition-duration: 0.01ms;
+  }
+}

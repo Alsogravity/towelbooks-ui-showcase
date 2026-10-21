@@ -1,0 +1,286 @@
+:where(.vui-select) {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+:where(.vui-select__native) {
+  block-size: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  inline-size: 1px;
+  margin: -1px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  white-space: nowrap;
+}
+
+:where(.vui-select__trigger) {
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  line-height: 1.25;
+  min-height: 42px;
+  text-align: left;
+}
+
+:where(.vui-select--ghost) {
+  width: auto;
+}
+
+:where(.vui-select__trigger--ghost) {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--ink-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.375rem;
+  line-height: 1.5;
+  min-height: auto;
+  padding: 0;
+}
+
+.vui-field.vui-select__trigger--ghost:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+:where(
+  .vui-select__trigger--ghost:hover:not(:disabled):not([aria-disabled='true'])
+) {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ink);
+}
+
+:where(
+  .vui-select__trigger--ghost:focus-visible:not(:disabled):not(
+      [aria-disabled='true']
+    )
+) {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--ink);
+  outline: 2px solid var(--brick);
+  outline-offset: 2px;
+}
+
+:where(
+  .vui-select__trigger--ghost:active:not(:disabled):not([aria-disabled='true'])
+) {
+  border-color: transparent;
+  color: var(--ink);
+}
+
+:where(.vui-select__trigger:disabled) {
+  cursor: default;
+}
+
+:where(.vui-select .vui-field__control) {
+  width: 100%;
+}
+
+:where(.vui-select .vui-field__control .vui-select__trigger) {
+  width: 100%;
+}
+
+:where(.vui-select__trigger.vui-field--has-label) {
+  min-height: 60px;
+  padding-bottom: 0.5rem;
+  padding-right: 2rem;
+  padding-top: 1.625rem;
+  position: relative;
+}
+
+:where(.vui-select__trigger.vui-field--has-label .vui-select__content) {
+  flex: 1;
+  min-width: 0;
+}
+
+:where(.vui-select__trigger.vui-field--label-floating .vui-select__content) {
+  align-self: flex-end;
+}
+
+:where(.vui-select__trigger.vui-field--has-label .vui-field__label) {
+  color: var(--fg-subtle);
+  font-size: 0.9375rem;
+  left: 0.75rem;
+  max-width: calc(100% - 3rem);
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left top;
+  transition:
+    color var(--motion-transition-interactive),
+    top var(--motion-transition-interactive),
+    transform var(--motion-transition-interactive);
+  white-space: nowrap;
+}
+
+:where(
+  .vui-select__trigger.vui-field--has-label:not(.vui-field--label-floating)
+    .vui-select__value
+) {
+  opacity: 0;
+}
+
+:where(
+  .vui-select__trigger.vui-field--label-floating .vui-field__label,
+  .vui-select__trigger:focus .vui-field__label,
+  .vui-select__trigger[aria-expanded='true'] .vui-field__label
+) {
+  color: var(--fg-subtle);
+  top: 0.5rem;
+  transform: translateY(0) scale(0.85);
+}
+
+:where(.vui-select__trigger:focus) {
+  border-color: var(--rule);
+  box-shadow: none;
+}
+
+:where(.vui-select__content) {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+:where(.vui-select__prepend-icon) {
+  color: var(--ink-3);
+  flex: 0 0 auto;
+}
+
+:where(.vui-select__value) {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:where(.vui-select__indicator) {
+  color: currentColor;
+  flex: 0 0 auto;
+  transform-origin: center;
+  transition: transform var(--motion-transition-interactive);
+}
+
+:where(.vui-select__trigger[aria-expanded='true'] .vui-select__indicator) {
+  transform: rotate(180deg);
+}
+
+:where(.vui-select__trigger.vui-field--has-label .vui-select__indicator) {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:where(
+  .vui-select__trigger.vui-field--has-label[aria-expanded='true']
+    .vui-select__indicator
+) {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+:where(.vui-select__listbox) {
+  padding: 0.25rem;
+}
+
+:where(.vui-select__listbox--hug) {
+  width: max-content;
+}
+
+:where(.vui-select__listbox--hug .vui-select__option) {
+  white-space: nowrap;
+  width: auto;
+}
+
+:where(.vui-select__listbox:focus) {
+  outline: none;
+}
+
+:where(.vui-select__group-label) {
+  color: var(--ink-4);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.625rem 0.25rem;
+  text-transform: uppercase;
+}
+
+:where(.vui-select__option) {
+  background: transparent;
+  border-radius: var(--radius-paper-4);
+  color: var(--ink);
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  padding: 0.5rem 0.625rem;
+  text-align: left;
+  width: 100%;
+}
+
+:where(.vui-select__option-content) {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+:where(.vui-select__option-icon) {
+  color: var(--ink-3);
+  flex: 0 0 auto;
+}
+
+:where(.vui-select__option:hover, .vui-select__option[data-active='true']) {
+  background: var(--paper-2);
+}
+
+:where(.vui-select__option[aria-selected='true']) {
+  color: var(--brick);
+  font-weight: 600;
+}
+
+:root[data-theme='dark']
+  :where(.vui-select__option:hover, .vui-select__option[data-active='true']) {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+:root[data-theme='dark'] :where(.vui-select__option[aria-selected='true']) {
+  background: color-mix(in srgb, var(--brick) 18%, transparent);
+  color: var(--ink);
+}
+
+:root[data-theme='dark']
+  :where(
+    .vui-select__option[aria-selected='true']:hover,
+    .vui-select__option[aria-selected='true'][data-active='true']
+  ) {
+  background: color-mix(
+    in srgb,
+    var(--brick) 24%,
+    color-mix(in srgb, var(--ink) 8%, transparent)
+  );
+}
+
+:root[data-theme='dark']
+  :where(.vui-select__option[aria-selected='true'] .vui-select__option-icon) {
+  color: var(--brick-2);
+}
+
+:where(.vui-select__option[aria-disabled='true']) {
+  cursor: default;
+  opacity: 0.5;
+}

@@ -1,0 +1,43 @@
+{
+  "name": "towelbooks-ui-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.30.1",
+  "engines": {
+    "node": ">=22.22.1"
+  },
+  "scripts": {
+    "dev": "pnpm --dir apps/showcase dev",
+    "build": "pnpm --dir apps/showcase build",
+    "preview": "pnpm --dir apps/showcase preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "notices:generate": "node scripts/generate-notices.mjs",
+    "prebuild": "pnpm notices:generate",
+    "security:audit": "pnpm audit --prod --audit-level high"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/node": "^26.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^10.6.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "playwright": "^1.61.1",
+    "prettier": "^3.9.1",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.9",
+    "@typescript-eslint/parser": "^8.62.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.0"
+  },
+  "license": "UNLICENSED"
+}

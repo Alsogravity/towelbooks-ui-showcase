@@ -1,0 +1,134 @@
+:where(.vui-form-stack) {
+  display: grid;
+  gap: var(--space-form-section-gap, var(--s-6));
+  min-width: 0;
+}
+
+:where(.vui-form-rows) {
+  display: grid;
+  gap: var(--space-form-row-gap, var(--s-4));
+  min-width: 0;
+}
+
+:where(.vui-form-grid) {
+  display: grid;
+  gap: var(--space-form-grid-gap, var(--s-3));
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  :where(.vui-form-grid--responsive-2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+:where(.vui-form-actions) {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-form-action-gap, var(--s-3));
+  min-width: 0;
+}
+
+:where(.vui-form-actions--start) {
+  justify-content: flex-start;
+}
+
+:where(.vui-form-actions--end) {
+  justify-content: flex-end;
+}
+
+:where(.vui-form-actions--between) {
+  justify-content: space-between;
+}
+
+:where(.vui-field-set) {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+:where(.vui-field-legend) {
+  color: var(--fg-muted);
+  display: block;
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-label);
+  font-weight: 600;
+  line-height: var(--lh-app-compact);
+  margin: 0 0 var(--s-2);
+  padding: 0;
+}
+
+:where(.vui-form-section) {
+  --vui-form-section-title-color: var(--fg-muted);
+  --vui-form-section-title-font-size: clamp(1.05rem, 1.05rem + 0.35vw, 1.25rem);
+  --vui-form-section-title-font-weight: 500;
+  --vui-form-section-title-line-height: var(--lh-app-section-title);
+  --vui-form-section-icon-size: 1.125em;
+  --vui-form-section-title-row-gap: var(--s-2);
+  --vui-form-section-title-row-margin-block-end: calc(var(--s-1) * 1.5);
+  display: grid;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
+:where(.vui-form-section__header) {
+  display: grid;
+  gap: var(--s-1);
+  min-width: 0;
+}
+
+:where(.vui-form-section__title-row) {
+  align-items: center;
+  color: var(--vui-form-section-title-color);
+  display: flex;
+  gap: var(--vui-form-section-title-row-gap);
+  margin: 0 0 var(--vui-form-section-title-row-margin-block-end);
+  min-width: 0;
+}
+
+:where(.vui-form-section__icon) {
+  color: currentColor;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+:where(.vui-form-section__icon svg) {
+  height: var(--vui-form-section-icon-size);
+  width: var(--vui-form-section-icon-size);
+}
+
+:where(.vui-form-section__title) {
+  color: currentColor;
+  font-family: var(--font-sans-family);
+  font-size: var(--vui-form-section-title-font-size);
+  font-weight: var(--vui-form-section-title-font-weight);
+  line-height: var(--vui-form-section-title-line-height);
+  margin: 0;
+}
+
+:where(.vui-form-section__divider) {
+  background: var(--border);
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: var(--s-5);
+}
+
+:where(.vui-form-section__description) {
+  color: var(--fg-subtle);
+  display: grid;
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-supporting-copy);
+  gap: calc(var(--s-1) / 2);
+  line-height: var(--lh-app-body);
+  margin: 0;
+}
+
+:where(.vui-form-section__description) > :where(*) {
+  margin: 0;
+}
+
+:where(.vui-form-section__content) {
+  min-width: 0;
+}

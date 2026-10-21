@@ -1,0 +1,263 @@
+:where(.vui-menu-overlay) {
+  display: inline-flex;
+  max-width: 100%;
+  position: relative;
+}
+
+:where(.vui-menu-overlay[data-match-activator-width='true']) {
+  display: flex;
+  width: 100%;
+}
+
+:where(.vui-menu-overlay__content) {
+  animation: vui-menu-overlay-in var(--motion-duration-fast)
+    var(--motion-ease-standard);
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-paper-4);
+  box-shadow: var(--shadow-soft-3);
+  color: var(--ink);
+  inset-inline-start: 0;
+  max-height: min(18rem, calc(100vh - 1rem));
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0.25rem;
+  position: absolute;
+  transform-origin: top center;
+  visibility: visible;
+  z-index: 50;
+}
+
+:root[data-theme='dark'] :where(.vui-menu-overlay__content) {
+  background: color-mix(in srgb, var(--vellum) 88%, var(--ink) 12%);
+  border-color: var(--border-strong);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--ink) 6%, transparent),
+    var(--shadow-soft-4);
+}
+
+:where(
+  .vui-menu-overlay__content[data-match-activator-width='true']:not(
+      .vui-menu-overlay__content--portalled
+    )
+) {
+  min-width: 100%;
+}
+
+:where(.vui-menu-overlay__content[data-placement^='right']) {
+  inset-inline-start: auto;
+  top: 0;
+  transform-origin: left center;
+}
+
+:where(.vui-menu-overlay__content[data-placement$='end']) {
+  inset-inline-end: 0;
+  inset-inline-start: auto;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-start'][data-offset='0']
+) {
+  inset-inline-start: 100%;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-start'][data-offset='4']
+) {
+  inset-inline-start: calc(100% + 0.25rem);
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-start'][data-offset='6']
+) {
+  inset-inline-start: calc(100% + 0.375rem);
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-start'][data-offset='8']
+) {
+  inset-inline-start: calc(100% + 0.5rem);
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-start'][data-offset='12']
+) {
+  inset-inline-start: calc(100% + 0.75rem);
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-end'][data-offset='0']
+) {
+  inset-inline-start: 100%;
+  inset-inline-end: auto;
+  bottom: 0;
+  top: auto;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-end'][data-offset='4']
+) {
+  inset-inline-start: calc(100% + 0.25rem);
+  inset-inline-end: auto;
+  bottom: 0;
+  top: auto;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-end'][data-offset='6']
+) {
+  inset-inline-start: calc(100% + 0.375rem);
+  inset-inline-end: auto;
+  bottom: 0;
+  top: auto;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-end'][data-offset='8']
+) {
+  inset-inline-start: calc(100% + 0.5rem);
+  inset-inline-end: auto;
+  bottom: 0;
+  top: auto;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement='right-end'][data-offset='12']
+) {
+  inset-inline-start: calc(100% + 0.75rem);
+  inset-inline-end: auto;
+  bottom: 0;
+  top: auto;
+}
+
+:where(.vui-menu-overlay__content[data-placement^='bottom'][data-offset='0']) {
+  top: 100%;
+}
+
+:where(.vui-menu-overlay__content[data-placement^='bottom'][data-offset='4']) {
+  top: calc(100% + 0.25rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='bottom'][data-offset='6']) {
+  top: calc(100% + 0.375rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='bottom'][data-offset='8']) {
+  top: calc(100% + 0.5rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='bottom'][data-offset='12']) {
+  top: calc(100% + 0.75rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='top'][data-offset='0']) {
+  bottom: 100%;
+}
+
+:where(.vui-menu-overlay__content[data-placement^='top'][data-offset='4']) {
+  bottom: calc(100% + 0.25rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='top'][data-offset='6']) {
+  bottom: calc(100% + 0.375rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='top'][data-offset='8']) {
+  bottom: calc(100% + 0.5rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='top'][data-offset='12']) {
+  bottom: calc(100% + 0.75rem);
+}
+
+:where(.vui-menu-overlay__content[data-placement^='top']) {
+  transform-origin: bottom center;
+}
+
+:where(.vui-menu-overlay__content[data-placement^='right']) {
+  animation-name: vui-menu-overlay-in-right;
+}
+
+:where(.vui-menu-overlay__content[data-state='closed']) {
+  animation: vui-menu-overlay-out var(--motion-duration-fast)
+    var(--motion-ease-standard) forwards;
+  pointer-events: none;
+}
+
+:where(
+  .vui-menu-overlay__content[data-placement^='right'][data-state='closed']
+) {
+  animation: vui-menu-overlay-out-right var(--motion-duration-fast)
+    var(--motion-ease-standard) forwards;
+}
+
+@keyframes vui-menu-overlay-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes vui-menu-overlay-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-0.25rem) scale(0.98);
+  }
+}
+
+@keyframes vui-menu-overlay-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-0.25rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes vui-menu-overlay-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-0.25rem) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vui-button__spinner,
+  .vui-loading-state__label,
+  :where(.vui-menu-overlay__content),
+  :where(.vui-menu-overlay__content[data-state='closed']) {
+    animation: none;
+  }
+}
+
+:where(.vui-menu-overlay__content:focus) {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+:where(.vui-menu-overlay__content.vui-menu-overlay__content--portalled) {
+  bottom: auto;
+  inset-inline-end: auto;
+  inset-inline-start: auto;
+  position: fixed;
+  top: auto;
+  z-index: 60;
+}

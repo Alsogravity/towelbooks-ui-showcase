@@ -1,0 +1,19 @@
+{
+  "name": "@towelbooks/showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 3055",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 3055"
+  },
+  "dependencies": {
+    "@towelbooks/ui": "workspace:*",
+    "@towelbooks/design-tokens": "workspace:*",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router": "^8.3.0"
+  },
+  "license": "UNLICENSED"
+}

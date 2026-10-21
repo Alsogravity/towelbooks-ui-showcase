@@ -1,0 +1,33 @@
+export const pricingMessages = {
+  'pricing.meta.title': 'Pricing — TowelBooks',
+  'pricing.meta.description':
+    'TowelBooks is free to get started. Paid plans unlock extra features for reading rooms and your community.',
+  'pricing.eyebrow': 'No catch',
+  'pricing.title': 'Simple plans for every reading room.',
+  'pricing.free.name': 'Free',
+  'pricing.free.price': 'Free',
+  'pricing.free.description': 'Everything you need to start reading together.',
+  'pricing.free.feature.1': 'Personal library & shelves',
+  'pricing.free.feature.2': 'Up to 3 reading rooms',
+  'pricing.free.feature.3': 'Book reviews & ratings',
+  'pricing.free.feature.4': 'Reading tracker',
+  'pricing.free.feature.5': 'Book catalog access',
+  'pricing.free.feature.6': 'Community discovery',
+  'pricing.free.feature.7': 'Discussions & polls in reading rooms',
+  'pricing.free.feature.8': 'Up to 100 members per room*',
+  'pricing.free.disclaimer': '* Limited-time offer for early users.',
+  'pricing.free.cta': 'Start reading',
+  'pricing.pro.name': 'TowelBooks Plus',
+  'pricing.pro.price': 'Paid',
+  'pricing.pro.description':
+    'For reading communities that want more space and control.',
+  'pricing.pro.feature.1': 'Unlimited reading rooms',
+  'pricing.pro.feature.2': 'Advanced room settings',
+  'pricing.pro.feature.3': 'Priority support',
+  'pricing.pro.badge': 'Soon',
+  'pricing.pro.cta': 'Get notified',
+  'pricing.faq.title': 'Questions?',
+  'pricing.faq.body':
+    'We are building TowelBooks step by step. If you have questions about pricing or what comes next, we would love to hear from you. If you need higher limits, reach out. We can review and increase them on a case-by-case basis.',
+  'pricing.faq.email': 'Send us an email',
+} as const;

@@ -1,0 +1,137 @@
+[
+  {
+    "path": "assets/brand/mark.svg",
+    "source": "apps/web/public/assets/brand/mark.svg",
+    "sha256": "1ae0a6a1b6efb6a2d1f8e8e9af271ce28b504b280f2ea9a82ece8e6737107561"
+  },
+  {
+    "path": "assets/brand/wordmark-white.svg",
+    "source": "apps/web/public/assets/brand/wordmark-white.svg",
+    "sha256": "e44b460427e98598d149158a1cfd57ae7afeea4ccb808b1990a5409fc2659c76"
+  },
+  {
+    "path": "assets/brand/wordmark.svg",
+    "source": "apps/web/public/assets/brand/wordmark.svg",
+    "sha256": "8a8c63b94681490f74460c06f377c34905aee3aa1c6b598a7a1b2cf2b8efe265"
+  },
+  {
+    "path": "assets/fonts/bricolage-grotesque-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/bricolage-grotesque-latin-ext.woff2",
+    "sha256": "776f6dcaf03636cd69a5802c94808cc8896c0a66c8e9ce0fe147231b6ee01957"
+  },
+  {
+    "path": "assets/fonts/bricolage-grotesque-latin.woff2",
+    "source": "apps/web/public/assets/fonts/bricolage-grotesque-latin.woff2",
+    "sha256": "a79fdb52d4a5c76552452f69202add96e287401fff03d3e8c0e38b4dcb5a99cd"
+  },
+  {
+    "path": "assets/fonts/cormorant-garamond-italic-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/cormorant-garamond-italic-latin-ext.woff2",
+    "sha256": "cd5bf126b2c84ab41b254a6a9a1ffb5c326a0f9f82c22fb4704daa31c9aaa415"
+  },
+  {
+    "path": "assets/fonts/cormorant-garamond-italic-latin.woff2",
+    "source": "apps/web/public/assets/fonts/cormorant-garamond-italic-latin.woff2",
+    "sha256": "6f2f5c3b1abc3d0bb035a927f66a90ca873f94fc31c4966c8d024142c2036e55"
+  },
+  {
+    "path": "assets/fonts/cormorant-garamond-normal-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/cormorant-garamond-normal-latin-ext.woff2",
+    "sha256": "cfa9a397d86f66c5c51775a2500a712d5f632a04f0c5eca6930dfaf612d4566d"
+  },
+  {
+    "path": "assets/fonts/cormorant-garamond-normal-latin.woff2",
+    "source": "apps/web/public/assets/fonts/cormorant-garamond-normal-latin.woff2",
+    "sha256": "d80df8ff5aecd299a61549f9e29ab1ed0b9b05f4ea71d50fe978e07d5240b235"
+  },
+  {
+    "path": "assets/fonts/excalifont-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/excalifont-latin-ext.woff2",
+    "sha256": "4fb8ad69be9aeac5664d99e5aa3a68a27ea40c98943b80387f7cd55c034fcc93"
+  },
+  {
+    "path": "assets/fonts/excalifont-latin.woff2",
+    "source": "apps/web/public/assets/fonts/excalifont-latin.woff2",
+    "sha256": "e4423b318e11432aff2e6e865e300b7ca270f92321a3f56632268fede01c1b48"
+  },
+  {
+    "path": "assets/fonts/gloria-hallelujah-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/gloria-hallelujah-latin-ext.woff2",
+    "sha256": "a9147c3d1fe79b84ce1a9148ca0ac42933aa0f7fff0096ebb835a73a278342df"
+  },
+  {
+    "path": "assets/fonts/gloria-hallelujah-latin.woff2",
+    "source": "apps/web/public/assets/fonts/gloria-hallelujah-latin.woff2",
+    "sha256": "90b0ef8d2ed6d4b46b4e010e7b335b182c45c330a15bac3ca76497dbae544700"
+  },
+  {
+    "path": "assets/fonts/inter-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/inter-latin-ext.woff2",
+    "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+  },
+  {
+    "path": "assets/fonts/inter-latin.woff2",
+    "source": "apps/web/public/assets/fonts/inter-latin.woff2",
+    "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+  },
+  {
+    "path": "assets/fonts/jetbrains-mono-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/jetbrains-mono-latin-ext.woff2",
+    "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+  },
+  {
+    "path": "assets/fonts/jetbrains-mono-latin.woff2",
+    "source": "apps/web/public/assets/fonts/jetbrains-mono-latin.woff2",
+    "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+  },
+  {
+    "path": "assets/fonts/source-serif-4-italic-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/source-serif-4-italic-latin-ext.woff2",
+    "sha256": "515639854d3566c43860d2005770645c590df8b43a0144c70fe2566c33015ede"
+  },
+  {
+    "path": "assets/fonts/source-serif-4-italic-latin.woff2",
+    "source": "apps/web/public/assets/fonts/source-serif-4-italic-latin.woff2",
+    "sha256": "663e7ef3037a56dce81dfc33f68c1e6445995ffd8887991b3c0b68a7689c9da5"
+  },
+  {
+    "path": "assets/fonts/source-serif-4-normal-latin-ext.woff2",
+    "source": "apps/web/public/assets/fonts/source-serif-4-normal-latin-ext.woff2",
+    "sha256": "41529a5b38008d9ea01e28ec18693a714a3216669ee477d83a5b9db999369625"
+  },
+  {
+    "path": "assets/fonts/source-serif-4-normal-latin.woff2",
+    "source": "apps/web/public/assets/fonts/source-serif-4-normal-latin.woff2",
+    "sha256": "c1df4596be5029233ed2afbb8b2f6ea20784b3fb1aa5d6b5c6519ccd85eb3dfb"
+  },
+  {
+    "path": "assets/landing/group-reading-room-desktop-speed-blur.webp",
+    "source": "apps/web/public/assets/landing/group-reading-room-desktop-speed-blur.webp",
+    "sha256": "7e7b6a3f0649c87cd198df9a4df2bcdeb70d5f02e2081f8d0f7b7de38480cba8"
+  },
+  {
+    "path": "assets/landing/group-reading-room-mobile-speed-blur.webp",
+    "source": "apps/web/public/assets/landing/group-reading-room-mobile-speed-blur.webp",
+    "sha256": "ede7c24db3854147cf226f8e72a286c6014c93bcde7e45f582a1be9343774a8c"
+  },
+  {
+    "path": "assets/landing/hero-background-desktop.png",
+    "source": "apps/web/public/assets/landing/hero-background-desktop.png",
+    "sha256": "dc6fd323557d11639e8911821cd846b3d54837b3987f98fb53c043301d8e883e"
+  },
+  {
+    "path": "assets/landing/hero-background-mobile.png",
+    "source": "apps/web/public/assets/landing/hero-background-mobile.png",
+    "sha256": "de942f3ef4c54ff1bfb9d6ee1bb55d227cb441dfc73d97443c644555b1d57ae1"
+  },
+  {
+    "path": "assets/landing/reader-towelbooks-no-bg.png",
+    "source": "apps/web/public/assets/landing/reader-towelbooks-no-bg.png",
+    "sha256": "3ba4ab533aa320ced7fc81497ea29ab718f0076b0ab7bce8288874d5dd3634c9"
+  },
+  {
+    "path": "assets/landing/reading-room-hero.png",
+    "source": "apps/web/public/assets/landing/reading-room-hero.png",
+    "sha256": "f81c3c3262f0e69e0b4fa79dc22798c1c0938d9f8b8f2accbab54fb795bd694e"
+  }
+]

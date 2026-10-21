@@ -1,0 +1,45 @@
+:where(.vui-data-table__surface) {
+  overflow: hidden;
+}
+
+:where(.vui-data-table__scroll) {
+  overflow-x: auto;
+}
+
+:where(.vui-data-table) {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+:where(.vui-data-table__head) {
+  background: color-mix(in srgb, var(--paper-2) 60%, transparent);
+}
+
+:where(.vui-data-table__head-cell) {
+  color: var(--ink-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+:where(.vui-data-table__head-label) {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+:where(.vui-data-table__head-icon) {
+  color: var(--ink-3);
+}
+
+:where(.vui-data-table__cell) {
+  border-top: 1px solid var(--rule);
+  padding: 0.625rem 1.25rem;
+  vertical-align: middle;
+}
+
+:where(.vui-data-table__row:hover) {
+  background: color-mix(in srgb, var(--paper-2) 60%, transparent);
+}

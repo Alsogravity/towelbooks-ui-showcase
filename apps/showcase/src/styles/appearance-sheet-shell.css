@@ -1,0 +1,27 @@
+.filter-surface-panel,
+.vui-appearance-sheet-shell {
+  --vui-surface-internal-rule: color-mix(in srgb, var(--rule) 38%, transparent);
+}
+
+.vui-appearance-sheet-shell__header {
+  border-bottom-color: var(--vui-surface-internal-rule);
+}
+
+.vui-surface-panel-actions {
+  border-top-color: var(--vui-surface-internal-rule);
+}
+
+.filter-surface-panel {
+  border-radius: var(--radius-paper-5);
+}
+
+.filter-surface-panel.app-bottom-sheet-panel {
+  border-top-left-radius: var(--radius-paper-5);
+  border-top-right-radius: var(--radius-paper-5);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.filter-surface-panel.app-bottom-sheet-panel[data-state='closed'] {
+  animation-duration: var(--motion-duration-fast);
+}

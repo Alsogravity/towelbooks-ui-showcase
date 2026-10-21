@@ -1,0 +1,124 @@
+:where(.vui-dialog) {
+  inset: 0;
+  position: fixed;
+  z-index: 70;
+}
+
+:where(.vui-dialog__backdrop) {
+  animation: vui-dialog-backdrop-in var(--motion-duration-base)
+    var(--motion-ease-standard);
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  inset: 0;
+  position: absolute;
+}
+
+:where(.vui-dialog__panel) {
+  animation: vui-dialog-panel-in var(--motion-duration-base)
+    var(--motion-ease-standard);
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-paper-4);
+  box-shadow: var(--shadow-soft-4);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  left: 50%;
+  max-height: calc(100vh - 2rem);
+  max-width: min(28rem, calc(100vw - 2rem));
+  overflow: auto;
+  padding: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+:root[data-theme='dark'] :where(.vui-dialog__panel) {
+  background: color-mix(in srgb, var(--vellum) 88%, var(--ink) 12%);
+  border-color: var(--border-strong);
+}
+
+:where(.vui-dialog[data-state='closed']) .vui-dialog__backdrop {
+  animation: vui-dialog-backdrop-out var(--motion-duration-base)
+    var(--motion-ease-standard) forwards;
+  pointer-events: none;
+}
+
+:where(.vui-dialog[data-state='closed']) .vui-dialog__panel {
+  animation: vui-dialog-panel-out var(--motion-duration-base)
+    var(--motion-ease-standard) forwards;
+  pointer-events: none;
+}
+
+.vui-dialog__title {
+  color: var(--ink);
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-dialog-title);
+  font-weight: 600;
+  line-height: var(--lh-app-dialog-title);
+  margin: 0;
+}
+
+.vui-dialog__description {
+  color: var(--ink-3);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+:where(.vui-dialog__panel:focus) {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+@keyframes vui-dialog-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vui-dialog-backdrop-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vui-dialog-panel-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes vui-dialog-panel-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.vui-dialog__backdrop),
+  :where(.vui-dialog__panel) {
+    animation: none;
+  }
+}

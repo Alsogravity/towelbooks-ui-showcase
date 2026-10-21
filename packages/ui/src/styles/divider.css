@@ -1,0 +1,45 @@
+.vui-divider {
+  margin: 1.5rem 0;
+}
+
+.vui-divider--hairline {
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.vui-divider--double {
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
+  height: 0.25rem;
+}
+
+.vui-divider--ornamental {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.vui-divider__rule {
+  background: var(--rule);
+  flex: 1;
+  height: 1px;
+}
+
+.vui-divider__mark {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.vui-divider__mark--bookend {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.vui-divider__mark--fleuron {
+  height: 2rem;
+  object-fit: cover;
+  object-position: center;
+  width: 2rem;
+}

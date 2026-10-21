@@ -1,0 +1,1801 @@
+@import 'tailwindcss';
+@source "../../../../packages/ui/src";
+@source "../../../../packages/design-tokens/src";
+@import '@towelbooks/design-tokens/global.css';
+@import '@towelbooks/ui/global.css';
+@import './fonts.css';
+@import './appearance-sheet-shell.css';
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ====== Base ====== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans-family);
+    font-size: 16px;
+    line-height: 1.65;
+    font-feature-settings: 'kern', 'liga', 'onum';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  #app {
+    min-height: 100vh;
+    background-color: var(--bg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  a:hover {
+    color: var(--brick-2);
+  }
+
+  code,
+  .mono {
+    font-family: var(--font-mono-family);
+    font-size: 0.92em;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+    color: var(--fg);
+  }
+
+  hr.rule {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+}
+
+/* ====== Cursor utilities ====== */
+
+a[href],
+button:not(:disabled),
+input:is(
+    [type='button'],
+    [type='submit'],
+    [type='reset'],
+    [type='checkbox'],
+    [type='radio'],
+    [type='file']
+  ):not(:disabled),
+[role='button']:not([aria-disabled='true']),
+summary {
+  cursor: pointer;
+}
+
+button:disabled,
+input:is(
+    [type='button'],
+    [type='submit'],
+    [type='reset'],
+    [type='checkbox'],
+    [type='radio'],
+    [type='file']
+  ):disabled {
+  cursor: default;
+}
+
+a[href],
+button,
+input,
+textarea,
+select,
+[role='button']:not([aria-disabled='true']),
+summary {
+  transition-duration: var(--motion-duration-fast);
+  transition-property:
+    color, background-color, border-color, text-decoration-color, box-shadow,
+    opacity, transform;
+  transition-timing-function: var(--motion-ease-standard);
+}
+
+:root[data-theme-transition='active'],
+:root[data-theme-transition='active'] body,
+:root[data-theme-transition='active'] #app {
+  transition-duration: var(--motion-duration-slow);
+  transition-property: background-color, color;
+  transition-timing-function: var(--motion-ease-standard);
+}
+
+:root[data-theme-transition='active']
+  :where(
+    a[href],
+    button,
+    input,
+    textarea,
+    select,
+    [role='button']:not([aria-disabled='true']),
+    summary,
+    .vui-alert,
+    .vui-avatar,
+    .vui-card,
+    .vui-divider--double,
+    .vui-divider--hairline,
+    .vui-divider__rule,
+    .vui-field,
+    .vui-field__counter,
+    .vui-form-field__error,
+    .vui-form-field__hint,
+    .vui-menu-overlay__content,
+    .vui-select__group-label,
+    .vui-select__indicator,
+    .vui-select__option,
+    .vui-select__option-icon,
+    .vui-select__prepend-icon,
+    .vui-tag
+  ) {
+  transition-duration: var(--motion-duration-slow);
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-timing-function: var(--motion-ease-standard);
+}
+
+:root[data-theme-transition='active'] :where(.vui-card--bookplate)::after {
+  transition: color var(--motion-duration-slow) var(--motion-ease-standard);
+}
+
+/* ====== CSP-safe component surfaces ====== */
+
+.app-action-pill {
+  --ink: var(--night-fg);
+  --ink-3: var(--night-fg-2);
+  --paper-2: color-mix(in srgb, var(--night-fg) 14%, transparent);
+  --paper-3: color-mix(in srgb, var(--night-fg) 22%, transparent);
+  background: color-mix(in srgb, var(--night) 92%, var(--night-2) 8%);
+}
+
+/* ====== Shared header scrim (progressive blur, no colour) ======
+   Used behind fixed/sticky top headers (guest landing + app mobile header).
+   Pure backdrop blur with no tint: it ramps from a strong frost at the top to
+   clear at the bottom edge, so content scrolling underneath melts into focus
+   instead of crossing a colour band.
+
+   Layering avoids the "ghosted text" artifact you get from masking a single
+   backdrop-filter (where the mask is semi-transparent, the sharp original
+   shows through next to its blurred copy). Layer 1 is a *fully opaque base*
+   that covers the whole band, so the sharp page is never revealed. Layers 2–5
+   are heavier blurs anchored solid at the top, each fading out at a deeper
+   point — and because each fading layer is backed by an opaque layer beneath
+   it (down to the base), the blur fades by revealing *more blur*, never sharp
+   content. The radii step down ~0.8px at a time for a strong, near-linear
+   falloff.
+
+   iOS Safari note: WebKit clips backdrop-filter on absolute descendants at the
+   safe-area boundary. `.app-mobile-header` (and `.landing-header`) carry a real
+   background on the fixed/sticky element so the Dynamic Island / status-bar
+   strip stays painted. */
+
+/* Authenticated mobile header: fill strategy matching `.landing-header`.
+   Background is on the fixed/sticky element itself (not an absolute child) so
+   Safari can sample it for notch tinting when the bar is ≥ ~10px tall. */
+.app-mobile-header {
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+}
+
+.app-header-scrim {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 0;
+  height: calc(
+    var(--app-header-scrim-height, 90px) + env(safe-area-inset-top, 0px)
+  );
+  pointer-events: none;
+}
+
+.app-header-scrim__blur {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(var(--scrim-blur, 1px));
+  backdrop-filter: blur(var(--scrim-blur, 1px));
+  /* Solid from the top down to --scrim-solid, then a short fade to nothing. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 var(--scrim-solid, 70%),
+    transparent var(--scrim-fade, 100%)
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 var(--scrim-solid, 70%),
+    transparent var(--scrim-fade, 100%)
+  );
+}
+
+/* Base: lightest blur, covers the whole band so nothing sharp shows through. */
+.app-header-scrim__blur:nth-of-type(1) {
+  --scrim-blur: 0.7px;
+  --scrim-solid: 80%;
+  --scrim-fade: 100%;
+}
+
+.app-header-scrim__blur:nth-of-type(2) {
+  --scrim-blur: 1.4px;
+  --scrim-solid: 56%;
+  --scrim-fade: 74%;
+}
+
+.app-header-scrim__blur:nth-of-type(3) {
+  --scrim-blur: 2.1px;
+  --scrim-solid: 40%;
+  --scrim-fade: 58%;
+}
+
+.app-header-scrim__blur:nth-of-type(4) {
+  --scrim-blur: 2.8px;
+  --scrim-solid: 24%;
+  --scrim-fade: 42%;
+}
+
+/* Heaviest blur, top of the stack, confined to the very top of the band. */
+.app-header-scrim__blur:nth-of-type(5) {
+  --scrim-blur: 3.5px;
+  --scrim-solid: 10%;
+  --scrim-fade: 28%;
+}
+
+:root {
+  /* Mobile/tablet: wordmark is in-flow above #auth-main (no top inset). */
+  --auth-header-offset: 0px;
+  --auth-footer-offset: 4.5rem;
+  --auth-optical-balance: max(
+    0px,
+    calc((var(--auth-footer-offset) - var(--auth-header-offset)) / 2)
+  );
+
+  /* Guest landing: hand-drawn marginalia (matches the design reference). */
+  --font-hand: 'Gloria Hallelujah', 'Comic Sans MS', cursive;
+  --hand: #d07a4e;
+
+  /* Guest landing: display face for section titles (matches the design reference). */
+  --font-section:
+    'Bricolage Grotesque', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Guest landing: section headings in the Bricolage Grotesque display face. */
+.font-section-title {
+  font-family: var(--font-section);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Hero title — mobile wraps onto multiple lines; every breakpoint above mobile
+   keeps it on a single line, scaling with the viewport so it stays as large as
+   will fit (tuned for the longest, pt-BR, headline). */
+.landing-hero-title {
+  font-size: 3.5rem;
+  letter-spacing: -0.04em;
+  border-radius: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .landing-hero-title {
+    white-space: nowrap;
+    font-size: clamp(2.75rem, 6vw, 6rem);
+    letter-spacing: -0.045em;
+  }
+}
+
+.landing-hero-bg {
+  object-position: right center;
+}
+
+/* Hero editorial text portal — a continuous SVG <textPath> string riding a
+   fixed curve from the top down into a centered pill "portal" (CSS waveform)
+   and back up to the top, morphing from plain sans on the left into serif
+   italic on a dark band on the right. The flow speed is normalised in JS (one
+   measured repeat per cycle over a duration scaled to that length), so the
+   perceived speed is identical across browsers and the loop is seamless.
+   The whole rig lives in a 1440×360 design space, scaled to the viewport. */
+.landing-hero-portal {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  --portal-design-width: 2000;
+  /* Screen px per design unit. Dividing a length by a number is valid (unlike a
+     unitless `scale()` from vw); the rail width then always equals the viewport,
+     so the ribbon fills edge-to-edge. 720px floor keeps text legible on phones. */
+  --portal-unit: calc(max(100vw, 720px) / 1440);
+  /* Top of the rail; tuned so the pill lands below the CTA. */
+  --portal-top: 50%;
+}
+
+@media (min-width: 640px) {
+  .landing-hero-portal {
+    --portal-top: 60%;
+    --portal-unit: calc(max(100vw, 720px) / 2000);
+  }
+}
+
+@media (max-width: 639px) {
+  .landing-hero-portal {
+    --portal-top: 75%;
+  }
+}
+
+/* 1440×240 design surface, centred and sized to the viewport via --portal-unit.
+   The pill sits at design (720, 200); the curve rises to y≈60 at both edges. */
+.landing-hero-portal__rail {
+  position: absolute;
+  left: 50%;
+  top: var(--portal-top);
+  width: calc(var(--portal-design-width) * var(--portal-unit));
+  height: calc(240 * var(--portal-unit));
+  transform: translateX(-50%);
+}
+
+.landing-hero-portal__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Dark editorial ribbon: a thick stroke the serif string rides on (right). */
+.landing-hero-portal__band {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 92%, #000);
+  stroke-width: 54;
+  stroke-linecap: round;
+}
+
+.landing-hero-portal__text {
+  font-size: 40px;
+  letter-spacing: 0.5px;
+  /* Run the curve through the middle of the glyphs (not the baseline) so the
+     string enters and leaves through the vertical centre of the pill. */
+  dominant-baseline: central;
+}
+
+/* Plain side: sans marginalia, visible on the left, dissolving into the pill. */
+.landing-hero-portal__text--plain {
+  font-family: var(--font-section);
+  font-weight: 600;
+  fill: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+/* Editorial side: serif italic riding the dark band, emerging right of the pill. */
+.landing-hero-portal__text--editorial {
+  font-family: var(--font-literary);
+  font-style: italic;
+  font-weight: 500;
+  fill: var(--paper);
+}
+
+/* Centered pill window at the bottom of the curve; the waveform sits inside.
+   Positioned/sized in design units (× --portal-unit) so it tracks the curve. */
+.landing-hero-portal__pill {
+  position: absolute;
+  left: 50%;
+  top: calc(200 * var(--portal-unit));
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(150 * var(--portal-unit));
+  height: calc(74 * var(--portal-unit));
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1.5px solid color-mix(in srgb, var(--ink) 45%, transparent);
+  background: radial-gradient(
+    120% 100% at 50% 0%,
+    color-mix(in srgb, var(--paper) 96%, transparent),
+    color-mix(in srgb, var(--paper) 80%, transparent)
+  );
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fff 70%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent),
+    0 4px 14px color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+/* ====== Handwriting Lines Animation ====== */
+
+/* Fills the pill; the SVG's own 150×74 viewBox handles internal proportions. */
+.handwriting-lines {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Warm pencil ink for the cursive rows. */
+.handwriting-lines__row {
+  fill: none;
+  stroke: var(--hand);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.handwriting-lines__pen-body {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 88%, #000);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.handwriting-lines__pen-nib {
+  fill: var(--hand);
+  stroke: none;
+}
+
+/* Social block title — larger below lg; lg+ uses .font-section-title scale. */
+@media (max-width: 63.98rem) {
+  .landing-social-title {
+    font-size: clamp(3rem, 7.5vw, 4.25rem);
+  }
+}
+
+.landing-page-button {
+  font-family: var(--font-sans-family);
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.landing-page-button.vui-button--lg {
+  font-size: 1.25rem;
+}
+
+.landing-page-button.vui-button--sm {
+  font-size: 1rem;
+}
+
+/* Social section CTA icon: play-triangle rotates + scales on hover (same as personas). */
+.landing-social-start-cta .vui-button__icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.landing-social-start-cta:hover .vui-button__icon,
+.landing-social-start-cta:focus-visible .vui-button__icon {
+  transform: rotate(120deg) scale(1.15);
+}
+
+/* Social section "Find a Room" icon: same zoom as play, no rotation. */
+.landing-social-find-cta .vui-button__icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.landing-social-find-cta:hover .vui-button__icon,
+.landing-social-find-cta:focus-visible .vui-button__icon {
+  transform: scale(1.15);
+}
+
+/* Guest landing: fixed top bar — darker scrim + shy hand-colored rule. */
+.landing-header {
+  background: color-mix(in srgb, var(--night) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in srgb, var(--hand) 24%, transparent);
+}
+
+/* Guest landing: pale paper band (how-it-works) in dark mode. */
+[data-theme='dark'] .landing-paper-band {
+  background-color: #f4ecd8;
+}
+
+/* Guest landing: “reading room” block — top cap fills rounded-corner gaps only. */
+.landing-pill-shell {
+  --landing-pill-cap-height: 4rem;
+  --landing-pill-paper-cap: var(--paper);
+  --landing-pill-surface: var(--vellum);
+  --landing-pill-forest: #14423e;
+}
+
+@media (min-width: 40rem) {
+  .landing-pill-shell {
+    --landing-pill-cap-height: 6rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .landing-pill-shell {
+    --landing-pill-cap-height: 8rem;
+  }
+}
+
+[data-theme='dark'] .landing-pill-shell {
+  --landing-pill-paper-cap: #f4ecd8;
+}
+
+.landing-pill-shell--forest {
+  --landing-pill-surface: var(--landing-pill-forest);
+}
+
+.landing-pill-shell__paper-cap {
+  height: var(--landing-pill-cap-height);
+  background-color: var(--landing-pill-paper-cap);
+  pointer-events: none;
+}
+
+/* Cap tone for a pill that meets a dark band (not the cream paper): the gaps
+   reveal the page's dark surface so the rounded corner melts into it. Matches
+   `bg-vellum` bands like the promises strip below the personas pill. */
+.landing-pill-shell__paper-cap--page {
+  background-color: var(--vellum);
+}
+
+.landing-pill-shell__paper-cap--forest {
+  background-color: var(--landing-pill-forest);
+}
+
+/* Mirror of the top cap: tucks under the room block's rounded bottom corners so
+   the gaps reveal the paper band below it instead of the dark page background. */
+.landing-pill-shell__paper-cap--bottom {
+  margin-top: calc(-1 * var(--landing-pill-cap-height));
+}
+
+.landing-pill-section {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--landing-pill-cap-height));
+  background-color: var(--landing-pill-surface);
+}
+
+.landing-room-section {
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #17110d;
+}
+
+.landing-room-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url('/assets/landing/group-reading-room-mobile-speed-blur.webp');
+  background-position: center 24%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(0.9) brightness(0.72);
+  opacity: 0.92;
+  transform: scale(1.05);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.landing-room-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(20, 13, 9, 0.82), rgba(20, 13, 9, 0.74)),
+    radial-gradient(
+      110% 80% at 50% 0%,
+      rgba(222, 157, 89, 0.18),
+      rgba(222, 157, 89, 0) 52%
+    ),
+    radial-gradient(
+      90% 90% at 50% 100%,
+      rgba(0, 0, 0, 0.22),
+      rgba(0, 0, 0, 0) 48%
+    );
+  pointer-events: none;
+}
+
+@media (min-width: 64rem) {
+  .landing-room-section::before {
+    background-image: url('/assets/landing/group-reading-room-desktop-speed-blur.webp');
+    background-position: center 46%;
+  }
+}
+
+/* Reading-room art: hidden on mobile, sm, and md (below Tailwind lg / 1024px). */
+@media (max-width: 63.98rem) {
+  .landing-pill-visual {
+    display: none !important;
+  }
+}
+
+/* ====== Guest landing: "Made for the way you read" personas card ======
+   A dark editorial pill on the warm-paper band. The app's primary accent
+   (brick / terracotta, matching the illustration halo) lights up the headline
+   word, the persona pills, and the CTA. */
+.landing-personas-title {
+  font-family: var(--font-literary);
+  /* High vw term lets the headline grow to fill the column on phones (where a
+     small vw would keep falling back to the floor); capped for tablet. */
+  font-size: clamp(2.75rem, 14vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Desktop: give the editorial headline more presence. */
+@media (min-width: 64rem) {
+  .landing-personas-title {
+    font-size: clamp(4.5rem, 6vw, 5.75rem);
+  }
+}
+
+.landing-personas-accent {
+  font-family: var(--font-literary);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--brick-2);
+}
+
+.landing-personas-subtitle {
+  font-family: var(--font-literary);
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Outlined persona chips — light stroke/text that hold steady on the dark pill
+   regardless of theme. A traveling brick spotlight (auto-cycled in JS, see
+   PersonaPills) and hover both warm one chip at a time; the slow color easing
+   makes the highlight "breathe" as it moves down the list. */
+.landing-persona-pill {
+  border: 1.5px solid color-mix(in srgb, var(--night-fg) 26%, transparent);
+  color: color-mix(in srgb, var(--night-fg) 90%, transparent);
+  cursor: default;
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease,
+    color 0.4s ease,
+    transform 0.2s ease,
+    box-shadow 0.4s ease;
+}
+
+.landing-persona-pill:hover,
+.landing-persona-pill--active {
+  border-color: color-mix(in srgb, var(--brick-2) 70%, transparent);
+  background-color: color-mix(in srgb, var(--brick-2) 16%, transparent);
+  color: color-mix(in srgb, var(--brick-2) 35%, var(--night-fg));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--brick) 22%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-persona-pill {
+    transition: none;
+  }
+
+  .landing-persona-pill:hover,
+  .landing-persona-pill--active {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* The illustration wrapper bleeds above the rounded top edge (negative margin in
+   the markup) and drifts with a slow, hand-drawn float so the reader feels alive
+   without pulling focus from the copy. Transform-only — no layout shift. */
+.landing-personas-art {
+  animation: personaFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes personaFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1.2deg);
+  }
+}
+
+/* Soft brick halo behind the illustration, echoing the colored disc it sits on
+   in the source art (the PNG ships transparent). It breathes in time with the
+   float to add depth. */
+.landing-personas-glow {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 118%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--hand) 38%, transparent) 0%,
+    color-mix(in srgb, var(--hand) 14%, transparent) 45%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+  z-index: 0;
+  animation: personaGlowBreathe 7s ease-in-out infinite;
+}
+
+@keyframes personaGlowBreathe {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-personas-art,
+  .landing-personas-glow {
+    animation: none;
+  }
+}
+
+/* Keep the persona CTA's local icon motion while letting the shared primary
+   button variant provide the standard TowelBooks accent color. */
+.landing-personas-cta .vui-button__icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.landing-personas-cta:hover .vui-button__icon,
+.landing-personas-cta:focus-visible .vui-button__icon {
+  transform: rotate(120deg) scale(1.15);
+}
+
+[data-theme='dark'] .landing-how-intro {
+  --ink: #1a1714;
+  --ink-2: #3d362c;
+  --ink-3: #6b5e4c;
+  --ink-4: #9c8c73;
+  --hand: #d07a4e;
+}
+
+.landing-how-intro :where(h2) {
+  color: var(--ink);
+}
+
+.landing-how-intro > p.mt-4 {
+  color: var(--ink-2);
+}
+
+.landing-how-eyebrow :where(span) {
+  font-weight: 600;
+}
+
+.landing-how-eyebrow :where(path) {
+  stroke-width: 2.5;
+}
+
+/* Guest landing: feature cards — playful illustration motion.
+   The art rests with a gentle settle and springs to life on hover/focus so the
+   "Everything a reading life needs" grid feels alive (Duolingo-style bounce). */
+.landing-feature-art {
+  transform-origin: 50% 70%;
+  transition: transform 0.3s ease;
+}
+
+.landing-feature-card:hover .landing-feature-art,
+.landing-feature-card:focus-within .landing-feature-art {
+  animation: featureArtPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes featureArtPop {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translateY(-9px) rotate(-5deg) scale(1.08);
+  }
+  65% {
+    transform: translateY(0) rotate(4deg) scale(1.04);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-feature-card {
+    transition: none;
+  }
+
+  .landing-feature-card:hover {
+    transform: none;
+  }
+
+  .landing-feature-card:hover .landing-feature-art,
+  .landing-feature-card:focus-within .landing-feature-art {
+    animation: none;
+  }
+}
+
+/* Dashboard insights stat illustration pop */
+.stats-illustration {
+  transform-origin: 70% 80%;
+  transition: transform 0.3s ease;
+}
+.group:hover .stats-illustration {
+  animation: insightsStatPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes insightsStatPop {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translateY(-6px) rotate(-3deg) scale(1.05);
+  }
+  65% {
+    transform: translateY(0) rotate(2deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .stats-illustration {
+    animation: none;
+  }
+}
+
+/* Guest landing: split-hero social reading visual */
+.landing-hero-visual__scrim {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--night) 35%, transparent) 0%,
+      transparent 28%,
+      transparent 52%,
+      color-mix(in srgb, var(--night) 55%, transparent) 100%
+    ),
+    radial-gradient(
+      ellipse 120% 80% at 50% 100%,
+      color-mix(in srgb, var(--night) 45%, transparent),
+      transparent 70%
+    );
+}
+
+.landing-hero-comment {
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  box-shadow: var(--shadow-2);
+  padding: 0.5rem 0.75rem;
+  backdrop-filter: blur(6px);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* Desktop: fixed wordmark; reserve space in the main column. */
+    --auth-header-offset: 1.5rem;
+    --auth-footer-offset: 4.5rem;
+  }
+}
+
+/* Auth hero panel: locked to dark-theme night tokens so the collage side
+   stays visually consistent regardless of the user's theme preference. */
+.app-auth-hero-panel {
+  --night: #111111;
+  --night-2: #181818;
+  background: color-mix(in srgb, var(--night) 92%, var(--night-2) 8%);
+}
+
+.profile-header__cover {
+  background-image: linear-gradient(
+    135deg,
+    var(--paper-3) 0%,
+    var(--gold-soft) 55%,
+    var(--brick-soft) 100%
+  );
+}
+
+.profile-header__hero {
+  --profile-header-avatar-size: 5rem;
+  --profile-header-avatar-protrusion: 20px;
+  overflow: visible;
+}
+
+.profile-header__avatar-slot {
+  flex-shrink: 0;
+  width: var(--profile-header-avatar-size);
+  height: var(--profile-header-avatar-size);
+  padding-inline-start: 0;
+  margin-top: calc(
+    var(--profile-header-avatar-protrusion) - var(--profile-header-avatar-size)
+  );
+}
+
+@media (min-width: 1024px) {
+  .profile-header__content .profile-header__avatar-slot {
+    padding-inline-start: var(--s-4);
+  }
+}
+
+.profile-header__content {
+  position: relative;
+}
+
+.profile-header__header-actions {
+  align-items: center;
+  gap: var(--s-4);
+  width: 100%;
+}
+
+.profile-header__header-actions > * {
+  width: 100%;
+}
+
+.profile-header__header-actions .profile-actions__pill-button,
+.profile-header__header-actions .profile-actions__edit-button {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .profile-header__header-actions {
+    position: absolute;
+    top: var(--s-3);
+    right: 0;
+    z-index: 10;
+    margin-top: 0;
+    justify-content: flex-end;
+    width: auto;
+    gap: var(--s-2);
+  }
+
+  .profile-header__header-actions > * {
+    width: auto;
+  }
+
+  .profile-header__header-actions .profile-actions__pill-button,
+  .profile-header__header-actions .profile-actions__edit-button {
+    flex: 0 1 auto;
+  }
+}
+
+.profile-header__topline {
+  position: relative;
+  z-index: 10;
+  height: var(--profile-header-avatar-protrusion);
+}
+
+.profile-header__identity {
+  display: flex;
+  flex: 1 1 12rem;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.profile-header__name-row {
+  margin-top: var(--s-2);
+}
+
+.profile-header__hero .profile-header__avatar {
+  height: var(--profile-header-avatar-size);
+  width: var(--profile-header-avatar-size);
+  font-size: 1.25rem;
+}
+
+.profile-header__display-name {
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding-block: 2px;
+  text-align: left;
+}
+
+.profile-header__actions-slot {
+  position: absolute;
+  top: var(--s-3);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-header__stats-row {
+  display: flex;
+  min-width: 0;
+}
+
+.profile-header__stats-row ul {
+  width: auto;
+  min-width: 0;
+  gap: var(--s-3) var(--s-4);
+  justify-content: flex-start;
+}
+
+.profile-header__stats-row li {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.vui-illustration {
+  --illust-stroke: #2f2a24;
+  --illust-muted: #b99762;
+  --illust-soft: #e9d8b8;
+  --illust-paper: #fff8ea;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.vui-illustration-surface {
+  background-color: var(--illust-paper, #fff8ea);
+}
+
+.vui-illustration__line {
+  fill: none;
+  stroke: var(--illust-stroke);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vui-illustration__thin {
+  fill: none;
+  stroke: var(--illust-stroke);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vui-illustration__muted {
+  fill: none;
+  stroke: var(--illust-muted);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vui-illustration__soft {
+  fill: var(--illust-soft);
+  stroke: var(--illust-stroke);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vui-illustration__paper {
+  fill: var(--illust-paper);
+  stroke: var(--illust-stroke);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vui-illustration__dash {
+  fill: none;
+  stroke: var(--illust-stroke);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-dasharray: 3 8;
+  opacity: 0.7;
+}
+
+.vui-illustration__dash--wide {
+  stroke-dasharray: 4 9;
+}
+
+.vui-illustration__blush {
+  fill: var(--illust-soft);
+  opacity: 0.85;
+}
+
+.groups-cta-card {
+  background:
+    radial-gradient(circle at top right, var(--brick-soft), transparent 60%),
+    var(--bg-elev);
+}
+
+/* Glyph-local glow for dashboard stat cards — mobile only (compact shell breakpoint). */
+.dashboard-stat-glyph {
+  display: inline;
+}
+
+.dashboard-stat-glyph__blur {
+  display: none;
+}
+
+.dashboard-stat-glyph__sharp {
+  position: relative;
+}
+
+@media (max-width: 1023px) {
+  .dashboard-stat-glyph {
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+  }
+
+  .dashboard-stat-glyph__blur {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+    filter: blur(2px);
+    opacity: 0.52;
+  }
+
+  .dashboard-stat-glyph__sharp {
+    text-shadow:
+      0 0 6px color-mix(in srgb, var(--paper) 68%, transparent),
+      0 0 14px color-mix(in srgb, var(--paper) 32%, transparent);
+  }
+}
+
+.app-progress {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  inline-size: 100%;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-paper-pill);
+  background: var(--progress-track, var(--paper-2));
+}
+
+.app-progress::-webkit-progress-bar {
+  background: var(--progress-track, var(--paper-2));
+}
+
+.app-progress::-webkit-progress-value,
+.app-progress::-moz-progress-bar {
+  border-radius: inherit;
+  transition: width var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.app-progress--xs {
+  block-size: 3px;
+}
+
+.app-progress--sm {
+  block-size: 2px;
+}
+
+.app-progress--md {
+  block-size: 4px;
+}
+
+.app-progress--forest::-webkit-progress-value,
+.app-progress--forest::-moz-progress-bar {
+  background: var(--forest);
+}
+
+.app-progress--rule::-webkit-progress-value,
+.app-progress--rule::-moz-progress-bar {
+  background: var(--rule);
+}
+
+.app-progress--brick::-webkit-progress-value,
+.app-progress--brick::-moz-progress-bar {
+  background: var(--brick);
+}
+
+/* ====== Auth transitions ====== */
+
+@keyframes pageContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content-enter {
+  animation: pageContentIn var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+/* ====== Tab Panel transitions ====== */
+
+.tab-panels-fade {
+  display: grid;
+  width: 100%;
+}
+
+.tab-panel-fade {
+  grid-area: 1 / 1;
+  min-width: 0;
+  outline: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(3px);
+  transition:
+    opacity var(--motion-duration-base) var(--motion-ease-subtle),
+    transform var(--motion-duration-base) var(--motion-ease-subtle),
+    visibility 0s linear var(--motion-duration-base);
+}
+
+.tab-panel-fade--active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity var(--motion-duration-base) var(--motion-ease-subtle),
+    transform var(--motion-duration-base) var(--motion-ease-subtle),
+    visibility 0s linear 0s;
+}
+
+.tab-panel-slide {
+  min-width: 0;
+  outline: none;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.tab-panel-slide--inactive {
+  overflow: clip;
+  contain: paint;
+}
+
+@keyframes slideOverPanelIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOverPanelInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.app-slide-over-panel[data-state='open'] {
+  animation: slideOverPanelIn var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+.app-slide-over-panel--left[data-state='open'] {
+  animation: slideOverPanelInFromLeft var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+@keyframes slideOverPanelOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideOverPanelOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.app-slide-over-panel[data-state='closed'] {
+  animation: slideOverPanelOut var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+.app-slide-over-panel--left[data-state='closed'] {
+  animation: slideOverPanelOutToLeft var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+.app-slide-over-overlay[data-state='open'] {
+  animation: modalOverlayIn var(--motion-duration-base)
+    var(--motion-ease-standard) both;
+}
+
+.app-slide-over-overlay[data-state='closed'] {
+  animation: modalOverlayOut var(--motion-duration-base)
+    var(--motion-ease-standard) both;
+}
+
+@keyframes bottomSheetIn {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bottomSheetOut {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.app-bottom-sheet-panel[data-state='open'] {
+  animation: bottomSheetIn var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+.app-bottom-sheet-panel[data-state='closed'] {
+  animation: bottomSheetOut var(--motion-duration-slow)
+    var(--motion-ease-standard) both;
+}
+
+/* Above slide-over shells (z-10) and modal dialogs (z-50). */
+.app-toast-layer {
+  position: fixed;
+  inset-inline: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline: 1rem;
+  pointer-events: none;
+  bottom: calc(
+    env(safe-area-inset-bottom, 0px) + var(--app-mobile-nav-height, 48px) + 1rem
+  );
+}
+
+@media (min-width: 1024px) {
+  .app-toast-layer {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  }
+}
+
+body:has(
+    .app-slide-over-overlay[data-state='open'],
+    .app-dialog-overlay[data-state='open']
+  )
+  .app-toast-layer {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+}
+
+@keyframes modalOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalOverlayOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dialogPanelOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+}
+
+.app-dialog-overlay[data-state='open'] {
+  animation: modalOverlayIn var(--motion-duration-base)
+    var(--motion-ease-standard) both;
+}
+
+.app-dialog-overlay[data-state='closed'] {
+  animation: modalOverlayOut var(--motion-duration-base)
+    var(--motion-ease-standard) both;
+}
+
+.app-dialog-panel[data-state='open'] {
+  animation: dialogPanelIn var(--motion-duration-base)
+    var(--motion-ease-standard) both;
+  transform-origin: center;
+}
+
+.app-dialog-panel[data-state='closed'] {
+  animation: dialogPanelOut var(--motion-duration-base)
+    var(--motion-ease-standard) both;
+  transform-origin: center;
+}
+
+/* Tailwind utilities sit in @layer and lose to unlayered vui-button rules. */
+
+/* Footer language select: caption size matching adjacent copyright text. */
+.footer-lang-select.vui-field {
+  font-size: var(--fs-caption);
+}
+
+.profile-edit-form__action-button.vui-button--sm {
+  block-size: 2.375rem;
+}
+
+.profile-edit-form__save-button.vui-button--sm {
+  block-size: 2.375rem;
+  padding-inline: 2rem;
+}
+
+.app-mobile-header__actions.vui-liquid-action-group,
+.app-mobile-header__actions .vui-liquid-action-group__surface--control,
+.app-mobile-header__actions .vui-capsule-action-group__leading,
+.app-mobile-header__actions .vui-capsule-action-group__primary,
+.app-mobile-header__actions .vui-capsule-action-group__trailing {
+  border: none;
+}
+
+.app-mobile-header__actions
+  .vui-capsule-action-group__search:not(.vui-capsule-action-group__trailing) {
+  border: 1px solid transparent;
+  transition:
+    background-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    border-color var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    box-shadow var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease),
+    padding var(--vui-liquid-action-morph-duration)
+      var(--vui-liquid-action-morph-ease);
+}
+
+.app-mobile-header__actions
+  .vui-capsule-action-group__search:not(
+    .vui-capsule-action-group__trailing
+  )[data-state='separated'] {
+  border-color: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+@media (pointer: coarse) {
+  :where(
+    input,
+    textarea,
+    select,
+    .vui-field,
+    .vui-capsule-action-group__input
+  ) {
+    font-size: 16px !important;
+  }
+}
+
+@keyframes authContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-content-enter {
+  animation: authContentIn var(--motion-duration-slow) var(--motion-ease-subtle)
+    both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme-transition='active'],
+  :root[data-theme-transition='active'] body,
+  :root[data-theme-transition='active'] #app,
+  :root[data-theme-transition='active']
+    :where(
+      a[href],
+      button,
+      input,
+      textarea,
+      select,
+      [role='button']:not([aria-disabled='true']),
+      summary,
+      .vui-alert,
+      .vui-avatar,
+      .vui-card,
+      .vui-divider--double,
+      .vui-divider--hairline,
+      .vui-divider__rule,
+      .vui-field,
+      .vui-field__counter,
+      .vui-form-field__error,
+      .vui-form-field__hint,
+      .vui-menu-overlay__content,
+      .vui-select__group-label,
+      .vui-select__indicator,
+      .vui-select__option,
+      .vui-select__option-icon,
+      .vui-select__prepend-icon,
+      .vui-tag
+    ),
+  :root[data-theme-transition='active'] :where(.vui-card--bookplate)::after {
+    transition: none !important;
+  }
+
+  .page-content-enter,
+  .app-slide-over-panel,
+  .app-slide-over-overlay,
+  .app-dialog-overlay,
+  .app-dialog-panel,
+  .auth-content-enter,
+  .tab-panel-fade,
+  .tab-panel-fade--active {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+  .tabs-indicator--animate {
+    transition: none;
+  }
+
+  .app-auth-hero-panel,
+  .app-auth-shell-column {
+    transition: none !important;
+  }
+}
+
+.tabs-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--brick);
+  pointer-events: none;
+}
+
+.tabs-indicator--animate {
+  transition:
+    transform var(--motion-duration-base) var(--motion-ease-subtle),
+    width var(--motion-duration-base) var(--motion-ease-subtle);
+}
+
+.profile-tabs-scrollbar-hidden,
+.tabs-scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.profile-tabs-scrollbar-hidden::-webkit-scrollbar,
+.tabs-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.profile-tabs-loading-state__icon-shell {
+  position: relative;
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 9999px;
+  background: var(--paper-2);
+}
+
+.profile-tabs-loading-state__icon-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 38%,
+    var(--paper-3) 46%,
+    var(--gold-soft) 50%,
+    var(--paper-3) 54%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 240% 100%;
+  animation: profileTabsLoadingShimmer var(--motion-duration-shimmer) linear
+    infinite;
+  opacity: 0.9;
+}
+
+.profile-tabs-loading-state__icon {
+  position: relative;
+  z-index: 1;
+  animation: profileTabsLoadingIcon var(--motion-duration-shimmer)
+    var(--motion-ease-standard) infinite;
+  color: var(--ink-4);
+}
+
+.profile-tabs-loading-state__dots {
+  display: inline-flex;
+  width: 3ch;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-align: left;
+}
+
+.profile-tabs-loading-state__dots-track {
+  display: inline-block;
+  width: 1ch;
+  overflow: hidden;
+  animation: profileTabsLoadingDots 1.2s steps(1, end) infinite;
+}
+
+@keyframes profileTabsLoadingShimmer {
+  from {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes profileTabsLoadingIcon {
+  0%,
+  100% {
+    color: var(--ink-4);
+    opacity: 0.7;
+  }
+
+  50% {
+    color: var(--ink-3);
+    opacity: 1;
+  }
+}
+
+@keyframes profileTabsLoadingDots {
+  0%,
+  24% {
+    width: 1ch;
+  }
+
+  25%,
+  49% {
+    width: 2ch;
+  }
+
+  50%,
+  74% {
+    width: 3ch;
+  }
+
+  75%,
+  100% {
+    width: 1ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-tabs-loading-state__icon-shell::before,
+  .profile-tabs-loading-state__icon,
+  .profile-tabs-loading-state__dots-track {
+    animation: none;
+  }
+
+  .profile-tabs-loading-state__dots-track {
+    width: 3ch;
+  }
+}
+
+/* GPU-accelerated premium theme-aware shimmer effect */
+.app-shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--paper-2);
+  --shimmer-color: rgba(255, 255, 255, 0.4);
+}
+
+:root[data-theme='dark'] .app-shimmer {
+  --shimmer-color: rgba(255, 255, 255, 0.05);
+}
+
+.app-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--shimmer-color) 40%, transparent) 20%,
+    var(--shimmer-color) 60%,
+    color-mix(in srgb, var(--shimmer-color) 40%, transparent) 80%,
+    transparent 100%
+  );
+  animation: app-shimmer-animation 1.6s infinite linear;
+}
+
+@keyframes app-shimmer-animation {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shimmer::after {
+    animation: none;
+    transform: none;
+  }
+
+  .dashboard-stat-glyph__blur {
+    display: none;
+  }
+
+  .dashboard-stat-glyph__sharp {
+    text-shadow: none;
+  }
+}
+
+/* ====== Layout utilities ====== */
+
+.app-shell-bleed-x {
+  @media (min-width: 1024px) {
+    margin-left: calc(-1 * var(--app-desktop-content-inset));
+    margin-right: calc(-1 * var(--app-desktop-content-inset));
+    padding-left: var(--app-desktop-content-inset);
+    padding-right: var(--app-desktop-content-inset);
+  }
+}

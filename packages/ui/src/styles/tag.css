@@ -1,0 +1,72 @@
+:where(.vui-tag) {
+  align-items: center;
+  border: 1px solid;
+  border-radius: var(--radius-paper-pill);
+  display: inline-flex;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  gap: 0.375rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding: 0.25rem 0.625rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+:where(.vui-tag--default) {
+  background: var(--vellum);
+  border-color: var(--rule);
+  color: var(--ink-2);
+}
+
+:where(.vui-tag--gilt) {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  color: var(--ink-2);
+}
+
+:where(.vui-tag--private) {
+  background: var(--brick-soft);
+  border-color: var(--brick);
+  color: var(--brick);
+}
+
+:where(.vui-tag--paused) {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  color: var(--ink-3);
+}
+
+:where(.vui-tag--reading) {
+  background: var(--forest-soft);
+  border-color: var(--forest);
+  color: var(--forest);
+}
+
+:where(.vui-tag--role) {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  color: var(--ink-3);
+}
+
+:where(.vui-tag__dot) {
+  border-radius: var(--radius-paper-pill);
+  height: 0.375rem;
+  width: 0.375rem;
+}
+
+:where(.vui-tag__dot--gilt) {
+  background: var(--gold);
+}
+
+:where(.vui-tag__dot--paused) {
+  background: var(--ink-3);
+}
+
+:where(.vui-tag__dot--private) {
+  background: var(--brick);
+}
+
+:where(.vui-tag__dot--reading) {
+  background: var(--forest);
+}

@@ -1,0 +1,27 @@
+.vui-count-badge-anchor {
+  flex: 0 0 auto;
+  overflow: visible;
+  position: relative;
+}
+
+.vui-count-badge {
+  align-items: center;
+  background: var(--brick);
+  block-size: 1rem;
+  border-radius: 9999px;
+  box-shadow: var(--shadow-soft-1);
+  color: var(--paper);
+  display: inline-flex;
+  font-size: 0.625rem;
+  font-weight: 700;
+  inline-size: auto;
+  justify-content: center;
+  line-height: 1;
+  min-inline-size: 1rem;
+  padding-inline: 0.25rem;
+  pointer-events: none;
+  position: absolute;
+  right: -0.25rem;
+  top: -0.25rem;
+  z-index: 1;
+}

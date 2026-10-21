@@ -1,0 +1,37 @@
+:where(.vui-form-field__label) {
+  color: var(--fg-muted);
+  display: block;
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-label);
+  font-weight: 600;
+  line-height: var(--lh-app-compact);
+  margin: 0 0 var(--s-2);
+}
+
+:where(.vui-form-field__label--hidden) {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+:where(.vui-form-field__hint),
+:where(.vui-form-field__error) {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-caption);
+  line-height: var(--lh-app-compact);
+  margin: var(--s-1) 0 0;
+}
+
+:where(.vui-form-field__hint) {
+  color: var(--fg-subtle);
+}
+
+:where(.vui-form-field__error) {
+  color: var(--danger);
+}

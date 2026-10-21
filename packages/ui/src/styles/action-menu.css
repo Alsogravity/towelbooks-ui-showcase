@@ -1,0 +1,98 @@
+.vui-action-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 12rem;
+  padding: 0.25rem;
+}
+
+.vui-action-menu__section + .vui-action-menu__section {
+  border-top: 1px solid var(--rule);
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+}
+
+.vui-action-menu__section-label {
+  color: var(--ink-4);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.625rem 0.25rem;
+  text-transform: uppercase;
+}
+
+.vui-action-menu__item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-paper-4);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  gap: 0.75rem;
+  inline-size: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.vui-action-menu__item:hover:not(:disabled),
+.vui-action-menu__item:focus-visible {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  outline: none;
+}
+
+.vui-action-menu__item[aria-checked='true'] {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.vui-action-menu__item[aria-checked='true']:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.vui-action-menu__item:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.vui-action-menu__item--danger {
+  color: var(--brick);
+}
+
+.vui-action-menu__item-icon,
+.vui-action-menu__item-check,
+.vui-action-menu__item-icon-spacer {
+  flex: 0 0 1.25rem;
+}
+
+.vui-action-menu__item-icon {
+  color: currentColor;
+}
+
+.vui-action-menu__item-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.vui-action-menu__item-label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.vui-action-menu__item-description {
+  color: var(--ink-3);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.vui-action-menu__item-check {
+  color: var(--brick);
+  opacity: 0;
+}
+
+.vui-action-menu__item-check--visible {
+  opacity: 1;
+}

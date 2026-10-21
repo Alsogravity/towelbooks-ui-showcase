@@ -1,0 +1,161 @@
+.vui-switch-wrapper {
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
+}
+
+.vui-switch {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  height: 1.75rem;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  width: 3rem;
+}
+
+.vui-switch:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.vui-switch:focus-visible {
+  outline: none;
+}
+
+.vui-switch:focus-visible .vui-switch__track {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.vui-switch__track {
+  align-items: center;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-paper-pill);
+  box-sizing: border-box;
+  display: inline-flex;
+  height: 1.75rem;
+  padding: 0.125rem;
+  transition:
+    background-color var(--motion-transition-interactive),
+    border-color var(--motion-transition-interactive),
+    box-shadow var(--motion-transition-interactive),
+    color var(--motion-transition-interactive),
+    opacity var(--motion-transition-interactive),
+    transform var(--motion-transition-interactive);
+  width: 3rem;
+}
+
+.vui-switch__thumb {
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 16%, transparent);
+  color: var(--ink-2);
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 1.25rem;
+  justify-content: center;
+  transition:
+    background-color var(--motion-transition-interactive),
+    border-color var(--motion-transition-interactive),
+    box-shadow var(--motion-transition-interactive),
+    color var(--motion-transition-interactive),
+    transform var(--motion-transition-interactive);
+  width: 1.25rem;
+}
+
+.vui-switch:hover:not(:disabled) .vui-switch__track {
+  background: var(--paper-3);
+}
+
+.vui-switch:active:not(:disabled) .vui-switch__track {
+  background: color-mix(in srgb, var(--paper-3) 88%, var(--ink) 12%);
+}
+
+.vui-switch[aria-checked='true'] .vui-switch__track {
+  background: var(--brick-2);
+  border-color: var(--brick-2);
+}
+
+.vui-switch[aria-checked='true']:hover:not(:disabled) .vui-switch__track {
+  background: color-mix(in srgb, var(--brick-2) 92%, var(--ink) 8%);
+  border-color: color-mix(in srgb, var(--brick-2) 92%, var(--ink) 8%);
+}
+
+.vui-switch[aria-checked='true']:active:not(:disabled) .vui-switch__track {
+  background: color-mix(in srgb, var(--brick-2) 84%, var(--ink) 16%);
+  border-color: color-mix(in srgb, var(--brick-2) 84%, var(--ink) 16%);
+}
+
+.vui-switch[aria-checked='true'] .vui-switch__thumb {
+  border-color: var(--brick-2);
+  color: var(--brick-2);
+  transform: translateX(1.5rem);
+}
+
+.vui-switch__spinner {
+  animation: vui-switch-spinner-rotate var(--motion-duration-spinner) linear
+    infinite;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 999px;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.vui-switch__assistive {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  left: 0;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 1px;
+}
+
+:root[data-theme='dark']
+  .vui-switch:not([aria-checked='true'])
+  .vui-switch__track {
+  background: var(--paper-3);
+  border-color: var(--ink-4);
+}
+
+:root[data-theme='dark']
+  .vui-switch:not([aria-checked='true']):hover:not(:disabled)
+  .vui-switch__track {
+  background: color-mix(in srgb, var(--paper-3) 88%, var(--ink) 12%);
+  border-color: var(--ink-3);
+}
+
+:root[data-theme='dark']
+  .vui-switch:not([aria-checked='true']):active:not(:disabled)
+  .vui-switch__track {
+  background: color-mix(in srgb, var(--paper-3) 78%, var(--ink) 22%);
+  border-color: var(--ink-3);
+}
+
+:root[data-theme='dark']
+  .vui-switch:not([aria-checked='true'])
+  .vui-switch__thumb {
+  background: var(--night-fg);
+  border-color: var(--ink-4);
+  color: var(--night-2);
+}
+
+@keyframes vui-switch-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

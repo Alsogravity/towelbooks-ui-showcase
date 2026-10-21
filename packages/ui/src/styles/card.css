@@ -1,0 +1,38 @@
+:where(.vui-card) {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-paper-4);
+  box-shadow: var(--shadow-soft-2);
+}
+
+:where(.vui-card--spine) {
+  border-left: 4px solid var(--forest);
+}
+
+:where(.vui-card--bookplate) {
+  position: relative;
+}
+
+:where(.vui-card--bookplate)::after {
+  content: '❦';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.125rem;
+  color: var(--ink-4);
+}
+
+:where(.vui-card--padded) {
+  padding: 1.5rem;
+}
+
+:where(.vui-card--interactive) {
+  transition:
+    border-color var(--motion-transition-interactive),
+    box-shadow var(--motion-transition-interactive);
+}
+
+:where(.vui-card--interactive:hover) {
+  border-color: var(--ink-4);
+  box-shadow: var(--shadow-soft-3);
+}

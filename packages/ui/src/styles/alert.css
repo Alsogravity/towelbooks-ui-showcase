@@ -1,0 +1,30 @@
+:where(.vui-alert) {
+  border: 1px solid;
+  border-radius: var(--radius-paper-2);
+  font-size: 0.875rem;
+  padding: 0.75rem;
+}
+
+:where(.vui-alert--error) {
+  background: var(--danger-soft);
+  border-color: var(--danger-soft);
+  color: color-mix(in srgb, var(--danger-strong) 50%, var(--ink));
+}
+
+:where(.vui-alert--info) {
+  background: var(--paper-2);
+  border-color: var(--rule);
+  color: var(--ink-2);
+}
+
+:where(.vui-alert--success) {
+  background: var(--forest-soft);
+  border-color: var(--forest-soft);
+  color: var(--forest);
+}
+
+:where(.vui-alert--warning) {
+  background: var(--gold-soft);
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  color: var(--ink-2);
+}

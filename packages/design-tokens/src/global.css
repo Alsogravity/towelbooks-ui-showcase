@@ -1,0 +1,856 @@
+:root {
+  color-scheme: light;
+
+  /* Colors: paper and ink */
+  --paper: #f4ecd8;
+  --paper-2: #eadfc4;
+  --paper-3: #dccfaf;
+  --vellum: #fbf6e9;
+  --ink: #1a1714;
+  --ink-2: #3d362c;
+  --ink-3: #6b5e4c;
+  --ink-4: #9c8c73;
+  --rule: #c9b999;
+
+  /* Colors: accents (brand primary = brick) */
+  --brick-light: #b5560a;
+  --brick-2-light: #c8650f;
+  --brick-dark: #d8762a;
+  --brick: #b5560a;
+  --brick-2: #c8650f;
+  --brick-soft: #f5e2cb;
+  --forest: #2f4a36;
+  --forest-2: #3f5f47;
+  --forest-soft: #d6ddc9;
+  --gold: #b8893e;
+  --gold-soft: #f2e2be;
+  /* Bright orange — secondary brand accent, used occasionally */
+  --tangerine: #fd8d1a;
+
+  /* Colors: destructive / error red (decoupled from the brand accent) */
+  --danger-strong: #8b2e1f;
+  --danger-soft: #e9cfc7;
+
+  /* Google OAuth button — per branding guidelines (Light theme for light mode) */
+  --google-oauth-btn-fill: #ffffff;
+  --google-oauth-btn-stroke: #e0e0e0;
+  --google-oauth-btn-hover-fill: #f5f5f5;
+  --google-oauth-btn-fg: #1f1f1f;
+
+  /* Colors: night and reading mode */
+  --night: #111111;
+  --night-2: #181818;
+  --night-fg: #f5f5f5;
+  --night-fg-2: #cccccc;
+
+  /* Semantic color aliases */
+  --bg: var(--paper);
+  --bg-elev: var(--vellum);
+  --bg-sunken: var(--paper-2);
+  --fg: var(--ink);
+  --fg-muted: var(--ink-2);
+  --fg-subtle: var(--ink-3);
+  --fg-faint: var(--ink-4);
+  --border: var(--rule);
+  --border-strong: var(--ink-3);
+  --accent: var(--brick);
+  --accent-fg: #fbf6e9;
+  --success: var(--forest);
+  --warning: var(--gold);
+  --danger: var(--danger-strong);
+  --progress-track: var(--paper-2);
+
+  /* Fonts */
+  --font-display-family:
+    'Inter', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-literary-family: 'Cormorant Garamond', 'EB Garamond', Garamond, serif;
+  --font-serif-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+  --font-sans-family:
+    'Inter', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-mono-family:
+    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: var(--font-display-family);
+  --font-literary: var(--font-literary-family);
+  --font-serif: var(--font-serif-family);
+  --font-sans: var(--font-sans-family);
+  --font-mono: var(--font-mono-family);
+
+  /* Font weights */
+  --fw-normal: 400;
+
+  /* Type scale */
+  --fs-display-1: clamp(56px, 8vw, 96px);
+  --fs-display-2: clamp(44px, 6vw, 72px);
+  --fs-h1: clamp(36px, 4vw, 48px);
+  --fs-h2: clamp(28px, 3vw, 36px);
+  --fs-h3: 24px;
+  --fs-h4: 20px;
+  --fs-body-lg: 18px;
+  --fs-body: 16px;
+  --fs-body-sm: 14px;
+  --fs-caption: 12px;
+  --fs-micro: 11px;
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+  --lh-loose: 1.8;
+
+  /* App typography — semantic roles for authenticated product UI.
+     Prefer .app-text-* classes / text-app-* utilities for new app screens.
+     Generic .heading-* is transitional; see child issues under #304. */
+  --fs-app-page-title: clamp(1.375rem, 1.1rem + 0.75vw, 2rem);
+  --fs-app-page-description: 0.9375rem;
+  --fs-app-pane-title: clamp(1.125rem, 1rem + 0.35vw, 1.375rem);
+  --fs-app-mobile-header-title: 1.25rem;
+  --fs-app-section-title: clamp(1.125rem, 1rem + 0.35vw, 1.375rem);
+  --fs-app-dialog-title: 1.125rem;
+  --fs-app-entity-title: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  --fs-app-entity-subtitle: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-app-card-title: 1rem;
+  --fs-app-row-title: 0.9375rem;
+  --fs-app-body: 1rem;
+  --fs-app-body-sm: 0.875rem;
+  --fs-app-supporting-copy: 0.875rem;
+  --fs-app-label: 0.875rem;
+  --fs-app-loading: 1.3rem;
+  --fs-app-caption: 0.75rem;
+  --fs-app-metadata: 0.75rem;
+  --fs-app-stat-value: 2rem;
+  --fs-app-stat-label: 0.6875rem;
+  --lh-app-page-title: 1.15;
+  --lh-app-pane-title: 1.25;
+  --lh-app-mobile-header-title: 1;
+  --lh-app-section-title: 1.25;
+  --lh-app-dialog-title: 1.25;
+  --lh-app-entity-title: 1.2;
+  --lh-app-body: 1.5;
+  --lh-app-compact: 1.25;
+  --lh-app-stat-value: 1;
+  --lh-app-stat-label: 1.25;
+
+  /* Spacing scale */
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* Radii */
+  --radius-paper-level-min: 1;
+  --radius-paper-level-max: 8;
+  --radius-paper-step: 4px;
+  --radius-paper-1: calc(var(--radius-paper-step) * 1);
+  --radius-paper-2: calc(var(--radius-paper-step) * 2);
+  --radius-paper-3: calc(var(--radius-paper-step) * 3);
+  --radius-paper-4: calc(var(--radius-paper-step) * 4);
+  --radius-paper-5: calc(var(--radius-paper-step) * 5);
+  --radius-paper-6: calc(var(--radius-paper-step) * 6);
+  --radius-paper-7: calc(var(--radius-paper-step) * 7);
+  --radius-paper-8: calc(var(--radius-paper-step) * 8);
+  --radius-paper-pill: 999px;
+  --r-1: var(--radius-paper-1);
+  --r-2: var(--radius-paper-2);
+  --r-3: var(--radius-paper-3);
+  --r-4: var(--radius-paper-4);
+  --r-5: var(--radius-paper-5);
+  --r-6: var(--radius-paper-6);
+  --r-7: var(--radius-paper-7);
+  --r-8: var(--radius-paper-8);
+  --r-pill: var(--radius-paper-pill);
+
+  /* Shadows */
+  --shadow-soft-1:
+    0 1px 2px rgba(26, 23, 20, 0.06), 0 1px 1px rgba(26, 23, 20, 0.04);
+  --shadow-soft-2:
+    0 2px 6px rgba(26, 23, 20, 0.08), 0 1px 2px rgba(26, 23, 20, 0.05);
+  --shadow-soft-3:
+    0 8px 24px rgba(26, 23, 20, 0.1), 0 2px 6px rgba(26, 23, 20, 0.06);
+  --shadow-soft-4:
+    0 18px 48px rgba(26, 23, 20, 0.14), 0 6px 14px rgba(26, 23, 20, 0.08);
+  --shadow-soft-press: inset 0 1px 2px rgba(26, 23, 20, 0.12);
+  --shadow-soft-book:
+    0 0 0 1px rgba(26, 23, 20, 0.06), 1px 0 0 rgba(26, 23, 20, 0.04),
+    2px 1px 6px rgba(26, 23, 20, 0.1);
+  --shadow-1: var(--shadow-soft-1);
+  --shadow-2: var(--shadow-soft-2);
+  --shadow-3: var(--shadow-soft-3);
+  --shadow-4: var(--shadow-soft-4);
+  --shadow-press: var(--shadow-soft-press);
+  --shadow-book: var(--shadow-soft-book);
+
+  /* Motion and focus */
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 200ms;
+  --motion-duration-slow: 300ms;
+  --motion-duration-spinner: 1.4s;
+  --motion-duration-shimmer: 2.4s;
+  --motion-ease-subtle: ease;
+  --motion-ease-standard: ease-in-out;
+  --motion-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-page: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-quill: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: var(--motion-duration-fast);
+  --dur-base: var(--motion-duration-base);
+  --dur-slow: var(--motion-duration-slow);
+  --motion-transition-interactive: var(--motion-duration-fast)
+    var(--motion-ease-standard);
+  --motion-transition-transform: transform var(--motion-duration-fast)
+    var(--motion-ease-subtle);
+  --focus-ring-color: var(--brick);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-offset-tight: 0;
+  --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color);
+}
+
+/* Opt-in dark / midnight reading theme override.
+   Also matches any subtree element flagged with data-theme="dark" so individual
+   surfaces (e.g. the guest landing page) can lock themselves to dark regardless
+   of the global preference. Mirrors the Tailwind `dark:` variant, which already
+   targets `[data-theme="dark"]` and its descendants. */
+:root[data-theme='dark'],
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Colors: paper and ink */
+  --paper: #111111;
+  --paper-2: #181818;
+  --paper-3: #262626;
+  --vellum: #1e1e1e;
+  --ink: #f5f5f5;
+  --ink-2: #cccccc;
+  --ink-3: #999999;
+  --ink-4: #666666;
+  --rule: #222222;
+
+  /* Colors: accents (brand primary = brick) */
+  --brick: #e07a2a;
+  --brick-2: #ee9445;
+  --brick-soft: #3a2410;
+  --forest: #86ad92;
+  --forest-2: #a7c2b0;
+  --forest-soft: #1e2d24;
+  --gold: #deaf60;
+  --gold-soft: #362b16;
+  /* Bright orange — secondary brand accent, used occasionally */
+  --tangerine: #ff9f3d;
+
+  /* Colors: destructive / error red (decoupled from the brand accent) */
+  --danger-strong: #cf6a55;
+  --danger-soft: #341914;
+
+  /* Google OAuth button – per branding guidelines (Dark theme for dark mode) */
+  --google-oauth-btn-fill: #131314;
+  --google-oauth-btn-stroke: #2c2c2c;
+  --google-oauth-btn-hover-fill: #1e1e1e;
+  --google-oauth-btn-fg: #e3e3e3;
+
+  /* Colors: night and reading mode */
+  --night: #111111;
+  --night-2: #181818;
+  --night-fg: #f5f5f5;
+  --night-fg-2: #cccccc;
+
+  /* Semantic color aliases */
+  --bg: var(--paper);
+  --bg-elev: var(--vellum);
+  --bg-sunken: #080808;
+  --progress-track: #282828;
+  --fg: var(--ink);
+  --fg-muted: var(--ink-2);
+  --fg-subtle: var(--ink-3);
+  --fg-faint: var(--ink-4);
+  --border: var(--rule);
+  --border-strong: #333333;
+  --accent: var(--brick);
+  --success: var(--forest);
+  --warning: var(--gold);
+  --danger: var(--danger-strong);
+
+  /* Shadows */
+  --shadow-soft-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-soft-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-soft-3: 0 8px 24px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-soft-4:
+    0 18px 48px rgba(0, 0, 0, 0.72), 0 6px 14px rgba(0, 0, 0, 0.48);
+  --shadow-soft-press: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-soft-book:
+    0 0 0 1px rgba(0, 0, 0, 0.5), 1px 0 0 rgba(0, 0, 0, 0.3),
+    2px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Opt-in light theme override for subtrees nested inside a dark-locked surface
+   (e.g. the guest landing hero). Mirrors :root's light tokens so a nested
+   data-theme="light" reverts the inherited dark raw tokens for itself and its
+   descendants. The Tailwind `--color-*` aliases are recomputed below. */
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Colors: paper and ink */
+  --paper: #f4ecd8;
+  --paper-2: #eadfc4;
+  --paper-3: #dccfaf;
+  --vellum: #fbf6e9;
+  --ink: #1a1714;
+  --ink-2: #3d362c;
+  --ink-3: #6b5e4c;
+  --ink-4: #9c8c73;
+  --rule: #c9b999;
+
+  /* Colors: accents (brand primary = brick) */
+  --brick: #b5560a;
+  --brick-2: #c8650f;
+  --brick-soft: #f5e2cb;
+  --forest: #2f4a36;
+  --forest-2: #3f5f47;
+  --forest-soft: #d6ddc9;
+  --gold: #b8893e;
+  --gold-soft: #f2e2be;
+  /* Bright orange — secondary brand accent, used occasionally */
+  --tangerine: #fd8d1a;
+
+  /* Colors: destructive / error red (decoupled from the brand accent) */
+  --danger-strong: #8b2e1f;
+  --danger-soft: #e9cfc7;
+
+  /* Google OAuth button — per branding guidelines (Light theme for light mode) */
+  --google-oauth-btn-fill: #ffffff;
+  --google-oauth-btn-stroke: #e0e0e0;
+  --google-oauth-btn-hover-fill: #f5f5f5;
+  --google-oauth-btn-fg: #1f1f1f;
+
+  /* Colors: night and reading mode */
+  --night: #111111;
+  --night-2: #181818;
+  --night-fg: #f5f5f5;
+  --night-fg-2: #cccccc;
+
+  /* Semantic color aliases */
+  --bg: var(--paper);
+  --bg-elev: var(--vellum);
+  --bg-sunken: var(--paper-2);
+  --fg: var(--ink);
+  --fg-muted: var(--ink-2);
+  --fg-subtle: var(--ink-3);
+  --fg-faint: var(--ink-4);
+  --border: var(--rule);
+  --border-strong: var(--ink-3);
+  --accent: var(--brick);
+  --accent-fg: #fbf6e9;
+  --success: var(--forest);
+  --warning: var(--gold);
+  --danger: var(--danger-strong);
+  --progress-track: var(--paper-2);
+}
+
+@theme {
+  /* Colors: paper and ink */
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-vellum: var(--vellum);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-rule: var(--rule);
+
+  /* Colors: accents */
+  --color-brick: var(--brick);
+  --color-brick-light: var(--brick-light);
+  --color-brick-2-light: var(--brick-2-light);
+  --color-brick-dark: var(--brick-dark);
+  --color-brick-2: var(--brick-2);
+  --color-brick-soft: var(--brick-soft);
+  --color-forest: var(--forest);
+  --color-forest-2: var(--forest-2);
+  --color-forest-soft: var(--forest-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-tangerine: var(--tangerine);
+
+  /* Colors: night and reading mode */
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-night-fg: var(--night-fg);
+  --color-night-fg-2: var(--night-fg-2);
+
+  /* Google OAuth button – per branding guidelines */
+  --color-google-oauth-btn-fill: var(--google-oauth-btn-fill);
+  --color-google-oauth-btn-stroke: var(--google-oauth-btn-stroke);
+  --color-google-oauth-btn-hover-fill: var(--google-oauth-btn-hover-fill);
+  --color-google-oauth-btn-fg: var(--google-oauth-btn-fg);
+
+  /* Fonts */
+  --font-display: var(--font-display-family);
+  --font-literary: var(--font-literary-family);
+  --font-serif: var(--font-serif-family);
+  --font-sans: var(--font-sans-family);
+  --font-mono: var(--font-mono-family);
+
+  /* Font weights */
+  --font-weight-normal: var(--fw-normal);
+
+  /* Type scale */
+  --text-display-1: var(--fs-display-1);
+  --text-display-2: var(--fs-display-2);
+  --text-h1: var(--fs-h1);
+  --text-h2: var(--fs-h2);
+  --text-h3: var(--fs-h3);
+  --text-h4: var(--fs-h4);
+  --text-body-lg: var(--fs-body-lg);
+  --text-body: var(--fs-body);
+  --text-body-sm: var(--fs-body-sm);
+  --text-caption: var(--fs-caption);
+  --text-micro: var(--fs-micro);
+  --leading-tight: var(--lh-tight);
+  --leading-snug: var(--lh-snug);
+  --leading-normal: var(--lh-normal);
+  --leading-relaxed: var(--lh-relaxed);
+  --leading-loose: var(--lh-loose);
+
+  /* App typography */
+  --text-app-page-title: var(--fs-app-page-title);
+  --text-app-page-description: var(--fs-app-page-description);
+  --text-app-pane-title: var(--fs-app-pane-title);
+  --text-app-mobile-header-title: var(--fs-app-mobile-header-title);
+  --text-app-section-title: var(--fs-app-section-title);
+  --text-app-dialog-title: var(--fs-app-dialog-title);
+  --text-app-entity-title: var(--fs-app-entity-title);
+  --text-app-entity-subtitle: var(--fs-app-entity-subtitle);
+  --text-app-card-title: var(--fs-app-card-title);
+  --text-app-row-title: var(--fs-app-row-title);
+  --text-app-body: var(--fs-app-body);
+  --text-app-body-sm: var(--fs-app-body-sm);
+  --text-app-supporting-copy: var(--fs-app-supporting-copy);
+  --text-app-label: var(--fs-app-label);
+  --text-app-loading: var(--fs-app-loading);
+  --text-app-caption: var(--fs-app-caption);
+  --text-app-metadata: var(--fs-app-metadata);
+  --text-app-stat-value: var(--fs-app-stat-value);
+  --text-app-stat-label: var(--fs-app-stat-label);
+  --leading-app-page-title: var(--lh-app-page-title);
+  --leading-app-pane-title: var(--lh-app-pane-title);
+  --leading-app-mobile-header-title: var(--lh-app-mobile-header-title);
+  --leading-app-section-title: var(--lh-app-section-title);
+  --leading-app-dialog-title: var(--lh-app-dialog-title);
+  --leading-app-entity-title: var(--lh-app-entity-title);
+  --leading-app-body: var(--lh-app-body);
+  --leading-app-compact: var(--lh-app-compact);
+  --leading-app-stat-value: var(--lh-app-stat-value);
+  --leading-app-stat-label: var(--lh-app-stat-label);
+
+  /* Spacing scale */
+  --spacing-s-0: var(--s-0);
+  --spacing-s-1: var(--s-1);
+  --spacing-s-2: var(--s-2);
+  --spacing-s-3: var(--s-3);
+  --spacing-s-4: var(--s-4);
+  --spacing-s-5: var(--s-5);
+  --spacing-s-6: var(--s-6);
+  --spacing-s-7: var(--s-7);
+  --spacing-s-8: var(--s-8);
+  --spacing-s-9: var(--s-9);
+  --spacing-s-10: var(--s-10);
+
+  /* Radii */
+  --radius-1: var(--radius-paper-1);
+  --radius-2: var(--radius-paper-2);
+  --radius-3: var(--radius-paper-3);
+  --radius-4: var(--radius-paper-4);
+  --radius-5: var(--radius-paper-5);
+  --radius-6: var(--radius-paper-6);
+  --radius-7: var(--radius-paper-7);
+  --radius-8: var(--radius-paper-8);
+  --radius-pill: var(--radius-paper-pill);
+
+  /* Shadows */
+  --shadow-1: var(--shadow-soft-1);
+  --shadow-2: var(--shadow-soft-2);
+  --shadow-3: var(--shadow-soft-3);
+  --shadow-4: var(--shadow-soft-4);
+  --shadow-press: var(--shadow-soft-press);
+  --shadow-book: var(--shadow-soft-book);
+
+  /* Motion */
+  --ease-subtle: var(--motion-ease-subtle);
+  --ease-standard: var(--motion-ease-standard);
+  --ease-emphasized: var(--motion-ease-emphasized);
+}
+
+.eyebrow {
+  color: var(--ink-3);
+  font-family: var(--font-sans-family);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.display-1 {
+  font-family: var(--font-display-family);
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.display-2 {
+  font-family: var(--font-display-family);
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.heading-1 {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: var(--lh-tight);
+}
+
+.heading-2 {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: var(--lh-tight);
+}
+
+.heading-3 {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+}
+
+.heading-4 {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+}
+
+.surface-title {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+}
+
+.surface-subtitle {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+}
+
+.surface-note {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-body-sm);
+  font-style: italic;
+  line-height: var(--lh-relaxed);
+}
+
+.serif-italic {
+  font-family: var(--font-display-family);
+  font-style: italic;
+}
+
+.italic-display {
+  font-family: var(--font-display-family);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.lead {
+  color: var(--fg-muted);
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+}
+
+.body {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+}
+
+.body-sm {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+}
+
+.supporting-copy {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-relaxed);
+}
+
+.hero-body {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-body);
+  font-style: italic;
+  line-height: 1.75;
+}
+
+.meta {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-relaxed);
+}
+
+.meta-label {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.18em;
+  line-height: var(--lh-normal);
+  text-transform: uppercase;
+}
+
+.utility-label {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: var(--lh-normal);
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--lh-normal);
+}
+
+.label {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  line-height: var(--lh-normal);
+}
+
+.caption {
+  color: var(--fg-subtle);
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.02em;
+  line-height: var(--lh-normal);
+}
+
+.mono {
+  font-family: var(--font-mono-family);
+  font-size: 13px;
+  line-height: var(--lh-normal);
+}
+
+.mono-sm {
+  font-family: var(--font-mono-family);
+  font-size: var(--fs-micro);
+  line-height: var(--lh-normal);
+}
+
+.field-error {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-normal);
+}
+
+.app-text-page-title {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-app-page-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: var(--lh-app-page-title);
+}
+
+.app-text-page-description {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-page-description);
+  font-weight: 400;
+  line-height: var(--lh-app-body);
+}
+
+.app-text-pane-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-pane-title);
+  font-weight: 600;
+  line-height: var(--lh-app-pane-title);
+}
+
+.app-text-mobile-header-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-mobile-header-title);
+  font-weight: 500;
+  line-height: var(--lh-app-mobile-header-title);
+}
+
+.app-text-section-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-section-title);
+  font-weight: 600;
+  line-height: var(--lh-app-section-title);
+}
+
+.app-text-dialog-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-dialog-title);
+  font-weight: 600;
+  line-height: var(--lh-app-dialog-title);
+}
+
+.app-text-entity-title {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-app-entity-title);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: var(--lh-app-entity-title);
+}
+
+.app-text-entity-subtitle {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-entity-subtitle);
+  font-weight: 500;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-card-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-card-title);
+  font-weight: 600;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-row-title {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-row-title);
+  font-weight: 600;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-body {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-body);
+  font-weight: 400;
+  line-height: var(--lh-app-body);
+}
+
+.app-text-body-sm {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-body-sm);
+  font-weight: 400;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-supporting-copy {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-supporting-copy);
+  font-weight: 400;
+  line-height: var(--lh-app-body);
+}
+
+.app-text-label {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-label);
+  font-weight: 600;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-caption {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-caption);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-metadata {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-metadata);
+  font-weight: 400;
+  line-height: var(--lh-app-compact);
+}
+
+.app-text-stat-value {
+  font-family: var(--font-display-family);
+  font-size: var(--fs-app-stat-value);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: var(--lh-app-stat-value);
+}
+
+.app-text-stat-label {
+  font-family: var(--font-sans-family);
+  font-size: var(--fs-app-stat-label);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: var(--lh-app-stat-label);
+  text-transform: uppercase;
+}
+
+.dropcap::first-letter {
+  color: var(--brick);
+  float: left;
+  font-family: var(--font-display-family);
+  font-size: 4.2em;
+  font-weight: 600;
+  line-height: 0.85;
+  padding: 6px 8px 0 0;
+}
+
+/*
+ * Subtree dark theming support.
+ *
+ * Tailwind's `@theme` color tokens are declared on `:root` as `--color-x:
+ * var(--x)`, so their `var()` is substituted at `:root` against `:root`'s raw
+ * tokens. That means overriding the raw tokens (`--paper`, `--ink`, …) on a
+ * nested element does NOT recompute the `--color-*` aliases used by Tailwind
+ * utilities. Re-declaring the aliases here, scoped to any `[data-theme]`
+ * subtree, makes them recompute against that subtree's raw tokens — so a single
+ * nested `data-theme` flag (e.g. the dark-locked guest landing page, or a light
+ * hero nested within it) themes its whole utility-styled subtree without
+ * touching the global preference.
+ */
+[data-theme='dark'],
+[data-theme='light'] {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-vellum: var(--vellum);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-rule: var(--rule);
+  --color-brick: var(--brick);
+  --color-brick-light: var(--brick-light);
+  --color-brick-2-light: var(--brick-2-light);
+  --color-brick-dark: var(--brick-dark);
+  --color-brick-2: var(--brick-2);
+  --color-brick-soft: var(--brick-soft);
+  --color-forest: var(--forest);
+  --color-forest-2: var(--forest-2);
+  --color-forest-soft: var(--forest-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-tangerine: var(--tangerine);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-night-fg: var(--night-fg);
+  --color-night-fg-2: var(--night-fg-2);
+  --color-google-oauth-btn-fill: var(--google-oauth-btn-fill);
+  --color-google-oauth-btn-stroke: var(--google-oauth-btn-stroke);
+  --color-google-oauth-btn-hover-fill: var(--google-oauth-btn-hover-fill);
+  --color-google-oauth-btn-fg: var(--google-oauth-btn-fg);
+}
